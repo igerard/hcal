@@ -4,7 +4,6 @@
 #include "Converter.h"
 #include "Holiday.h"
 #include "Prefs.h"
-#include <PMApplication.h>
 
 #define PREVIOUS_MONTH_CONTROL 1
 #define NEXT_MONTH_CONTROL     2
@@ -115,7 +114,7 @@ InitializeDialogWindow()
 /* Handle a click in the NEXT MONTH or PREVIOUS MONTH button */
 
 void
-HandleControlItem (Point EventPoint, short /*partcode*/, ControlHandle whichControl)
+HandleControlItem (Point EventPoint, short partcode, ControlHandle whichControl)
 {
 	int	ControlInfo = GetControlReference(whichControl);
 	if (TrackControl(whichControl, EventPoint, NULL)) {
@@ -415,7 +414,7 @@ PMSheetDoneUPP sheetDoneUPP()
 	return sProc;
 }
 
-pascal void sheetDone(PMPrintSession /*printSession*/, WindowRef /*window*/, Boolean accepted)
+pascal void sheetDone(PMPrintSession printSession, WindowRef window, Boolean accepted)
 {
 	if (accepted)
 	{
@@ -600,7 +599,7 @@ FillInMonth(char *month_name, int year, const char *extra)
  */
  
 void
-DoTheOutput(int column, int row, int day, int /*j_year*/, 
+DoTheOutput(int column, int row, int day, int j_year, 
             char *j_month_name, int j_day, char **holidays)
 {
 	Rect 	box;

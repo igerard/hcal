@@ -180,6 +180,9 @@ hebrew_month_length(int year, int month)
     	// Adar (non-leap year) has 29 days.  Adar I has 30 days.
     	if (hebrew_leap_year_p(year)) return 30;
     	else return 29;
+
+    default:
+        return 0;
     }
 }
 
@@ -197,6 +200,8 @@ secular_month_length(int year, int month, Boolean julianp)
 	     	if (julianp ? julian_leap_year_p(year) : gregorian_leap_year_p(year)) 
 	     		return 29;
 		    else return 28;
+        default:
+            return 0;
 	}
 }
 
@@ -343,4 +348,4 @@ finish_up(long absolute, int hyear, int hmonth, int syear, int smonth, Boolean j
 	result->day_of_week = (7 + absolute) % 7;
 	result->hebrew_day_number = absolute - absolute_from_hebrew(hyear, 7, 1) + 1;	
 
-}						 
+}

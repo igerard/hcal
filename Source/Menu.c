@@ -3,9 +3,7 @@
 #include "Holiday.h"
 #include "Prefs.h"
 #include "Globals.h"
-#include "ControlDefinitions.h"
 #include "GetVersNumString.h"
-#include "InternetConfig.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -31,7 +29,6 @@ void UpdateMenuSelection();
 static void AboutJewishCalendarWindow(void);
 static void NewYearWindow(void);
 pascal void IncrementDecrementYear(ControlHandle controlHdl, short partCode);
-static void FakeDialogButtonClick(DialogPtr dp, short itemHit);
 static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit);
 static pascal ControlKeyFilterResult NumericFilter(ControlHandle control, short* keyCode,
 	short *charCode, unsigned short *modifiers);
@@ -363,19 +360,8 @@ NewYearWindow()
 	DisposeModalFilterUPP(filterUPP);
 }
 
-void FakeDialogButtonClick(DialogPtr dp, short itemHit)
-{
-	ControlHandle itemHandle;
-	unsigned long junk;
-	
-	GetDialogItemAsControl(dp, itemHit, &itemHandle);
-	HiliteControl(itemHandle, kControlButtonPart);
-	Delay(8, &junk);
-	HiliteControl(itemHandle, kControlNoPart);
-}
-
 pascal void
-IncrementDecrementYear(ControlHandle /*controlHdl*/, short partCode)
+IncrementDecrementYear(ControlHandle controlHdl, short partCode)
 {
 	Str255 buffer;
 	long year;
@@ -468,32 +454,28 @@ static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, sh
 		{
 			if (theEvent -> what == nullEvent && *itemHit == kEmailButton)
 			{
-				Str255 url;
-				Str255 hint = "\p";
-				long start = 0;
-				long stop;
-				ICInstance inst;
-				
-				ICStart(&inst, 'FYJC');
+                Str255 url;
 				GetIndString(url, 128, 1);
-				stop = url[0];
-				ICLaunchURL(inst, hint, &url[1], url[0], &start, &stop);
-				ICStop(inst);
+                CFURLRef cfurl = CFURLCreateWithBytes(kCFAllocatorDefault,
+                                                      url+1,
+                                                      *url,
+                                                      GetApplicationTextEncoding(),
+                                                      NULL);
+                LSOpenCFURLRef(cfurl, NULL);
+                CFRelease(cfurl);
 			}
 			
 			if (theEvent -> what == nullEvent && *itemHit == kWebButton)
 			{
-				Str255 url;
-				Str255 hint = "\p";
-				long start = 0;
-				long stop;
-				ICInstance inst;
-				
-				ICStart(&inst, 'FYJC');
+                Str255 url;
 				GetIndString(url, 128, 2);
-				stop = url[0];
-				ICLaunchURL(inst, hint, &url[1], url[0], &start, &stop);
-				ICStop(inst);
+                CFURLRef cfurl = CFURLCreateWithBytes(kCFAllocatorDefault,
+                                                      url+1,
+                                                      *url,
+                                                      GetApplicationTextEncoding(),
+                                                      NULL);
+                LSOpenCFURLRef(cfurl, NULL);
+                CFRelease(cfurl);
 			}
 		}
 		
@@ -508,8 +490,8 @@ static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, sh
 	return handledEvent;
 }
 
-pascal ControlKeyFilterResult NumericFilter(ControlHandle /*control*/, short* /*keyCode*/,
-	short *charCode, unsigned short */*modifiers*/)
+pascal ControlKeyFilterResult NumericFilter(ControlHandle control, short* keyCode,
+	short *charCode, unsigned short *modifiers)
 {
 	if(((char) *charCode >= '0') && ((char) *charCode <= '9'))
 		return kControlKeyFilterPassKey;

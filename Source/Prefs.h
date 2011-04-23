@@ -1,9 +1,5 @@
 #pragma once
 
-#include "CFPreferences.h"
-
-//#define kApplicationIDRef		CFSTR("com.drissman.jewishcalendar")
-
 #define kJulianCalendarPrefRef	CFSTR("JulianCalendar")
 #define kIsraelPrefRef			CFSTR("Israel")
 

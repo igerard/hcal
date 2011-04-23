@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16EC86C41363706F00805A60 /* Converter.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86B31363706F00805A60 /* Converter.c */; };
+		16EC86C51363706F00805A60 /* Dialog.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86B51363706F00805A60 /* Dialog.c */; };
+		16EC86C61363706F00805A60 /* GetVersNumString.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86B71363706F00805A60 /* GetVersNumString.c */; };
+		16EC86C71363706F00805A60 /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86BA1363706F00805A60 /* Holiday.c */; };
+		16EC86C81363706F00805A60 /* JCal.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86BC1363706F00805A60 /* JCal.c */; };
+		16EC86C91363706F00805A60 /* JCal.rsrc in Resources */ = {isa = PBXBuildFile; fileRef = 16EC86BD1363706F00805A60 /* JCal.rsrc */; };
+		16EC86CA1363706F00805A60 /* Menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86BE1363706F00805A60 /* Menu.c */; };
+		16EC86CB1363706F00805A60 /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86C01363706F00805A60 /* Parsha.c */; };
+		16EC86CC1363706F00805A60 /* Prefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86C21363706F00805A60 /* Prefs.c */; };
+		16EC86D8136370AB00805A60 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16EC86D6136370AB00805A60 /* InfoPlist.strings */; };
+		16EC86DD136371E200805A60 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 16EC86DC136371E200805A60 /* app.icns */; };
+		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		16EC86B31363706F00805A60 /* Converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Converter.c; path = Source/Converter.c; sourceTree = "<group>"; };
+		16EC86B41363706F00805A60 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Converter.h; path = Source/Converter.h; sourceTree = "<group>"; };
+		16EC86B51363706F00805A60 /* Dialog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Dialog.c; path = Source/Dialog.c; sourceTree = "<group>"; };
+		16EC86B61363706F00805A60 /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dialog.h; path = Source/Dialog.h; sourceTree = "<group>"; };
+		16EC86B71363706F00805A60 /* GetVersNumString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = GetVersNumString.c; path = Source/GetVersNumString.c; sourceTree = "<group>"; };
+		16EC86B81363706F00805A60 /* GetVersNumString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetVersNumString.h; path = Source/GetVersNumString.h; sourceTree = "<group>"; };
+		16EC86B91363706F00805A60 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Globals.h; path = Source/Globals.h; sourceTree = "<group>"; };
+		16EC86BA1363706F00805A60 /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Holiday.c; path = Source/Holiday.c; sourceTree = "<group>"; };
+		16EC86BB1363706F00805A60 /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Holiday.h; path = Source/Holiday.h; sourceTree = "<group>"; };
+		16EC86BC1363706F00805A60 /* JCal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = JCal.c; path = Source/JCal.c; sourceTree = "<group>"; };
+		16EC86BD1363706F00805A60 /* JCal.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; name = JCal.rsrc; path = Source/JCal.rsrc; sourceTree = "<group>"; };
+		16EC86BE1363706F00805A60 /* Menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Menu.c; path = Source/Menu.c; sourceTree = "<group>"; };
+		16EC86BF1363706F00805A60 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Menu.h; path = Source/Menu.h; sourceTree = "<group>"; };
+		16EC86C01363706F00805A60 /* Parsha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Parsha.c; path = Source/Parsha.c; sourceTree = "<group>"; };
+		16EC86C11363706F00805A60 /* Parsha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parsha.h; path = Source/Parsha.h; sourceTree = "<group>"; };
+		16EC86C21363706F00805A60 /* Prefs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Prefs.c; path = Source/Prefs.c; sourceTree = "<group>"; };
+		16EC86C31363706F00805A60 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefs.h; path = Source/Prefs.h; sourceTree = "<group>"; };
+		16EC86D7136370AB00805A60 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Source/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		16EC86DC136371E200805A60 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = Source/app.icns; sourceTree = "<group>"; };
+		16EC86E31363732E00805A60 /* hcal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hcal_Prefix.pch; sourceTree = "<group>"; };
+		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0C4E970486CD37000505A6 /* Jewish Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jewish Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D0C4E910486CD37000505A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		195DF8CFFE9D517E11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E970486CD37000505A6 /* Jewish Calendar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20286C29FDCF999611CA2CEA /* hcal */ = {
+			isa = PBXGroup;
+			children = (
+				16EC86E31363732E00805A60 /* hcal_Prefix.pch */,
+				20286C2AFDCF999611CA2CEA /* Sources */,
+				20286C2CFDCF999611CA2CEA /* Resources */,
+				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				195DF8CFFE9D517E11CA2CBB /* Products */,
+			);
+			name = hcal;
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				16EC86B31363706F00805A60 /* Converter.c */,
+				16EC86B41363706F00805A60 /* Converter.h */,
+				16EC86B51363706F00805A60 /* Dialog.c */,
+				16EC86B61363706F00805A60 /* Dialog.h */,
+				16EC86B71363706F00805A60 /* GetVersNumString.c */,
+				16EC86B81363706F00805A60 /* GetVersNumString.h */,
+				16EC86B91363706F00805A60 /* Globals.h */,
+				16EC86BA1363706F00805A60 /* Holiday.c */,
+				16EC86BB1363706F00805A60 /* Holiday.h */,
+				16EC86BC1363706F00805A60 /* JCal.c */,
+				16EC86BE1363706F00805A60 /* Menu.c */,
+				16EC86BF1363706F00805A60 /* Menu.h */,
+				16EC86C01363706F00805A60 /* Parsha.c */,
+				16EC86C11363706F00805A60 /* Parsha.h */,
+				16EC86C21363706F00805A60 /* Prefs.c */,
+				16EC86C31363706F00805A60 /* Prefs.h */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		20286C2CFDCF999611CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				16EC86BD1363706F00805A60 /* JCal.rsrc */,
+				16EC86DC136371E200805A60 /* app.icns */,
+				8D0C4E960486CD37000505A6 /* Info.plist */,
+				16EC86D6136370AB00805A60 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D0C4E890486CD37000505A6 /* hcal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "hcal" */;
+			buildPhases = (
+				8D0C4E8C0486CD37000505A6 /* Resources */,
+				8D0C4E8F0486CD37000505A6 /* Sources */,
+				8D0C4E910486CD37000505A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hcal;
+			productInstallPath = "$(HOME)/Applications";
+			productName = hcal;
+			productReference = 8D0C4E970486CD37000505A6 /* Jewish Calendar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20286C28FDCF999611CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "hcal" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 20286C29FDCF999611CA2CEA /* hcal */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D0C4E890486CD37000505A6 /* hcal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D0C4E8C0486CD37000505A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16EC86C91363706F00805A60 /* JCal.rsrc in Resources */,
+				16EC86D8136370AB00805A60 /* InfoPlist.strings in Resources */,
+				16EC86DD136371E200805A60 /* app.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D0C4E8F0486CD37000505A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16EC86C41363706F00805A60 /* Converter.c in Sources */,
+				16EC86C51363706F00805A60 /* Dialog.c in Sources */,
+				16EC86C61363706F00805A60 /* GetVersNumString.c in Sources */,
+				16EC86C71363706F00805A60 /* Holiday.c in Sources */,
+				16EC86C81363706F00805A60 /* JCal.c in Sources */,
+				16EC86CA1363706F00805A60 /* Menu.c in Sources */,
+				16EC86CB1363706F00805A60 /* Parsha.c in Sources */,
+				16EC86CC1363706F00805A60 /* Prefs.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		16EC86D6136370AB00805A60 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16EC86D7136370AB00805A60 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0E91AC608A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = hcal_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "Jewish Calendar";
+			};
+			name = Debug;
+		};
+		C0E91AC708A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = hcal_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "Jewish Calendar";
+			};
+			name = Release;
+		};
+		C0E91ACA08A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C0E91ACB08A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "hcal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91AC608A95435008D54AB /* Debug */,
+				C0E91AC708A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "hcal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91ACA08A95435008D54AB /* Debug */,
+				C0E91ACB08A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20286C28FDCF999611CA2CEA /* Project object */;
+}

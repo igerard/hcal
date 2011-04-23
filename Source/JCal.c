@@ -13,7 +13,7 @@ static void DoMouseDownStuff(EventRecord *theEvent);
 static void InitPrefs();
 static pascal OSErr QuitHandler (const AppleEvent *theAppleEvent, AppleEvent *reply, long handlerRefcon);
 
-void main(void)
+int main(void)
 {
 	EventRecord		theEvent;
 	int				theChar;
@@ -55,6 +55,8 @@ void main(void)
 			}
 		}
 	}
+
+    return 0;
 }
 
 /* Handle a mouse down event */
@@ -126,7 +128,7 @@ void InitPrefs()
 		CholP = true;
 }
 
-pascal OSErr QuitHandler (const AppleEvent */*theAppleEvent*/, AppleEvent *reply, long /*handlerRefcon*/)
+pascal OSErr QuitHandler (const AppleEvent *theAppleEvent, AppleEvent *reply, long handlerRefcon)
 {
 	if (reply && reply -> dataHandle != NULL )	/*	a reply is sought */
 		AEPutParamPtr(reply, 'errs', 'TEXT', "Sayonara", 8);
