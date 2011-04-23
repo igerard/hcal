@@ -93,10 +93,10 @@ gregorian_from_absolute (long date, int *yearp, int *monthp, int *dayp)
 	int year, month, day;
 	for (year = date/366; 
 	        date >= absolute_from_gregorian(year+1, 1, 1);
-	        year++);
+	        year++) ;
 	for (month = 1; 
 	     (month <= 11) && (date >= absolute_from_gregorian(year, 1+month, 1));
-	     month++);
+	     month++) ;
 	day = 1 + date - absolute_from_gregorian(year, month, 1);
 	*yearp = year;
 	*monthp = month;
@@ -110,10 +110,10 @@ julian_from_absolute (long date, int *yearp, int *monthp, int *dayp)
 	int year, month, day;
 	for (year = (date + 2)/366; 
 	        date >= absolute_from_julian(year+1, 1, 1);
-	        year++);
+	        year++) ;
 	for (month = 1; 
 	     (month <= 11) && (date >= absolute_from_julian(year, 1+month, 1));
-	     month++);
+	     month++) ;
 	day = 1 + date - absolute_from_julian(year, month, 1);
 	*yearp = year;
 	*monthp = month;
@@ -133,7 +133,7 @@ hebrew_from_absolute(long date, int *yearp, int *monthp, int *dayp)
 	for(month = 7;
 	     date > absolute_from_hebrew(year, month, 
 	                         hebrew_month_length(year, month));
-	     month = 1 + (month % months));
+	     month = 1 + (month % months)) ;
 	day = 1 + date - absolute_from_hebrew(year, month, 1);
 	*yearp = year;
 	*monthp = month;

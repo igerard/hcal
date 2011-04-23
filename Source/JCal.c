@@ -2,53 +2,46 @@
 #include <stdlib.h>
 #include "Dialog.h"
 #include "Menu.h"
-/* #include <profile.h> */
+#include "Prefs.h"
+#include "Holiday.h"
 
+#define MAINFILE
+#include "Globals.h"
+#undef MAINFILE
 
 static void DoMouseDownStuff(EventRecord *theEvent);
-static void restartProc(void);
+static void InitPrefs();
+static pascal OSErr QuitHandler (const AppleEvent *theAppleEvent, AppleEvent *reply, long handlerRefcon);
 
-/* If there are any errors in dialog windows, just exit */
-static void
-restartProc()
-{
-	exit(1);
-}
-
-
-main()
+void main(void)
 {
 	EventRecord		theEvent;
-	DialogPtr		whichDialog;
-	short			whichItem, windowcode, type;
-	WindowPtr		whichWindow;
 	int				theChar;
-	long			menuEvent;
-	
+	AEEventHandlerUPP quitHandler = NewAEEventHandlerUPP(QuitHandler);
 	
 	// Initialize the world.
- 	InitGraf(&thePort);
-	InitFonts();
-	InitWindows();
-	InitMenus(); 
-	InitDialogs(restartProc);
+	gAppResFile = CurResFile();
+	gAreWeDoneYet = false;
 	InitCursor();
+	InitPrefs();
 	InitializeDialogWindow();
 	SetUpMenus();						// get the initial menus.
 	FlushEvents(everyEvent, 0);			// throw away any events already queued
-	while(1) {
-		InitCursor();
-		SystemTask();
-		if (GetNextEvent(everyEvent, &theEvent)) {
+	AEInstallEventHandler(kCoreEventClass, kAEQuitApplication, quitHandler, 0, false);
+	
+	while(!gAreWeDoneYet) {
+		if (WaitNextEvent(everyEvent, &theEvent, GetCaretTime(), nil)) {
 			switch (theEvent.what) {
 				case mouseDown:
 					// Do whatever we're supposed to do with this mouse event.
 					DoMouseDownStuff(&theEvent);
 					break;
+					
 				case updateEvt:
 					// Update the screen as appropriate.
 					UpdateEventCalendarWindow(&theEvent);
 					break;
+					
 				case keyDown:
 				case autoKey:
 					// The only key events we handle are command keys
@@ -56,22 +49,19 @@ main()
 					if (theEvent.modifiers & cmdKey) 
 						doMenu(MenuKey(theChar));
 					break;
-				case activateEvt:
-					// Currently, we don't deal with this.
-					// if (theEvent.modifiers & activeFlag) {} else {}
-					break;
+				
+				case kHighLevelEvent:
+					AEProcessAppleEvent(&theEvent);
 			}
 		}
 	}
 }
-				
 
 /* Handle a mouse down event */
 
 static void
 DoMouseDownStuff(EventRecord *theEvent)
 {
-	Rect		tempRect;
 	WindowPtr	whichWindow;
 	short		windowcode, partcode;
 	Point		EventPoint;
@@ -79,11 +69,6 @@ DoMouseDownStuff(EventRecord *theEvent)
 	
 	windowcode = FindWindow(theEvent->where, &whichWindow);
 	switch(windowcode) {
-		case inSysWindow:
-			// Do whatever the system wants to do with it.
-			SystemClick(theEvent, whichWindow);
-			break;
-						
 		case inMenuBar:
 			// Go handle a menu selection
 			UpdateMenuSelection();
@@ -98,23 +83,55 @@ DoMouseDownStuff(EventRecord *theEvent)
 				// If the click is in a control, deal with it.
 				EventPoint = theEvent->where;
 				GlobalToLocal(&EventPoint);
-				if (partcode = FindControl(EventPoint, whichWindow, &whichControl)) 
+				if ((partcode = FindControl(EventPoint, whichWindow, &whichControl))) 
 					HandleControlItem (EventPoint, partcode, whichControl);
 				}
 			break;
 			
 		case inDrag:
 			// Drag the window.
-			SetRect(&tempRect,
-					screenBits.bounds.left+4, screenBits.bounds.top+24,
-					screenBits.bounds.right-4, screenBits.bounds.bottom-4);
-			DragWindow(whichWindow, theEvent->where, &tempRect);
+			DragWindow(whichWindow, theEvent->where, nil);
 			break;
 			
 		case inGoAway:
 			// Just kill the program when we're supposed to go away.
 			if (TrackGoAway(whichWindow, theEvent->where))
-				exit(EXIT_SUCCESS);
+				gAreWeDoneYet = true;
 			break;
 	}
+}
+
+void InitPrefs()
+{
+	Boolean isValid;
+	
+	JulianP = CFPreferencesGetAppBooleanValue(kJulianCalendarPrefRef, kCFPreferencesCurrentApplication,
+												&isValid);
+	IsraelP = CFPreferencesGetAppBooleanValue(kIsraelPrefRef, kCFPreferencesCurrentApplication,
+												&isValid);
+	
+	ParshaP = CFPreferencesGetAppBooleanValue(kParshaPrefRef, kCFPreferencesCurrentApplication,
+												&isValid);
+	if (!isValid)
+		ParshaP = true;
+	
+	OmerP = CFPreferencesGetAppBooleanValue(kOmerPrefRef, kCFPreferencesCurrentApplication,
+												&isValid);
+	if (!isValid)
+		OmerP = true;
+	
+	CholP = CFPreferencesGetAppBooleanValue(kCholHamoedPrefRef, kCFPreferencesCurrentApplication,
+												&isValid);
+	if (!isValid)
+		CholP = true;
+}
+
+pascal OSErr QuitHandler (const AppleEvent */*theAppleEvent*/, AppleEvent *reply, long /*handlerRefcon*/)
+{
+	if (reply && reply -> dataHandle != NULL )	/*	a reply is sought */
+		AEPutParamPtr(reply, 'errs', 'TEXT', "Sayonara", 8);
+	
+	gAreWeDoneYet = true;
+	
+	return noErr;
 }

@@ -1,6 +1,11 @@
 #include "Menu.h"
 #include "Dialog.h"
 #include "Holiday.h"
+#include "Prefs.h"
+#include "Globals.h"
+#include "ControlDefinitions.h"
+#include "GetVersNumString.h"
+#include "InternetConfig.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -10,25 +15,33 @@ void UpdateMenuSelection();
 
 #define APPLE_MENU 128
 #define FILE_MENU 129
+#define AQUA_FILE_MENU 229
 #define EDIT_MENU 130
 #define OPTION_MENU 131
 #define MONTH_MENU 132
 #define YEAR_MENU 133
 
 #define MENU_BAR 128
+#define AQUA_MENU_BAR 129
 
 #define ABOUT_DIALOG 128
 #define YEAR_DIALOG 129
 #define ILLEGAL_YEAR_ALERT 130
 
-#define DOWN_PICTURE 128
-#define SAME_PICTURE 129
-#define UP_PICTURE   130
-
 static void AboutJewishCalendarWindow(void);
 static void NewYearWindow(void);
+pascal void IncrementDecrementYear(ControlHandle controlHdl, short partCode);
+static void FakeDialogButtonClick(DialogPtr dp, short itemHit);
+static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit);
+static pascal ControlKeyFilterResult NumericFilter(ControlHandle control, short* keyCode,
+	short *charCode, unsigned short *modifiers);
 
-MenuHandle  DeskMenu, EditMenu, OptionMenu, MonthMenu, YearMenu;
+Boolean gInYearDialog = FALSE;
+Boolean gInAboutDialog = FALSE;
+ControlHandle gLittleArrows;
+ControlHandle gEditBoxHandle;
+
+MenuHandle  DeskMenu, FileMenu, EditMenu, OptionMenu, MonthMenu, YearMenu;
 PicHandle  	DownPicture, SamePicture, UpPicture;
 
 /* Called at the beginning of the program to initialize the menu bar 
@@ -36,25 +49,31 @@ PicHandle  	DownPicture, SamePicture, UpPicture;
  
 void SetUpMenus()
 {
-    // Get the menu bar from the resource
-    Handle myMenuBar = GetNewMBar(MENU_BAR);
-    SetMenuBar(myMenuBar);
-    // Get pointers to each of the menus.  We'll need them.
-    DeskMenu = GetMHandle(APPLE_MENU);
-    EditMenu = GetMHandle(EDIT_MENU);
-    OptionMenu = GetMHandle(OPTION_MENU);
-    MonthMenu = GetMHandle(MONTH_MENU);
-    YearMenu = GetMHandle(YEAR_MENU);
-    // Add the apple items.
-    AddResMenu(DeskMenu, 'DRVR');
+	long response;
+	Handle myMenuBar;
+	
+	// Get the menu bar from the resource
+	Gestalt(gestaltMenuMgrAttr, &response);
+	if (response & gestaltMenuMgrAquaLayoutMask)
+		myMenuBar = GetNewMBar(AQUA_MENU_BAR);
+	else
+		myMenuBar = GetNewMBar(MENU_BAR);
+	SetMenuBar(myMenuBar);
+
+	// Get pointers to each of the menus.  We'll need them.
+	DeskMenu = GetMenuHandle(APPLE_MENU);
+	if (response & gestaltMenuMgrAquaLayoutMask)
+		FileMenu = GetMenuHandle(AQUA_FILE_MENU);
+	else
+		FileMenu = GetMenuHandle(FILE_MENU);
+	EditMenu = GetMenuHandle(EDIT_MENU);
+	OptionMenu = GetMenuHandle(OPTION_MENU);
+	MonthMenu = GetMenuHandle(MONTH_MENU);
+	YearMenu = GetMenuHandle(YEAR_MENU);
+
+//	ChangeMenuAttributes(FileMenu, kMenuAttrAutoDisable, 0);
+
 	DrawMenuBar();
-	// Get pictures for the arrows in the year menu.
-	DownPicture = GetPicture(DOWN_PICTURE); 
-	SamePicture = GetPicture(SAME_PICTURE); 
-	UpPicture = GetPicture(UP_PICTURE);
-	HLock(DownPicture);
-	HLock(SamePicture);
-	HLock(UpPicture);
 }
 
 
@@ -68,32 +87,69 @@ doMenu(long menuResult)
 		case APPLE_MENU:
 			if (itemNumber == 1) 
 				AboutJewishCalendarWindow();
-			else {
-				// Do whatever is appropriate for the apple item 
-				Str255		name;
-				GrafPtr		port;
-				GetPort(&port);
-				GetItem(GetMHandle(APPLE_MENU), itemNumber, &name);
-				OpenDeskAcc(name);
-				SetPort(port);
-			}
 			break;
 			
 		case FILE_MENU:
+		case AQUA_FILE_MENU:
 			switch (itemNumber) {
-				case 1:  PrintCalendar(); break;	// print
-				case 3:  exit(EXIT_SUCCESS); break; // exit
+				case 1:  PageSetup(); break;	// page setup
+				case 2:  PrintCalendar(); break;	// print
+				case 4:  gAreWeDoneYet = true; break; // exit
 			}
 			break;
 		
 		case OPTION_MENU:
 			switch (itemNumber) {
-				case 1:  JulianP = FALSE; break;	// Gregorian
-				case 2:	 JulianP = TRUE; break;		// Julian
-				case 4:  IsraelP = FALSE; break;	// Diaspora
-				case 5:  IsraelP = TRUE; break;		// Israel
-				default: 							// Miscellaneous Holiday Flags
-				         HolidayFlags ^= (1 << (itemNumber - 7));
+				case 1: // Gregorian
+					JulianP = FALSE;
+					CFPreferencesSetAppBooleanValue(kJulianCalendarPrefRef,
+													kCFPreferencesCurrentApplication,
+													false);
+					break;
+				
+				case 2: // Julian
+					JulianP = TRUE;
+					CFPreferencesSetAppBooleanValue(kJulianCalendarPrefRef,
+													kCFPreferencesCurrentApplication,
+													true);
+					break;
+				
+				case 4: // Diaspora
+					IsraelP = FALSE;
+					CFPreferencesSetAppBooleanValue(kIsraelPrefRef,
+													kCFPreferencesCurrentApplication,
+													false);
+					break;
+				
+				case 5: // Israel
+					IsraelP = TRUE;
+					CFPreferencesSetAppBooleanValue(kIsraelPrefRef,
+													kCFPreferencesCurrentApplication,
+													true);
+					break;
+				
+				case 7: // Parsha
+					ParshaP = !ParshaP;
+					CFPreferencesSetAppBooleanValue(kParshaPrefRef,
+													kCFPreferencesCurrentApplication,
+													ParshaP);
+					break;
+				
+				case 8: // Omer
+					OmerP = !OmerP;
+					CFPreferencesSetAppBooleanValue(kOmerPrefRef,
+													kCFPreferencesCurrentApplication,
+													OmerP);
+					break;
+				
+				case 9: // Chol
+					CholP = !CholP;
+					CFPreferencesSetAppBooleanValue(kCholHamoedPrefRef,
+													kCFPreferencesCurrentApplication,
+													CholP);
+					break;
+/*				default: 							// Miscellaneous Holiday Flags
+				         HolidayFlags ^= (1 << (itemNumber - 7));*/
 			}
 			RedrawCalendarWindow();
 			break;
@@ -114,10 +170,10 @@ doMenu(long menuResult)
 			}
 			break;
 			
-		case EDIT_MENU:
-			// We don't do anything with these.
-			if (!SystemEdit(itemNumber - 1));
-			break;
+//		case EDIT_MENU:
+//			// We don't do anything with these.
+//			if (!SystemEdit(itemNumber - 1)) ;
+//			break;
 			
 	}
 	HiliteMenu(0);
@@ -135,12 +191,27 @@ UpdateMenuSelection()
     SetItemMark(OptionMenu, 4, IsraelP ? 0 : diamondMark);		// Diaspora
     SetItemMark(OptionMenu, 5, IsraelP ? diamondMark : 0);		// Israel
     /* We may add more flags later */
-    for (i = 0; i < 3; i++)
-        SetItemMark(OptionMenu, 7 + i, (HolidayFlags & (1 << i)) ? checkMark : 0);
+//    for (i = 0; i < 3; i++)
+//        SetItemMark(OptionMenu, 7 + i, (HolidayFlags & (1 << i)) ? checkMark : 0);
+	SetItemMark(OptionMenu, 7, ParshaP ? checkMark : 0);
+	SetItemMark(OptionMenu, 8, OmerP ? checkMark : 0);
+	SetItemMark(OptionMenu, 9, CholP ? checkMark : 0);
     for(i = 1; i <= 12; i++)
     	SetItemMark(MonthMenu, i, i == CurrentMonth ? diamondMark : 0);
-    if (CurrentYear == MinYear) DisableItem(YearMenu, 2); else EnableItem(YearMenu, 2);
-    if (CurrentYear == MaxYear) DisableItem(YearMenu, 1); else EnableItem(YearMenu, 1);
+    if (CurrentYear == MinYear) DisableMenuItem(YearMenu, 2); else EnableMenuItem(YearMenu, 2);
+    if (CurrentYear == MaxYear) DisableMenuItem(YearMenu, 1); else EnableMenuItem(YearMenu, 1);
+
+	// Can't re-enter printing
+	if (printSession)
+	{
+		DisableMenuItem(FileMenu, 1);
+		DisableMenuItem(FileMenu, 2);
+	}
+	else
+	{
+		EnableMenuItem(FileMenu, 1);
+		EnableMenuItem(FileMenu, 2);
+	}
 }
     	
 
@@ -149,49 +220,46 @@ UpdateMenuSelection()
  * if it is outside the dialog window.  Thus any key click or mouse event will 
  * make the dialog box disappear.
  */
- 
-pascal static Boolean 
-       AboutFilter(DialogPtr theDialog, EventRecord *theEvent, int *itemhit);
+
+#define kEmailButton 3
+#define kWebButton 4
 
 static void
 AboutJewishCalendarWindow()
 {
-	DialogPtr modal;
-	short itemHit;
-	ParamText("\p2.0", 0, 0, 0);
-	modal = GetNewDialog(ABOUT_DIALOG, NULL, (WindowPtr)-1);
-	/* AboutFilter makes it disappear on any keyclick or mouse event */
-	ModalDialog(AboutFilter, &itemHit);
-	CloseDialog(modal);
-}
-
-pascal static Boolean
-AboutFilter(DialogPtr theDialog, EventRecord *theEvent, int *itemhit)
-{
-	switch (theEvent->what) {
-		case mouseDown:	case mouseUp: case keyDown: case autoKey:
-			*itemhit = 1;		/* Value doesn't really matter */
-			 return TRUE;
-		default:
-			return FALSE;
-	}
+	ModalFilterUPP filterUPP = NewModalFilterUPP(EventFilter);
+	Str255 versionString;
+	DialogPtr aboutDialog;
+	short itemHit = 0;
+	short oldResFile;
+	
+	gInAboutDialog = TRUE;
+	
+	oldResFile = CurResFile();
+	UseResFile(gAppResFile);
+	GetVersNumString(versionString);
+	UseResFile(oldResFile);
+	
+	ParamText(versionString, 0, 0, 0);
+	aboutDialog = GetNewDialog(ABOUT_DIALOG, NULL, kFirstWindowOfClass);
+	SetDialogDefaultItem(aboutDialog, 1);
+	while (itemHit != 1)
+		ModalDialog(filterUPP, &itemHit);
+	DisposeDialog(aboutDialog);
+	
+	gInAboutDialog = FALSE;
+	
+	DisposeModalFilterUPP(filterUPP);
 }
 
 #define OK_BUTTON 1
 #define CANCEL_BUTTON 2
 #define STATIC_TEXT 3
 #define EDIT_TEXT 4
-#define USER_ITEM 5
-#define PICTURE_ITEM 6
+#define NUDGE_WIDGET 5
 
-#define FAKE_UP_BUTTON 20
-#define FAKE_DOWN_BUTTON 21
-
-Rect UpBoxRectangle, DownBoxRectangle, PictureRectangle;
-static int IncrementDecrementYear(Handle control, int year, Boolean up_p);
-static pascal void userItemProc(WindowPtr wp, int ItemNum);
-static pascal Boolean NewYearFilter(DialogPtr dp, EventRecord *theEvent, int *itemHit);
-
+#define UP_BUTTON 20
+#define DOWN_BUTTON 21
 
 /* Create a new year dialog.  Update CurrentYear, and redraw the calendar window if
  * necessary */
@@ -199,78 +267,82 @@ static pascal Boolean NewYearFilter(DialogPtr dp, EventRecord *theEvent, int *it
 static void
 NewYearWindow()
 {
+	ModalFilterUPP filterUPP = NewModalFilterUPP(EventFilter);
+	ControlKeyFilterUPP numericFilterUPP = NewControlKeyFilterUPP(NumericFilter);
+	
 	DialogPtr modal;
 	short itemHit;
-	int itemType;
 	long int year;
-	Rect itemRect;
-	Handle EditItemHandle, PictureItemHandle;
 	Boolean done, need_to_update;
 	GrafPtr savePort;
-	int picture_middle;
 	int OriginalCurrentYear = CurrentYear;		// Save initial value
-
+	Size size;
+	static ControlEditTextSelectionRec selectionRec = {0, 32767};
+	
+	gInYearDialog = TRUE;
+	
 	GetPort(&savePort);							// We're doing a lot of writing
 
 	// Get the modal window, and set it to be our current grafport.
-	modal = GetNewDialog(YEAR_DIALOG, NULL, (WindowPtr)-1);
-	SetPort((WindowPtr) modal);
-
-	// Get the dimension of the picture item.  Set its top half to be the "move up"
-	// region, and its bottom half to be the "move down" regin.
-	GetDItem(modal, PICTURE_ITEM, &itemType, &PictureItemHandle, &PictureRectangle);
-	picture_middle = (PictureRectangle.top + PictureRectangle.bottom)/2;
-	SetRect(&UpBoxRectangle, 
-			PictureRectangle.left,  PictureRectangle.top,
-			PictureRectangle.right, picture_middle);
-	SetRect(&DownBoxRectangle, 
-			PictureRectangle.left,  picture_middle,
-			PictureRectangle.right, PictureRectangle.bottom);
-
-	// Get a handle for the editable year.  And give USER_ITEM a write procedure */
-	GetDItem(modal, EDIT_TEXT, &itemType, &EditItemHandle, &itemRect);
-	SetDItem(modal, USER_ITEM, userItem, (Handle)userItemProc, &itemRect);
-
-	ShowWindow(modal);
-	for (done=FALSE, need_to_update = TRUE;  !done; ) {
-		char buffer[256];
+	modal = GetNewDialog(YEAR_DIALOG, NULL, kFirstWindowOfClass);
+	SetPortDialogPort(modal);
+	
+	// Get a handle for the editable year.
+	GetDialogItemAsControl(modal, EDIT_TEXT, &gEditBoxHandle);
+	SetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextKeyFilterTag,
+		sizeof(numericFilterUPP),(Ptr) &numericFilterUPP);
+	
+	GetDialogItemAsControl(modal, NUDGE_WIDGET, &gLittleArrows);
+	SetControlMinimum(gLittleArrows, MinYear);
+	SetControlMaximum(gLittleArrows, MaxYear);
+	
+	ShowWindow(GetDialogWindow(modal));
+	SetDialogTracksCursor(modal, TRUE);
+	SetDialogDefaultItem(modal, OK_BUTTON);
+	SetDialogCancelItem(modal, CANCEL_BUTTON);
+	done = FALSE;
+	need_to_update = TRUE;
+	while (!done) {
+		Str255 buffer;
 	    if (need_to_update) {
 			// Fill in the current year as text, and highlight it.
-			char year_string[10];
-	    	year_string[0] = sprintf(year_string + 1, "%d", CurrentYear);
-			SetIText(EditItemHandle, year_string);
-			SelIText(modal, EDIT_TEXT, 0, 32767);
+			NumToString(CurrentYear, buffer);
+			SetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextTextTag,
+				buffer[0], &buffer[1]);
+			SetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextSelectionTag,
+				4 /*sizeof(selectionRec)*/, &selectionRec);
 			need_to_update = FALSE;
 		}
-		ModalDialog(NewYearFilter, &itemHit);
-		switch(itemHit) {
+		
+		ModalDialog(filterUPP, &itemHit);
+		
+		switch(itemHit)
+		{
 			case OK_BUTTON: 
-			case FAKE_UP_BUTTON:
-			case FAKE_DOWN_BUTTON:
 				// Get the text.  See if it's a reasonable year.
-				GetIText(EditItemHandle, buffer);
-				PtoCstr(buffer);
-				year = atol(buffer);
-				if ((year < MinYear) || (year > MaxYear)) {
-					// a bad year value
-					char small[10], big[10];
-					small[0] = sprintf(small+1, "%d", MinYear);
-					big[0] = sprintf(big+1, "%d", MaxYear);
-					ParamText(small, big, 0, 0);
+				GetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextTextTag, 
+					255, (Ptr)&buffer[1], &size);
+				buffer[0] = size;
+				StringToNum(buffer, &year);
+				if ((year < MinYear) || (year > MaxYear)) // a bad year value
+				{
+					Str255 small;
+					Str255 big;
+					NumToString(MinYear, small);
+					NumToString(MaxYear, big);
+					ParamText(small, big, NULL, NULL);
 					StopAlert(ILLEGAL_YEAR_ALERT, NULL);
 					// Go back to the original year.
 					CurrentYear = OriginalCurrentYear;
 					need_to_update = TRUE;
-				} else if (itemHit == OK_BUTTON) {
-					// all done.  And we have a reasonable year.
+				}
+				else if (itemHit == OK_BUTTON) // all done.  And we have a reasonable year.
+				{
 					done = TRUE;
 					CurrentYear = year;
-				} else {
-					// In the "year up" or year down" region.
-					Boolean up_p = (itemHit == FAKE_UP_BUTTON);
-					CurrentYear = IncrementDecrementYear(EditItemHandle, year, up_p);
 				}
 				break;
+							
 			case CANCEL_BUTTON:
 				// abort all changes.  Go back to the original year.
 				CurrentYear = OriginalCurrentYear;
@@ -279,109 +351,181 @@ NewYearWindow()
 			} /* of switch */
 		} /* of while */
 	// Restore the original grafport.  Update the calendar window if necessary
+	
 	SetPort(savePort);
-	CloseDialog(modal);
+	DisposeDialog(modal);
 	if (CurrentYear != OriginalCurrentYear) 		
 		RedrawCalendarWindow();
+	
+	gInYearDialog = FALSE;
+	
+	DisposeControlKeyFilterUPP(numericFilterUPP);
+	DisposeModalFilterUPP(filterUPP);
 }
 
-/* The filter for the New Year window.  We don't allow most non-digits.  Clicks in the
- * picture region get interpreted as either clicks to move the window up, or clicks
- * to move the window down.
- */
-static pascal Boolean 
-NewYearFilter(DialogPtr dp, EventRecord *theEvent, int *itemHit){
-	char theChar;
-	Point EventPoint;
-	GrafPtr savePort;
+void FakeDialogButtonClick(DialogPtr dp, short itemHit)
+{
+	ControlHandle itemHandle;
+	unsigned long junk;
 	
-	switch (theEvent->what) {
-		case keyDown: case autoKey:
-			theChar = theEvent->message & charCodeMask;
-			switch(theChar) {
-				case '\r': case '\003': 	/* return, enter */  
-					*itemHit = 1; return TRUE;
-				case '\b': case '\34': case '\35':  /* backspace, arrows */             
-				case '0': case '1': case '2': case '3': case '4':
-				case '5': case '6': case '7': case '8': case '9':
-					return FALSE;
-				default:
-					// ignore everything else
-					SysBeep(0);				// beep at user
-					theEvent->what = nullEvent;
-					return FALSE;
+	GetDialogItemAsControl(dp, itemHit, &itemHandle);
+	HiliteControl(itemHandle, kControlButtonPart);
+	Delay(8, &junk);
+	HiliteControl(itemHandle, kControlNoPart);
+}
+
+pascal void
+IncrementDecrementYear(ControlHandle /*controlHdl*/, short partCode)
+{
+	Str255 buffer;
+	long year;
+	static ControlEditTextSelectionRec selectionRec = {0, 32767};
+	
+	// get year
+	year = GetControlValue(gLittleArrows);
+	
+	// inc/dec
+	switch (partCode)
+	{
+		case kControlUpButtonPart:
+			++year;
+			if (year > MaxYear)
+				year = MaxYear;
+			break;
+		
+		case kControlDownButtonPart:
+			--year;
+			if (year < MinYear)
+				year = MinYear;
+			break;
+		
+		default:
+			return; // no change; don't set
+	}
+	
+	// set
+	SetControlValue(gLittleArrows, year);
+	NumToString(year, buffer);
+	SetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextTextTag,
+		buffer[0], &buffer[1]);
+	SetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextSelectionTag,
+		4 /*sizeof(selectionRec)*/, &selectionRec);
+	
+	DrawOneControl(gEditBoxHandle);
+}
+
+static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit)
+{
+	Boolean handledEvent;
+	GrafPtr oldPort;
+	Point mouseXY;
+	ControlHandle controlHdl;
+	
+	handledEvent = FALSE;
+
+	if((theEvent -> what == updateEvt) && 
+		 ((WindowPtr) (theEvent -> message) != GetDialogWindow(dialogPtr)))
+	{
+		UpdateEventCalendarWindow(theEvent);
+	}
+	else
+	{
+		GetPort(&oldPort);
+		SetPortDialogPort(dialogPtr);
+
+		if (gInYearDialog)
+		{
+			if (theEvent -> what == mouseDown)
+			{
+				mouseXY = theEvent -> where;
+				GlobalToLocal(&mouseXY);
+				if(FindControl(mouseXY, GetDialogWindow(dialogPtr), &controlHdl))
+				{
+					if(controlHdl == gLittleArrows)
+					{
+						Str255 buffer;
+						Size size;
+						long year;
+						ControlActionUPP arrowsActionFunctionUPP;
+						
+						// set year
+						GetControlData(gEditBoxHandle, kControlNoPart, kControlEditTextTextTag, 
+							255, (Ptr)&buffer[1], &size);
+						buffer[0] = size;
+						StringToNum(buffer, &year);
+						SetControlValue(gLittleArrows, year);
+						
+						arrowsActionFunctionUPP = NewControlActionUPP(IncrementDecrementYear);
+						TrackControl(controlHdl, mouseXY, arrowsActionFunctionUPP);
+						DisposeControlActionUPP(arrowsActionFunctionUPP);
+						handledEvent = true;
+					}
+				}
+			}
+		}
+		
+		if (gInAboutDialog)
+		{
+			if (theEvent -> what == nullEvent && *itemHit == kEmailButton)
+			{
+				Str255 url;
+				Str255 hint = "\p";
+				long start = 0;
+				long stop;
+				ICInstance inst;
+				
+				ICStart(&inst, 'FYJC');
+				GetIndString(url, 128, 1);
+				stop = url[0];
+				ICLaunchURL(inst, hint, &url[1], url[0], &start, &stop);
+				ICStop(inst);
 			}
 			
-		case mouseDown:
-			EventPoint = theEvent->where;
-			GlobalToLocal(&EventPoint);
-			if (PtInRect(EventPoint, &UpBoxRectangle)) {
-				// user wants to move the year upward
-				*itemHit = FAKE_UP_BUTTON;
-				return TRUE;
-			} else if (PtInRect(EventPoint, &DownBoxRectangle)) {
-				// user wants to move the year downward.
-				*itemHit = FAKE_DOWN_BUTTON;
-				return TRUE;
-			} else
-				return FALSE;
-		default:
-			return FALSE;
-	}
-}
-
-/* We hilight the okay button by creating a user proc for the user_item.  It gets
- * moved to the exact same location as the OK button, but inside
- */
- 
-static pascal void 
-userItemProc(WindowPtr wp, int ItemNum){
-	int itemType;
-	Handle itemHandle;
-	Rect itemRect;
-		
-	GetDItem(wp, OK_BUTTON, &itemType, &itemHandle, &itemRect);
-	PenSize(3, 3);
-	InsetRect(&itemRect, -4, -4);
-	FrameRoundRect(&itemRect, 16, 16);
-}
-
-
-/* Called when the user has clicked down in the "year up" or "year down" region.
- * delta will either be +1 or -1.  year is the current year in the window.  Returns 
- * the new year as its result.
- */
-static int
-IncrementDecrementYear(Handle EditItemHandle, int year, Boolean up_p)
-{
-	long int junk;
-	char year_string[10];
-	int count;
-	Point point;
-	int delta = up_p ? 1 : -1;
-
-	// Change the picture in the window to either be an up arrow or down arrow.
-	DrawPicture(up_p ? UpPicture : DownPicture, &PictureRectangle);
-	// Change the year by delta, if legal.
-	if (up_p ? (year < MaxYear) : (year > MinYear)) year += delta;
-	for (count = 0; ; count++) {
-		// Times 0-9 through the loop are special.  We don't modify the year, but
-		// we look to see if the user has let up on the mouse or moved it.  This gives
-		// us a pause of about 1/2 second.	
-	   	if ((count == 0) || (count >= 10)) {
-	   		year_string[0] = sprintf(year_string + 1, "%d", year);
-			SetIText(EditItemHandle, year_string);
+			if (theEvent -> what == nullEvent && *itemHit == kWebButton)
+			{
+				Str255 url;
+				Str255 hint = "\p";
+				long start = 0;
+				long stop;
+				ICInstance inst;
+				
+				ICStart(&inst, 'FYJC');
+				GetIndString(url, 128, 2);
+				stop = url[0];
+				ICLaunchURL(inst, hint, &url[1], url[0], &start, &stop);
+				ICStop(inst);
+			}
 		}
-		// Wait.  1/20 second.
-		Delay(60/20, &junk);
-		if (StillDown() && (GetMouse(&point), PtInRect(point, &PictureRectangle))) {
-			// the mouse button is still down, and the mouse hasn't moved.
-			if ((count >= 10) && (up_p ? (year < MaxYear) : (year > MinYear)))
-				 year += delta;
-		} else
+		
+		if (!handledEvent)
+		{
+			handledEvent = StdFilterProc(dialogPtr, theEvent, itemHit);
+		}
+
+		SetPort(oldPort);
+	}
+
+	return handledEvent;
+}
+
+pascal ControlKeyFilterResult NumericFilter(ControlHandle /*control*/, short* /*keyCode*/,
+	short *charCode, unsigned short */*modifiers*/)
+{
+	if(((char) *charCode >= '0') && ((char) *charCode <= '9'))
+		return kControlKeyFilterPassKey;
+	switch(*charCode)
+	{
+		case kLeftArrowCharCode:
+		case kRightArrowCharCode:
+		case kUpArrowCharCode:
+		case kDownArrowCharCode:
+		case kBackspaceCharCode:
+			return kControlKeyFilterPassKey;
+			break;
+			
+		default:
+			SysBeep(20);
+			return kControlKeyFilterBlockKey;
 			break;
 	}
-	// Change the picture back to its old value/
-	DrawPicture(SamePicture, &PictureRectangle);
-	return year;
 }

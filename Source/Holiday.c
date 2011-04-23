@@ -4,11 +4,15 @@
 
 static char *Sfirah(int day);
 
-int HolidayFlags = -1;		// all flags are originally set
+/*int HolidayFlags = -1;		// all flags are originally set
 
 #define ParshaP   (HolidayFlags & 0x01)
 #define OmerP     (HolidayFlags & 0x02)
-#define CholP     (HolidayFlags & 0x04)
+#define CholP     (HolidayFlags & 0x04)*/
+
+Boolean ParshaP;
+Boolean OmerP;
+Boolean CholP;
 
 /* Given a day of the Hebrew month, figuring out all the interesting holidays that
  * correspond to that date.  ParshaP, OmerP, and CholP determine whether we should 
@@ -55,9 +59,27 @@ FindHoliday(int month, int day, int weekday, int kvia,
 				case 17: case 18: case 19: case 20:
 					if (CholP) *holiday++ = "Chol Hamoed";
 					break;
-				case 27:
+				case 27: case 28:
 					// Yom HaShoah only exists since Israel was established.
-					if (year > 1948 + 3760) *holiday++ = "Yom HaShoah";
+					// If it falls on Sunday (e.g. 1997) it's bumped to Monday, but only since 97/03/20.
+					if (year > 1948 + 3760) {
+						if (year >= 1997 + 3760)
+						{
+							switch (weekday) {
+								case Sunday:
+									// If 27, bumped till 28. If 28, we don't care.
+									break;
+								case Monday:
+									*holiday++ = "Yom HaShoah"; // either Monday 27 or bumped from Sunday 27.
+									break;
+								default:
+									if (day == 27) *holiday++ = "Yom HaShoah";
+									break;
+							}
+						}
+						else
+							if (day == 27) *holiday++ = "Yom HaShoah";
+					}
 					break; 
 			}
 			if ((day > 15) && OmerP)

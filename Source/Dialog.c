@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <string.h>
-/* #include <packages.h> */
 #include "Dialog.h"
 #include "Converter.h"
 #include "Holiday.h"
+#include "Prefs.h"
+#include <PMApplication.h>
 
 #define PREVIOUS_MONTH_CONTROL 1
 #define NEXT_MONTH_CONTROL     2
 
 #define CALENDAR_WINDOW_RESOURCE_ID 128
 
-#define FONT geneva
+#define FONT kFontIDGeneva
 
 static void DrawCenteredAtPoint(char *buffer, int x, int y);
+static void DoPrinting();
+static pascal void sheetDone(PMPrintSession printSession, WindowRef window, Boolean accepted);
+static void PrintError(OSStatus status);
 static void RedrawWeekDays(void);
 static void FillInCalendar(int year, int month);
 static void DoTheOutput(int column, int row, int day, int j_year,
@@ -25,6 +29,11 @@ int				MaxYear = 2999;
 Boolean			JulianP = FALSE;
 Boolean			IsraelP = FALSE;
 
+PMPrintSession	printSession = nil;
+PMPageFormat	pageFormat = nil;
+PMPrintSettings	printSettings = nil;
+Boolean			isPrintDialog = false;
+PMSheetDoneUPP	sheetDoneUPP();
 
 static WindowPtr  CalendarWindow;
 static Rect		  InfoRect, ErasableRect;
@@ -38,14 +47,12 @@ static ControlHandle     PreviousMonthControlHandle, NextMonthControlHandle;
 /* Called to initialize the Calendar Window */
 void
 InitializeDialogWindow()
-{	short 			i, type;
-	ControlHandle 	handle;
-	Rect 			box;
-	long			seconds;
+{	unsigned long	seconds;
 	DateTimeRec 	DateTime;
+	Rect			rect;
 	
 	int 			WindowHeight, WindowWidth;
-	int				WindowPictureLeft, WindowPictureRight, WindowPictureWidth;
+	int				WindowPictureLeft, WindowPictureRight;//, WindowPictureWidth;
 
 
 #ifdef INTERNATIONAL
@@ -59,33 +66,29 @@ InitializeDialogWindow()
 	
 	// Get the current month and year.  Use these as the initial values.
 	GetDateTime(&seconds);
-	Secs2Date(seconds, &DateTime);
+	SecondsToDate(seconds, &DateTime);
 	CurrentMonth = DateTime.month;
 	CurrentYear = DateTime.year;
 	
 	// Create the window from the resource description.  Get its size.
-	CalendarWindow = GetNewWindow(CALENDAR_WINDOW_RESOURCE_ID, NULL, (void *)-1);
+	CalendarWindow = GetNewCWindow(CALENDAR_WINDOW_RESOURCE_ID, NULL, kFirstWindowOfClass);
 	ShowWindow(CalendarWindow);
-	WindowHeight = CalendarWindow->portRect.bottom - CalendarWindow->portRect.top;
-	WindowWidth = CalendarWindow->portRect.right - CalendarWindow->portRect.left;
+	GetWindowPortBounds(CalendarWindow, &rect);
+	WindowHeight = rect.bottom - rect.top;
+	WindowWidth = rect.right - rect.left;
 	
 	// Divide the window into regions.  First get the useful boundaries.
-	WindowPictureLeft = 3 + CalendarWindow->portRect.left;
+	WindowPictureLeft = 3 + rect.left;
 	WindowPictureRight = (WindowWidth - 3);
 #define INFO_TOP 4
 #define INFO_BOTTOM (INFO_TOP + 30)
-#define NEXT_WIDTH 120
+#define NEXT_WIDTH 130
 #define NEXT_HEIGHT 20
-	/* Quick buttons to get to the next month and previous month */
-  	SetRect(&box, WindowPictureLeft, INFO_TOP, 
-  	              WindowPictureLeft+NEXT_WIDTH, INFO_TOP + NEXT_HEIGHT);
-  	PreviousMonthControlHandle = NewControl(CalendarWindow, &box, 
-  									"\pPrevious Month", 0xFF,
-  					  				 0, 0, 0, pushButProc, PREVIOUS_MONTH_CONTROL);
-	SetRect(&box, WindowPictureRight - NEXT_WIDTH, INFO_TOP, 
-	              WindowPictureRight, INFO_TOP + NEXT_HEIGHT);
-	NextMonthControlHandle = NewControl(CalendarWindow, &box, "\pNext Month", 0xFF,
-										0, 0, 0, pushButProc, NEXT_MONTH_CONTROL);
+#define PREV_BUTTON 128
+#define NEXT_BUTTON 129
+
+	PreviousMonthControlHandle = GetNewControl(PREV_BUTTON, CalendarWindow);
+	NextMonthControlHandle = GetNewControl(NEXT_BUTTON, CalendarWindow);
 						
 	// InfoRect is in between the two buttons.  We put month stuff there
 	SetRect(&InfoRect, WindowPictureLeft + NEXT_WIDTH, INFO_TOP, 
@@ -112,9 +115,9 @@ InitializeDialogWindow()
 /* Handle a click in the NEXT MONTH or PREVIOUS MONTH button */
 
 void
-HandleControlItem (Point EventPoint, short partcode, ControlHandle whichControl)
+HandleControlItem (Point EventPoint, short /*partcode*/, ControlHandle whichControl)
 {
-	int	ControlInfo = GetCRefCon(whichControl);
+	int	ControlInfo = GetControlReference(whichControl);
 	if (TrackControl(whichControl, EventPoint, NULL)) {
 		if (ControlInfo == PREVIOUS_MONTH_CONTROL) {
 			if (--CurrentMonth == 0)  CurrentMonth = 12, CurrentYear--;
@@ -133,38 +136,336 @@ UpdateEventCalendarWindow(EventRecord *theEvent)
 	WindowPtr whichWindow;
 	
 	whichWindow = (WindowPtr)theEvent->message;
-	SetPort(whichWindow);
+	SetPort(GetWindowPort(whichWindow));
 	BeginUpdate(whichWindow);
-	  RedrawCalendarWindow();
-	  DrawControls(whichWindow);
+	if (whichWindow == CalendarWindow)
+	{
+		RedrawCalendarWindow();
+		DrawControls(whichWindow);
+	}
 	EndUpdate(whichWindow);
 }
 
-#include <Printing.h>
-#define NIL_POINTER 0
+void PageSetup()
+{
+	CFPropertyListRef	dataBlob;
+	OSStatus			status = noErr;
+	
+	Boolean				closeSession = false,
+						canDoSheets = true,
+						haveValid = false,
+						accepted;
+	
+	// Start a session
+	
+	status = PMCreateSession(&printSession);
+	if (status)
+		goto egress;
+	
+	closeSession = true;
+	
+	status = PMSessionUseSheets(printSession, CalendarWindow, sheetDoneUPP());
+	if (status)
+		if (status == kPMNotImplemented)
+			canDoSheets = false;
+		else
+			goto egress;
+	
+	// Get the saved pageFormat
+	
+	dataBlob = CFPreferencesCopyAppValue(kPageSetupPrefRef, kCFPreferencesCurrentApplication);
+	if (dataBlob)
+	{
+		if (CFGetTypeID(dataBlob) == CFDataGetTypeID())
+		{
+			// extract
+			Handle flatFormat;
+			PtrToHand(CFDataGetBytePtr(dataBlob), &flatFormat, CFDataGetLength(dataBlob));
+			PMUnflattenPageFormat(flatFormat, &pageFormat);
+			DisposeHandle(flatFormat);
+			haveValid = true;
+		}
+		
+		CFRelease(dataBlob);
+	}
+	
+	// Create if necessary, validate
+	
+	if (haveValid)
+	{
+		status = PMSessionValidatePageFormat(printSession, pageFormat, &accepted);
+		if (status)
+			goto egress;
+	}
+	else
+	{
+		status = PMCreatePageFormat(&pageFormat);
+		if (status)
+			goto egress;
+		
+		status = PMSessionDefaultPageFormat(printSession, pageFormat);
+		if (status)
+			goto egress;
+	}
+	
+	// Put up the dialog
+	
+	isPrintDialog = false;
+	
+	status = PMSessionPageSetupDialog(printSession, pageFormat, &accepted);
+	
+	// Deal with it
+	
+	if (canDoSheets)
+		closeSession = false; // callback will close
+	
+	if (!canDoSheets && accepted)
+	{
+		closeSession = false; // callback will close
+		sheetDone(printSession, CalendarWindow, accepted);
+	}
+	
+egress:
+	
+	if (closeSession)
+	{
+		if (printSettings)
+		{
+			PMRelease(printSettings);
+			printSettings = nil;
+		}
+		
+		if (pageFormat)
+		{
+			PMRelease(pageFormat);
+			pageFormat = nil;
+		}
+
+		(void) PMRelease(printSession);
+		printSession = nil;
+	}
+	
+	if (status != noErr)
+	{
+		PrintError(status);
+		return;
+	}
+}
 
 /* Print the current month */
 void 
 PrintCalendar ()
 {
-	TPPrPort printPort;
-	TPrStatus printStatus;
+	CFPropertyListRef	dataBlob;
+	OSStatus			status = noErr;
 	
-	//	This code is copied from Inside Macintosh.  I don't really understand it.
-	THPrint gPrintRecordH = (THPrint) NewHandle(sizeof (TPrint));
-	PrOpen();
-	if (PrJobDialog(gPrintRecordH)) {
-		printPort = PrOpenDoc(gPrintRecordH,  NIL_POINTER, NIL_POINTER);
-		PrOpenPage(printPort, NIL_POINTER);
-		RedrawCalendarWindow();
-		PrClosePage(printPort);
-		PrCloseDoc(printPort);
-		PrPicFile(gPrintRecordH, NIL_POINTER, NIL_POINTER, NIL_POINTER, &printStatus);
+	Boolean				closeSession = false,
+						canDoSheets = true,
+						haveValid = false,
+						accepted;
+	
+	// Start a session
+	
+	status = PMCreateSession(&printSession);
+	if (status)
+		goto egress;
+	
+	closeSession = true;
+	
+	status = PMSessionUseSheets(printSession, CalendarWindow, sheetDoneUPP());
+	if (status)
+		if (status == kPMNotImplemented)
+			canDoSheets = false;
+		else
+			goto egress;
+	
+	// Get the saved pageFormat
+	
+	dataBlob = CFPreferencesCopyAppValue(kPageSetupPrefRef, kCFPreferencesCurrentApplication);
+	if (dataBlob)
+	{
+		if (CFGetTypeID(dataBlob) == CFDataGetTypeID())
+		{
+			// extract
+			Handle flatFormat;
+			PtrToHand(CFDataGetBytePtr(dataBlob), &flatFormat, CFDataGetLength(dataBlob));
+			PMUnflattenPageFormat(flatFormat, &pageFormat);
+			DisposeHandle(flatFormat);
+			haveValid = true;
+		}
+		
+		CFRelease(dataBlob);
 	}
-	DisposHandle(gPrintRecordH);
-}
-	  
 	
+	// Create if necessary, validate
+	
+	if (haveValid)
+	{
+		status = PMSessionValidatePageFormat(printSession, pageFormat, &accepted);
+		if (status)
+			goto egress;
+	}
+	else
+	{
+		status = PMCreatePageFormat(&pageFormat);
+		if (status)
+			goto egress;
+		
+		status = PMSessionDefaultPageFormat(printSession, pageFormat);
+		if (status)
+			goto egress;
+	}
+	
+	// Set up a PrintSettings object
+	
+	status = PMCreatePrintSettings(&printSettings);
+		
+	if (status == noErr)
+		status = PMSessionDefaultPrintSettings(printSession, printSettings);
+	
+    //  Display the Print dialog.
+    
+    PMSetJobNameCFString(printSettings, CFSTR("Jewish Calendar"));
+    
+    if (status == noErr)
+    {
+		isPrintDialog = true;
+		
+		status = PMSessionPrintDialog(printSession, printSettings, pageFormat, &accepted);
+	}
+	
+	// Deal with it
+	
+	if (canDoSheets)
+		closeSession = false; // callback will close
+	
+	if (!canDoSheets && accepted)
+	{
+		closeSession = false; // callback will close
+		sheetDone(printSession, CalendarWindow, accepted);
+	}
+	
+egress:
+
+	if (closeSession)
+	{
+		if (printSettings)
+		{
+			PMRelease(printSettings);
+			printSettings = nil;
+		}
+		
+		if (pageFormat)
+		{
+			PMRelease(pageFormat);
+			pageFormat = nil;
+		}
+
+		(void) PMRelease(printSession);
+		printSession = nil;
+	}
+	
+	if (status != noErr)
+	{
+		PrintError(status);
+		return;
+	}
+}
+
+void DoPrinting()
+{
+	OSStatus status;
+	
+	status = PMSessionBeginDocument(printSession, printSettings, pageFormat);
+	if (status != noErr)
+		return;
+	
+	do
+	{
+		CGrafPtr oldPort;
+		CGrafPtr printPort;
+	
+		status = PMSessionBeginPage(printSession, pageFormat, nil);
+		if (status != noErr)
+			break;
+		
+		status = PMSessionGetGraphicsContext(printSession, kPMGraphicsContextQuickdraw, (void **)&printPort);
+		if (status != noErr)
+			break;
+		
+		GetPort(&oldPort);
+		SetPort(printPort);
+		
+		RedrawCalendarWindow();
+		SetPort(oldPort);
+		
+		status = PMSessionEndPage(printSession);
+	} while (0);
+	
+	(void) PMSessionEndDocument(printSession);
+}
+
+PMSheetDoneUPP sheetDoneUPP()
+{
+	static PMSheetDoneUPP sProc = nil;
+	
+	if (!sProc)
+		sProc = NewPMSheetDoneUPP(sheetDone);
+	
+	return sProc;
+}
+
+pascal void sheetDone(PMPrintSession /*printSession*/, WindowRef /*window*/, Boolean accepted)
+{
+	if (accepted)
+	{
+		if (isPrintDialog)
+		{
+			DoPrinting();
+		}
+		else
+		{
+			CFDataRef blob;
+			Handle flatFormat;
+			PMFlattenPageFormat(pageFormat, &flatFormat);
+			HLock(flatFormat);
+			blob = CFDataCreate(kCFAllocatorDefault, (UInt8*)*flatFormat, GetHandleSize(flatFormat));
+			CFPreferencesSetAppValue(kPageSetupPrefRef, blob, kCFPreferencesCurrentApplication);
+			CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
+			CFRelease(blob);
+			DisposeHandle(flatFormat);
+		}
+	}
+	
+	// Close the session
+	if (printSettings)
+	{
+		PMRelease(printSettings);
+		printSettings = nil;
+	}
+	
+	if (pageFormat)
+	{
+		PMRelease(pageFormat);
+		pageFormat = nil;
+	}
+	
+	(void) PMRelease(printSession);
+	printSession = nil;
+}
+
+void PrintError(OSStatus status)
+{
+	Str255 statString;
+
+	if (status == kPMCancel)
+		return; // the user _knows_ they cancelled....
+	
+	NumToString(status, statString);
+	ParamText(statString, NULL, NULL, NULL);
+	StopAlert(131, NULL);
+}
+
 /* Redraw the current calendar. */
 void	
 RedrawCalendarWindow()
@@ -196,11 +497,11 @@ RedrawWeekDays()
 	for(i=0; i<=6; i++) {
 		SetRect(&box, DateBoxLeft + i*DateBoxWidth, WeekdayInfoTop,
 		              DateBoxLeft + (i+1)*DateBoxWidth, WeekdayInfoBottom);
-		TextBox(DayNames[i] + 1, 3, &box, teJustCenter);
+		TETextBox(DayNames[i] + 1, 3, &box, teJustCenter);
 	}
 }
 					  
-static void FillInMonth(char *, int, char *);
+static void FillInMonth(char *, int, const char *);
 
 /* Fill in the calendar for the given secular year and month. */
 static void
@@ -285,7 +586,7 @@ FillInCalendar(int secular_year, int secular_month)
 
 /* Print info about this month centered in the info rectangle */					
 static void
-FillInMonth(char *month_name, int year, char *extra)
+FillInMonth(char *month_name, int year, const char *extra)
 {
 	char buffer[100];
 	buffer[0] = sprintf(buffer + 1, "%s %d%s", month_name, year, extra); 
@@ -299,7 +600,7 @@ FillInMonth(char *month_name, int year, char *extra)
  */
  
 void
-DoTheOutput(int column, int row, int day, int j_year, 
+DoTheOutput(int column, int row, int day, int /*j_year*/, 
             char *j_month_name, int j_day, char **holidays)
 {
 	Rect 	box;
@@ -334,7 +635,7 @@ DoTheOutput(int column, int row, int day, int j_year,
 		// is too long to fit on one line
 		char *slash_ptr = strchr(holidays[0], '/');
 		buffer[0] = sprintf(buffer + 1, "%s", holidays[0]);
-		if ((slash_ptr == NULL) || (StringWidth(buffer) < DateBoxWidth)) 
+		if ((slash_ptr == NULL) || (StringWidth((unsigned char *)buffer) < DateBoxWidth)) 
 			// nope, just print it.
 			DrawCenteredAtPoint(buffer, center, top+30);
 		else {
@@ -342,10 +643,10 @@ DoTheOutput(int column, int row, int day, int j_year,
 			*slash_ptr = '\0';
 			buffer[0] = sprintf(buffer+1, "%s/", holidays[0]);
 			MoveTo(left, top + 27);
-			DrawString(buffer);
+			DrawString((unsigned char *)buffer);
 			buffer[0] = sprintf(buffer+1, "%s", slash_ptr+1);
-			MoveTo(left + DateBoxWidth - StringWidth(buffer), top + 36);
-			DrawString(buffer);
+			MoveTo(left + DateBoxWidth - StringWidth((unsigned char *)buffer), top + 36);
+			DrawString((unsigned char *)buffer);
 		}
 	}
 	// Draw a line around the box	
@@ -357,7 +658,7 @@ DoTheOutput(int column, int row, int day, int j_year,
 static void
 DrawCenteredAtPoint(char *string, int h, int v)
 {
-	h -= StringWidth(string) / 2;
+	h -= StringWidth((unsigned char *)string) / 2;
 	MoveTo(h, v);
-	DrawString(string);
+	DrawString((unsigned char *)string);
 }
