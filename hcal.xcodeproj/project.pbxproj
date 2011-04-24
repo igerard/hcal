@@ -12,7 +12,7 @@
 		16EC86C61363706F00805A60 /* GetVersNumString.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86B71363706F00805A60 /* GetVersNumString.c */; };
 		16EC86C71363706F00805A60 /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86BA1363706F00805A60 /* Holiday.c */; };
 		16EC86C81363706F00805A60 /* JCal.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86BC1363706F00805A60 /* JCal.c */; };
-		16EC86C91363706F00805A60 /* JCal.rsrc in Resources */ = {isa = PBXBuildFile; fileRef = 16EC86BD1363706F00805A60 /* JCal.rsrc */; };
+		16EC86C91363706F00805A60 /* Jewish Calendar.rsrc in Resources */ = {isa = PBXBuildFile; fileRef = 16EC86BD1363706F00805A60 /* Jewish Calendar.rsrc */; };
 		16EC86CA1363706F00805A60 /* Menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86BE1363706F00805A60 /* Menu.c */; };
 		16EC86CB1363706F00805A60 /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86C01363706F00805A60 /* Parsha.c */; };
 		16EC86CC1363706F00805A60 /* Prefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 16EC86C21363706F00805A60 /* Prefs.c */; };
@@ -32,7 +32,7 @@
 		16EC86BA1363706F00805A60 /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Holiday.c; path = Source/Holiday.c; sourceTree = "<group>"; };
 		16EC86BB1363706F00805A60 /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Holiday.h; path = Source/Holiday.h; sourceTree = "<group>"; };
 		16EC86BC1363706F00805A60 /* JCal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = JCal.c; path = Source/JCal.c; sourceTree = "<group>"; };
-		16EC86BD1363706F00805A60 /* JCal.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; name = JCal.rsrc; path = Source/JCal.rsrc; sourceTree = "<group>"; };
+		16EC86BD1363706F00805A60 /* Jewish Calendar.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; name = "Jewish Calendar.rsrc"; path = "Source/Jewish Calendar.rsrc"; sourceTree = "<group>"; };
 		16EC86BE1363706F00805A60 /* Menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Menu.c; path = Source/Menu.c; sourceTree = "<group>"; };
 		16EC86BF1363706F00805A60 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Menu.h; path = Source/Menu.h; sourceTree = "<group>"; };
 		16EC86C01363706F00805A60 /* Parsha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Parsha.c; path = Source/Parsha.c; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				16EC86BD1363706F00805A60 /* JCal.rsrc */,
+				16EC86BD1363706F00805A60 /* Jewish Calendar.rsrc */,
 				16EC86DC136371E200805A60 /* app.icns */,
 				8D0C4E960486CD37000505A6 /* Info.plist */,
 				16EC86D6136370AB00805A60 /* InfoPlist.strings */,
@@ -171,7 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16EC86C91363706F00805A60 /* JCal.rsrc in Resources */,
+				16EC86C91363706F00805A60 /* Jewish Calendar.rsrc in Resources */,
 				16EC86D8136370AB00805A60 /* InfoPlist.strings in Resources */,
 				16EC86DD136371E200805A60 /* app.icns in Resources */,
 			);
