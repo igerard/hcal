@@ -108,6 +108,9 @@ InitializeDialogWindow()
 	DateBoxWidth = (WindowPictureRight - WindowPictureLeft) / 7;
 	DateBoxTop = WeekdayInfoBottom; 
 	DateBoxHeight = (WindowHeight - DateBoxTop - 2)/6;
+    
+    // Use Quartz rendering of text.
+    QDSwapTextFlags(kQDUseCGTextRendering | kQDUseCGTextMetrics);
 }
 		
 						
