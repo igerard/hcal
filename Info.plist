@@ -8,6 +8,8 @@
 	<string>Jewish Calendar</string>
 	<key>CFBundleVersion</key>
 	<string>2.1.3</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.reference</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>LSRequiresCarbon</key>
