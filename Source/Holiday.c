@@ -89,29 +89,52 @@ FindHoliday(int month, int day, int weekday, int kvia,
 
 	    case 2:  /* Iyar */
 	    	switch (day) {
-	    		case 2: case 3: case 4: case 5:
+	    		case 2: case 3: case 4: case 5: case 6:
 	    			// Yom HaAtzmaut is on the 5th, unless that's a Saturday, in which
-	    			// case it is moved back two days to Thursday.  Yom HaZikaron is
-	    			// the day before Yom HaAtzmaut.  
+	    			// case it is moved forward two days to Thursday, and unless that's
+                    // a Friday in which case it is moved forward one day to Thursday.
+                    // Yom HaZikaron is the day before Yom HaAtzmaut.
+                    // In 2004 the law changed so that if the 5th is a Monday, Yom
+                    // Hazikaron gets moved backward to Tuesday.
+                    // http://www.hebcal.com/home/150/yom_haatzmaut_yom_hazikaron_2007
 	    			if (year >= 1948 + 3760) {		// only after Israel established.
+                        // <Yom HaZikaron> [Yom HaAtzmaut]
+                        //   2     3     4     5     6
+                        //  Fri   Sat  <Sun> [Mon]  Tue  // < 2004
+                        //  Fri   Sat   Sun  <Mon> [Tue] // >= 2004
+                        // -Sat---Sun---Mon---Tue---Wed- // does not occur
+                        //  Sun   Mon  <Tue> [Wed]  Thu
+                        // -Mon---Tue---Wed---Thu---Fri- // does not occur
+                        //  Tue  <Wed> [Thu]  Fri   Sat
+                        // <Wed> [Thu]  Fri   Sat   Sun
+                        // -Thu---Fri---Sat---Sun---Mon- // does not occur
 	    				char *zikaron = "Yom HaZikaron";
 	    				char *atzmaut = "Yom HaAtzmaut";
-		    			switch (weekday) {
-		    				case Wednesday:
-		    					*holiday++ = (day == 5) ? atzmaut : zikaron;
-		    					break;
-		    				case Thursday:
-		    					// This can't be 2 Iyar.  
-		    					*holiday++ = atzmaut;
-		    					break;
-		    				case Friday: case Saturday: 
-		    					// These are never either of them. 
-		    					break;
-		    				default:
-		    					// All other days follow the normal rules.
-		    					if (day == 4)  *holiday++ = zikaron;
-		    					else if (day == 5) *holiday++ = atzmaut;
-		    			}
+
+                        if (year < 2004 + 3760 && day == 4 && weekday == Sunday)
+                            *holiday++ = zikaron;
+                        if (year < 2004 + 3760 && day == 5 && weekday == Monday)
+                            *holiday++ = atzmaut;
+
+                        if (year >= 2004 + 3760 && day == 5 && weekday == Monday)
+                            *holiday++ = zikaron;
+                        if (year >= 2004 + 3760 && day == 6 && weekday == Tuesday)
+                            *holiday++ = atzmaut;
+
+                        if (day == 4 && weekday == Tuesday)
+                            *holiday++ = zikaron;
+                        if (day == 5 && weekday == Wednesday)
+                            *holiday++ = atzmaut;
+
+                        if (day == 3 && weekday == Wednesday)
+                            *holiday++ = zikaron;
+                        if (day == 4 && weekday == Thursday)
+                            *holiday++ = atzmaut;
+
+                        if (day == 2 && weekday == Wednesday)
+                            *holiday++ = zikaron;
+                        if (day == 3 && weekday == Thursday)
+                            *holiday++ = atzmaut;
 		    		}
 		    		break;
 	    		case 28:
