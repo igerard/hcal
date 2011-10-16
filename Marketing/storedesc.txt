@@ -1,0 +1,5 @@
+What is your birthday in the Jewish calendar? Your friend's? When's Passover this year? How about ten years from now?
+
+The original Jewish Calendar for the Mac returns to Lion, now available on the Mac App Store.
+
+Provides conversion between the Gregorian (secular) calendar and the Jewish calendar. Look up holidays or any date, for hundreds of years to come.
