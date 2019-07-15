@@ -14,6 +14,8 @@ Boolean ParshaP;
 Boolean OmerP;
 Boolean CholP;
 
+static char *song = "Sh. Shirah";
+
 /* Given a day of the Hebrew month, figuring out all the interesting holidays that
  * correspond to that date.  ParshaP, OmerP, and CholP determine whether we should 
  * given info about the Parsha of the week, the Sfira, or Chol Hamoed.
@@ -250,8 +252,7 @@ FindHoliday(int month, int day, int weekday, int kvia,
 			switch (day) {
 				// The info for figuring out Shabbat Shirah is from the Gnu code.  I
 				// assume it's correct.
-				static char *song = "Sh. Shirah";
-				case 10: 
+				case 10:
 					if ((kvia != 0) && shabbat_p) *holiday++ = song; 
 					break;
 				case 11: case 12: case 13: case 14: case 16: 

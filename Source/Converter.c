@@ -20,8 +20,8 @@ static long hebrew_elapsed_days(int year);
 static long hebrew_elapsed_days2(int year);
 static int hebrew_year_length(int year);
 
-static void finish_up(long absolute, int hyear, int hmonth, int syear, int smonth,
-					  Boolean julianp, struct DateResult *result);
+static struct DateResult finish_up(int hday, long absolute, int hyear, int hmonth, int syear, int smonth,
+                                   Boolean julianp);
     
 /* Given a gregorian date, calculate the number of days 
  * since January 0, 0000 
@@ -246,8 +246,10 @@ static long hebrew_elapsed_days(int year)
 	int i;
 	for (i = 0; i < MEMORY; i++) 
 		if (year == saved_year[i]) return saved_value[i];
-	for (i = 0; i < MEMORY; i++) 
-		saved_year[i] = saved_year[1+i], saved_value[i] = saved_value[1+i];
+  for (i = 0; i < MEMORY; i++) {
+    saved_year[i] = saved_year[1+i];
+    saved_value[i] = saved_value[1+i];
+  }
 	saved_year[MEMORY-1] = year;
 	saved_value[MEMORY-1] = hebrew_elapsed_days2(year);
 	return saved_value[MEMORY-1];
@@ -295,9 +297,7 @@ static char *SecularMonthNames[] = { "", "January", "February", "March", "April"
 
 
 /* Fill in the DateResult structure based on the given secular date */
-void
-SecularToHebrewConversion(int syear, int smonth, int sday, Boolean julianp,
-						  struct DateResult *result)
+struct DateResult SecularToHebrewConversion(int syear, int smonth, int sday, Boolean julianp)
 {
 	int hyear, hmonth, hday;
 	long absolute;
@@ -305,16 +305,11 @@ SecularToHebrewConversion(int syear, int smonth, int sday, Boolean julianp,
 	                     absolute_from_gregorian(syear, smonth, sday);
 	hebrew_from_absolute(absolute, &hyear, &hmonth, &hday);
 	
-	result->year = hyear;
-	result->month = hmonth;
-	result->day = hday;
-	finish_up(absolute, hyear, hmonth, syear, smonth, julianp, result);
+	return finish_up(hday, absolute, hyear, hmonth, syear, smonth, julianp);
 }
 
 /* Fill in the DateResult structure based on the given Hebrew date */
-void
-HebrewToSecularConversion(int hyear, int hmonth, int hday, Boolean julianp,
-						   struct DateResult *result)
+struct DateResult HebrewToSecularConversion(int hyear, int hmonth, int hday, Boolean julianp)
 {
 	int syear, smonth, sday;
 	long absolute;
@@ -323,29 +318,26 @@ HebrewToSecularConversion(int hyear, int hmonth, int hday, Boolean julianp,
 		julian_from_absolute(absolute, &syear, &smonth, &sday);
 	else
 		gregorian_from_absolute(absolute, &syear, &smonth, &sday);
-	result->year = hyear;
-	result->month = hmonth;
-	result->day = hday;
-	finish_up(absolute, hyear, hmonth, syear, smonth, julianp, result);
+	return finish_up(hday, absolute, hyear, hmonth, syear, smonth, julianp);
 }
 
 /* This is common code for filling up the DateResult structure */
-void
-finish_up(long absolute, int hyear, int hmonth, int syear, int smonth, Boolean julianp,
-							struct DateResult *result)
+struct DateResult finish_up(int hday, long absolute, int hyear, int hmonth, int syear, int smonth, Boolean julianp)
 {
-	result->hebrew_month_length = hebrew_month_length(hyear, hmonth);
-	result->secular_month_length = secular_month_length(syear, smonth, julianp);
-	result->hebrew_leap_year_p = hebrew_leap_year_p(hyear);
-	result->secular_leap_year_p = 
-	      julianp ? julian_leap_year_p(syear) : gregorian_leap_year_p(syear);
-	result->kvia = (hebrew_year_length(hyear) % 10) - 3;
-	result->hebrew_month_name = ((hmonth < 12) || result->hebrew_leap_year_p) ?
-								HebrewMonthNames[hmonth] :
-								HebrewMonthNames[14];
-	result->secular_month_name = SecularMonthNames[smonth];
-	// absolute is -1 on 1/1/0001 Julian 
-	result->day_of_week = (7 + absolute) % 7;
-	result->hebrew_day_number = absolute - absolute_from_hebrew(hyear, 7, 1) + 1;	
-
+  return (struct DateResult){
+    hyear,
+    hmonth,
+    hday,
+    (7 + absolute) % 7,
+    hebrew_month_length(hyear, hmonth),
+    secular_month_length(syear, smonth, julianp),
+    hebrew_leap_year_p(hyear),
+    julianp ? julian_leap_year_p(syear) : gregorian_leap_year_p(syear),
+    ((hmonth < 12) || hebrew_leap_year_p(hyear)) ?
+    HebrewMonthNames[hmonth] :
+    HebrewMonthNames[14],
+    SecularMonthNames[smonth],
+    (hebrew_year_length(hyear) % 10) - 3,
+    absolute - absolute_from_hebrew(hyear, 7, 1) + 1
+  };
 }

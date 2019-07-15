@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Carbon/Carbon.h>
+
 #define kJulianCalendarPrefRef	CFSTR("JulianCalendar")
 #define kIsraelPrefRef			CFSTR("Israel")
 
