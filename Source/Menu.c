@@ -29,12 +29,12 @@ void UpdateMenuSelection();
 static void AboutJewishCalendarWindow(void);
 static void NewYearWindow(void);
 pascal void IncrementDecrementYear(ControlHandle controlHdl, short partCode);
-static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit);
+static pascal bool EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit);
 static pascal ControlKeyFilterResult NumericFilter(ControlHandle control, short* keyCode,
 	short *charCode, unsigned short *modifiers);
 
-Boolean gInYearDialog = FALSE;
-Boolean gInAboutDialog = FALSE;
+bool gInYearDialog = FALSE;
+bool gInAboutDialog = FALSE;
 ControlHandle gLittleArrows;
 ControlHandle gEditBoxHandle;
 
@@ -99,49 +99,49 @@ doMenu(long menuResult)
 			switch (itemNumber) {
 				case 1: // Gregorian
 					JulianP = FALSE;
-					CFPreferencesSetAppBooleanValue(kJulianCalendarPrefRef,
+					CFPreferencesSetAppboolValue(kJulianCalendarPrefRef,
 													kCFPreferencesCurrentApplication,
 													false);
 					break;
 				
 				case 2: // Julian
 					JulianP = TRUE;
-					CFPreferencesSetAppBooleanValue(kJulianCalendarPrefRef,
+					CFPreferencesSetAppboolValue(kJulianCalendarPrefRef,
 													kCFPreferencesCurrentApplication,
 													true);
 					break;
 				
 				case 4: // Diaspora
 					IsraelP = FALSE;
-					CFPreferencesSetAppBooleanValue(kIsraelPrefRef,
+					CFPreferencesSetAppboolValue(kIsraelPrefRef,
 													kCFPreferencesCurrentApplication,
 													false);
 					break;
 				
 				case 5: // Israel
 					IsraelP = TRUE;
-					CFPreferencesSetAppBooleanValue(kIsraelPrefRef,
+					CFPreferencesSetAppboolValue(kIsraelPrefRef,
 													kCFPreferencesCurrentApplication,
 													true);
 					break;
 				
 				case 7: // Parsha
 					ParshaP = !ParshaP;
-					CFPreferencesSetAppBooleanValue(kParshaPrefRef,
+					CFPreferencesSetAppboolValue(kParshaPrefRef,
 													kCFPreferencesCurrentApplication,
 													ParshaP);
 					break;
 				
 				case 8: // Omer
 					OmerP = !OmerP;
-					CFPreferencesSetAppBooleanValue(kOmerPrefRef,
+					CFPreferencesSetAppboolValue(kOmerPrefRef,
 													kCFPreferencesCurrentApplication,
 													OmerP);
 					break;
 				
 				case 9: // Chol
 					CholP = !CholP;
-					CFPreferencesSetAppBooleanValue(kCholHamoedPrefRef,
+					CFPreferencesSetAppboolValue(kCholHamoedPrefRef,
 													kCFPreferencesCurrentApplication,
 													CholP);
 					break;
@@ -270,7 +270,7 @@ NewYearWindow()
 	DialogPtr modal;
 	short itemHit;
 	long int year;
-	Boolean done, need_to_update;
+	bool done, need_to_update;
 	GrafPtr savePort;
 	int OriginalCurrentYear = CurrentYear;		// Save initial value
 	Size size;
@@ -400,9 +400,9 @@ IncrementDecrementYear(ControlHandle controlHdl, short partCode)
 	DrawOneControl(gEditBoxHandle);
 }
 
-static pascal Boolean EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit)
+static pascal bool EventFilter(DialogPtr dialogPtr, EventRecord *theEvent, short *itemHit)
 {
-	Boolean handledEvent;
+	bool handledEvent;
 	GrafPtr oldPort;
 	Point mouseXY;
 	ControlHandle controlHdl;

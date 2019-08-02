@@ -12,3 +12,5 @@
 #endif /* Bridge_Header_h */
 
 #include "Converter.h"
+#include "Holiday.h"
+#include "Parsha.h"

@@ -14,7 +14,7 @@
 
 static void DrawCenteredAtPoint(char *buffer, int x, int y);
 static void DoPrinting();
-static pascal void sheetDone(PMPrintSession printSession, WindowRef window, Boolean accepted);
+static pascal void sheetDone(PMPrintSession printSession, WindowRef window, bool accepted);
 static void PrintError(OSStatus status);
 static void RedrawWeekDays(void);
 static void FillInCalendar(int year, int month);
@@ -25,13 +25,13 @@ static void DoTheOutput(int column, int row, int day, int j_year,
 int	CurrentMonth, CurrentYear;
 int				MinYear = 1;
 int				MaxYear = 2999;
-Boolean			JulianP = FALSE;
-Boolean			IsraelP = FALSE;
+bool			JulianP = FALSE;
+bool			IsraelP = FALSE;
 
 PMPrintSession	printSession = nil;
 PMPageFormat	pageFormat = nil;
 PMPrintSettings	printSettings = nil;
-Boolean			isPrintDialog = false;
+bool			isPrintDialog = false;
 PMSheetDoneUPP	sheetDoneUPP();
 
 static WindowPtr  CalendarWindow;
@@ -153,7 +153,7 @@ void PageSetup()
 	CFPropertyListRef	dataBlob;
 	OSStatus			status = noErr;
 	
-	Boolean				closeSession = false,
+	bool				closeSession = false,
 						canDoSheets = true,
 						haveValid = false,
 						accepted;
@@ -261,7 +261,7 @@ PrintCalendar ()
 	CFPropertyListRef	dataBlob;
 	OSStatus			status = noErr;
 	
-	Boolean				closeSession = false,
+	bool				closeSession = false,
 						canDoSheets = true,
 						haveValid = false,
 						accepted;
@@ -417,7 +417,7 @@ PMSheetDoneUPP sheetDoneUPP()
 	return sProc;
 }
 
-pascal void sheetDone(PMPrintSession printSession, WindowRef window, Boolean accepted)
+pascal void sheetDone(PMPrintSession printSession, WindowRef window, bool accepted)
 {
 	if (accepted)
 	{
@@ -514,7 +514,7 @@ FillInCalendar(int secular_year, int secular_month)
     int days_in_secular_month, days_in_hebrew_month;
     int secular_day, hebrew_day, hebrew_month, hebrew_year;
     int hebrew_kvia, hebrew_day_number;
-    Boolean hebrew_leap_year_p;
+    bool hebrew_leap_year_p;
     char *hebrew_month_name, **holidays;
     int initial_hebrew_day, final_hebrew_day;
     int initial_hebrew_year, final_hebrew_year;

@@ -8,6 +8,6 @@ void PrintCalendar(void);
 void RedrawCalendarWindow(void);
 extern int CurrentMonth, CurrentYear;
 extern int MinYear, MaxYear;
-extern Boolean JulianP;
-extern Boolean IsraelP;
+extern bool JulianP;
+extern bool IsraelP;
 extern PMPrintSession printSession;

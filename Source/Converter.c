@@ -1,8 +1,8 @@
 #include "Converter.h"
 
-static Boolean hebrew_leap_year_p (int year);
-static Boolean gregorian_leap_year_p (int year);
-static Boolean julian_leap_year_p (int year);
+static bool hebrew_leap_year_p (int year);
+static bool gregorian_leap_year_p (int year);
+static bool julian_leap_year_p (int year);
 
 static long absolute_from_gregorian(int year, int month, int day);
 static long absolute_from_julian(int year, int month, int day);
@@ -14,14 +14,14 @@ static void hebrew_from_absolute(long date, int *yearp, int *monthp, int *dayp);
 
 static int hebrew_months_in_year(int year);
 static int hebrew_month_length(int year, int month);
-static int secular_month_length(int year, int month, Boolean julianp);
+static int secular_month_length(int year, int month, bool julianp);
 
 static long hebrew_elapsed_days(int year);
 static long hebrew_elapsed_days2(int year);
 static int hebrew_year_length(int year);
 
 static struct DateResult finish_up(int hday, long absolute, int hyear, int hmonth, int syear, int smonth,
-                                   Boolean julianp);
+                                   bool julianp);
     
 /* Given a gregorian date, calculate the number of days 
  * since January 0, 0000 
@@ -188,7 +188,7 @@ hebrew_month_length(int year, int month)
 
 /* Number of days in a Julian or gregorian month */
 int 
-secular_month_length(int year, int month, Boolean julianp)
+secular_month_length(int year, int month, bool julianp)
 {
 	switch(month) {
 	    case January: case March: case May: case July: 
@@ -206,7 +206,7 @@ secular_month_length(int year, int month, Boolean julianp)
 }
 
 /* Is it a Leap year in the gregorian calendar */
-static Boolean
+static bool
 gregorian_leap_year_p(int year)
 {
   if ((year % 4) != 0) return FALSE;
@@ -216,14 +216,14 @@ gregorian_leap_year_p(int year)
 }
 
 /* Is it a leap year in the Julian calendar */
-static Boolean 
+static bool 
 julian_leap_year_p(int year)
 {
 	return ((year % 4) == 0); 
 }
 
 /* Is it a leap year in the Jewish Calendar */
-static Boolean
+static bool
 hebrew_leap_year_p(int year)
 {
   	switch (year % 19) {
@@ -297,7 +297,7 @@ static char *SecularMonthNames[] = { "", "January", "February", "March", "April"
 
 
 /* Fill in the DateResult structure based on the given secular date */
-struct DateResult SecularToHebrewConversion(int syear, int smonth, int sday, Boolean julianp)
+struct DateResult SecularToHebrewConversion(int syear, int smonth, int sday, bool julianp)
 {
 	int hyear, hmonth, hday;
 	long absolute;
@@ -309,7 +309,7 @@ struct DateResult SecularToHebrewConversion(int syear, int smonth, int sday, Boo
 }
 
 /* Fill in the DateResult structure based on the given Hebrew date */
-struct DateResult HebrewToSecularConversion(int hyear, int hmonth, int hday, Boolean julianp)
+struct DateResult HebrewToSecularConversion(int hyear, int hmonth, int hday, bool julianp)
 {
 	int syear, smonth, sday;
 	long absolute;
@@ -322,13 +322,13 @@ struct DateResult HebrewToSecularConversion(int hyear, int hmonth, int hday, Boo
 }
 
 /* This is common code for filling up the DateResult structure */
-struct DateResult finish_up(int hday, long absolute, int hyear, int hmonth, int syear, int smonth, Boolean julianp)
+struct DateResult finish_up(int hday, long absolute, int hyear, int hmonth, int syear, int smonth, bool julianp)
 {
   return (struct DateResult){
     hyear,
     hmonth,
     hday,
-    (7 + absolute) % 7,
+    (absolute) % 7 + 1,
     hebrew_month_length(hyear, hmonth),
     secular_month_length(syear, smonth, julianp),
     hebrew_leap_year_p(hyear),

@@ -1,11 +1,11 @@
 #include <Carbon/Carbon.h>
 
-char **FindHoliday(int month, int day, int weekday, int kvia, 
-				   Boolean leap_year_p, Boolean israel_p,
-			       int day_number, int year);
+char **FindHoliday(int month, int day, int weekday, int kvia,
+                   bool leap_year_p, bool israel_p,
+                   int day_number, int year);
 
 /*extern int HolidayFlags;*/
 
-extern Boolean ParshaP;
-extern Boolean OmerP;
-extern Boolean CholP;
+extern bool ParshaP;
+extern bool OmerP;
+extern bool CholP;

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  HCal
+//  JCal
 //
-//  Created by Gerard Iglesias on 08/07/2019.
+//  Created by Gerard Iglesias on 18/07/2019.
 //
 
 import Cocoa
@@ -12,8 +12,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
   var window: NSWindow!
-  
-  var hcal = HCal()
+
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
@@ -22,9 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
         backing: .buffered, defer: false)
     window.center()
+    window.setFrameAutosaveName("Main Window")
 
-    window.contentView = NSHostingView(rootView:
-      MainCalendarView(date: Date()).environmentObject(hcal))
+    window.contentView = NSHostingView(rootView: ContentView())
 
     window.makeKeyAndOrderFront(nil)
   }

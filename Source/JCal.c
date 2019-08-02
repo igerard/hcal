@@ -105,24 +105,24 @@ DoMouseDownStuff(EventRecord *theEvent)
 
 void InitPrefs()
 {
-	Boolean isValid;
+	bool isValid;
 	
-	JulianP = CFPreferencesGetAppBooleanValue(kJulianCalendarPrefRef, kCFPreferencesCurrentApplication,
+	JulianP = CFPreferencesGetAppboolValue(kJulianCalendarPrefRef, kCFPreferencesCurrentApplication,
 												&isValid);
-	IsraelP = CFPreferencesGetAppBooleanValue(kIsraelPrefRef, kCFPreferencesCurrentApplication,
+	IsraelP = CFPreferencesGetAppboolValue(kIsraelPrefRef, kCFPreferencesCurrentApplication,
 												&isValid);
 	
-	ParshaP = CFPreferencesGetAppBooleanValue(kParshaPrefRef, kCFPreferencesCurrentApplication,
+	ParshaP = CFPreferencesGetAppboolValue(kParshaPrefRef, kCFPreferencesCurrentApplication,
 												&isValid);
 	if (!isValid)
 		ParshaP = true;
 	
-	OmerP = CFPreferencesGetAppBooleanValue(kOmerPrefRef, kCFPreferencesCurrentApplication,
+	OmerP = CFPreferencesGetAppboolValue(kOmerPrefRef, kCFPreferencesCurrentApplication,
 												&isValid);
 	if (!isValid)
 		OmerP = true;
 	
-	CholP = CFPreferencesGetAppBooleanValue(kCholHamoedPrefRef, kCFPreferencesCurrentApplication,
+	CholP = CFPreferencesGetAppboolValue(kCholHamoedPrefRef, kCFPreferencesCurrentApplication,
 												&isValid);
 	if (!isValid)
 		CholP = true;

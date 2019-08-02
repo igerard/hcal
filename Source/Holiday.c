@@ -10,9 +10,9 @@ static char *Sfirah(int day);
 #define OmerP     (HolidayFlags & 0x02)
 #define CholP     (HolidayFlags & 0x04)*/
 
-Boolean ParshaP;
-Boolean OmerP;
-Boolean CholP;
+bool ParshaP;
+bool OmerP;
+bool CholP;
 
 static char *song = "Sh. Shirah";
 
@@ -24,14 +24,19 @@ static char *song = "Sh. Shirah";
  */
 
 char **
-FindHoliday(int month, int day, int weekday, int kvia, 
-			Boolean leap_year_p, Boolean israel_p,
-			int day_number, int year)
+FindHoliday(int month,
+            int day,
+            int weekday,
+            int kvia,
+            bool leap_year_p,
+            bool israel_p,
+            int day_number,
+            int year)
 {
 	enum { Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday };
 	static char *holidays[5];		// The value returned
 	char **holiday = holidays;      // a pointer to the next slot to fill
-	Boolean shabbat_p = (weekday == Saturday);  // Is it a Saturday?
+	bool shabbat_p = (weekday == Saturday);  // Is it a Saturday?
 	holiday[0] = holiday[1] = holiday[2] = holiday[3] = holiday[4] = NULL;
 
 	// Treat Adar in a non-leap year as if it were Adar II.

@@ -11,7 +11,7 @@
 
 #define kPageSetupPrefRef		CFSTR("PageSetup")
 
-void CFPreferencesSetAppBooleanValue(
+void CFPreferencesSetAppboolValue(
 		  CFStringRef	key,
 		  CFStringRef	applicationID,
-		  Boolean		value);
+		  bool		value);

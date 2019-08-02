@@ -7,4 +7,4 @@
 #endif
 
 EXTERN short gAppResFile;
-EXTERN Boolean gAreWeDoneYet;
+EXTERN bool gAreWeDoneYet;

@@ -1,13 +1,13 @@
 #include "Prefs.h"
 
-void CFPreferencesSetAppBooleanValue(
+void CFPreferencesSetAppboolValue(
 			CFStringRef	key,
 			CFStringRef	applicationID,
-			Boolean		value)
+			bool		value)
 {
 	if (value)
-		CFPreferencesSetAppValue(key, kCFBooleanTrue, applicationID);
+		CFPreferencesSetAppValue(key, kCFboolTrue, applicationID);
 	else
-		CFPreferencesSetAppValue(key, kCFBooleanFalse, applicationID);
+		CFPreferencesSetAppValue(key, kCFboolFalse, applicationID);
 	CFPreferencesAppSynchronize(applicationID);
 }

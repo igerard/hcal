@@ -133,7 +133,7 @@ static unsigned const char Thu_long_leap[] =
  */
  
 char *
-FindParshaName(int daynumber, int kvia, Boolean leap_p, Boolean israel_p)
+FindParshaName(int daynumber, int kvia, bool leap_p, bool israel_p)
 {
 	int week = daynumber/7;				// week of the year
 	unsigned const char *array = NULL;
