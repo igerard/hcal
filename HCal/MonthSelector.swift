@@ -10,44 +10,58 @@ import SwiftUI
 struct MonthSelector : View {
   @Environment(\.colorScheme) var theme
   @EnvironmentObject var hcal: HCal
-  @Binding var date: Date
+  
+  func formattedYear(year: Int) -> String {
+    return String(format: "%d", year)
+  }
   
   var body: some View {
     
-    return HStack(alignment: .bottom, spacing: 0) {
-      Text("\(hcal.monthName) - \(hcal.year)")
-        .font(.largeTitle)
-        .baselineOffset(-5)
-        .padding(.leading, 20)
+    HStack(alignment: .bottom, spacing: 0) {
+          Text("\(hcal.monthName) - \(formattedYear(year: hcal.year))")
+          .font(.largeTitle)
+          .baselineOffset(-5)
+          .padding(.leading, 20)
+          .allowsTightening(true)
       Spacer()
-      Text("\(hcal.hebrewMonths) - \(hcal.hebrewYear)")
+      Text("\(hcal.hebrewMonths) - \(formattedYear(year: hcal.hebrewYear))")
         .padding(.trailing, 40)
+        .font(.headline)
+        .allowsTightening(true)
+      
       Button(action: {
-        self.hcal.decrementMonth()
+        withAnimation(.easeOut) {
+          self.hcal.decrementMonth()
+        }
       }) {
-        Text("<")
+        Text("⇦")
       }
       Button(action: {
-        self.hcal.today()
+        withAnimation(.easeOut) {
+          self.hcal.today()
+        }
       }) {
-        Text("today")
+        Text("♢")
       }
       Button(action: {
-        self.hcal.incrementMonth()
+        withAnimation(.easeOut) {
+          self.hcal.incrementMonth()
+        }
       }) {
-        Text(">")
+        Text("⇨")
       }
       .padding(.trailing, 10)
     }
-      .padding(.top, 10)
-      .padding([.bottom], 5)
+    .padding(.top, 10)
+    .padding([.bottom], 5)
+    .fixedSize(horizontal: false, vertical: true)
   }
 }
 
 #if DEBUG
 struct MonthSelector_Previews : PreviewProvider {
   static var previews: some View {
-    MonthSelector(date: .constant(Date())).environmentObject(HCal())
+    MonthSelector().environmentObject(HCal())
   }
 }
 #endif

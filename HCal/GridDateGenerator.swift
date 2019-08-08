@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GridDateGenerator {
+final class GridDateGenerator {
   let firstDay : Int
   let year : Int
   let month : Int

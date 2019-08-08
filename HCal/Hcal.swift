@@ -10,7 +10,7 @@ import Combine
 
 final class HCal : ObservableObject {
   
-  private static var calendar = Calendar(identifier: .gregorian)
+  static var calendar = Calendar(identifier: .gregorian)
   
   @Published var year : Int = thisYear() ?? 2000
   @Published var month : Int = thisMonth() ?? 1 {
@@ -60,7 +60,12 @@ final class HCal : ObservableObject {
     get {
       let r = HCal.calendar.range(of: .day,
                                   in: .month,
-                                  for: HCal.calendar.date(from: DateComponents(calendar: HCal.calendar, timeZone: nil, era: nil, year: year, month: month, day: 1, hour: nil, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil))!)
+                                  for: HCal.calendar.date(from:
+                                    DateComponents(calendar: HCal.calendar,
+                                                   year: year,
+                                                   month: month,
+                                                   day: 1,
+                                                   hour: 12))!)
       let hdatel = SecularToHebrewConversion(Int32(year),
                                             Int32(month),
                                             Int32(r!.lowerBound),
@@ -73,16 +78,8 @@ final class HCal : ObservableObject {
     }
   }
   
-  static func thisYear() -> Int? {
-    return HCal.calendar.dateComponents([.year], from: Date()).year
-  }
-
-  static func thisMonth() -> Int? {
-    return HCal.calendar.dateComponents([.month], from: Date()).month
-  }
-  
   func incrementMonth() {
-    if month == 12 {
+      if month == 12 {
       month = 1
       year += 1
     }
@@ -105,4 +102,17 @@ final class HCal : ObservableObject {
       month -= 1
     }
   }
+  
+  static func thisYear() -> Int? {
+      return HCal.calendar.dateComponents([.year], from: Date()).year
+    }
+    
+    static func thisMonth() -> Int? {
+      return HCal.calendar.dateComponents([.month], from: Date()).month
+    }
+    
+    static func isToday(date: Date) -> Bool {
+      HCal.calendar.dateComponents([.year, .month, .day], from: date) == HCal.calendar.dateComponents([.year, .month, .day], from: Date())
+    }
+    
 }

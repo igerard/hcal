@@ -8,39 +8,34 @@
 import SwiftUI
 
 struct MonthGrid : View {
-  static let calendar = Calendar(identifier: .gregorian)
-
   @Environment(\.colorScheme) var theme
   @EnvironmentObject var hcal: HCal
-  @Binding var date : Date
-  private let weekDaysLetter = calendar.weekdaySymbols.map{$0.prefix(1)}
-
-  
-  func firstDate() {
-    
-  }
+  private let weekDaysLetter = HCal.calendar.weekdaySymbols.map{$0.prefix(1)}
   
   var body: some View {
-  
-    VStack(alignment: .center, spacing: 1){
+
+    let generator = GridDateGenerator(firstDay: 1, year: hcal.year, month: hcal.month)
+
+    return VStack(alignment: .center, spacing: 1){
       
       HStack(alignment: .center, spacing: 1) {
-        ForEach((1...7), id: \.self) {dayIndex in
+        ForEach((0...6), id: \.self) {dayIndex in
           HStack{
             Spacer()
-            Text(self.weekDaysLetter[dayIndex-1])
+            Text(self.weekDaysLetter[dayIndex]).fontWeight(.bold)
             Spacer()
           }
         }
       }
       .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
       .padding([.top, .bottom], 2)
+      .frame(width: nil, height: 20, alignment: .center)
       
       HStack(alignment: .center, spacing: 1){
-        ForEach((1...7), id: \.self) {_ in
+        ForEach((0...6), id: \.self) {j in
           VStack(alignment: .center, spacing: 1) {
-            ForEach((1...6), id: \.self){_ in
-              DayView(date: self.date)
+            ForEach((0...5), id: \.self){i in
+              DayView(date: generator?.dateAt(i, j) ?? Date())
             }
           }
         }
@@ -48,14 +43,14 @@ struct MonthGrid : View {
       .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
     }
     .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
-
   }
 }
 
 #if DEBUG
 struct MonthGrid_Previews : PreviewProvider {
   static var previews: some View {
-    MonthGrid(date: .constant(Date()))
+    MonthGrid().environmentObject(HCal())
+      .frame(width: nil, height: 800, alignment: .center)
   }
 }
 #endif

@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     window.center()
 
     window.contentView = NSHostingView(rootView:
-      MainCalendarView(date: Date()).environmentObject(hcal))
+      MainCalendarView().environmentObject(hcal))
 
     window.makeKeyAndOrderFront(nil)
   }
