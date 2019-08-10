@@ -30,16 +30,20 @@ struct DayView : View {
     let inMonth = comps.month == hcal.month
     let isToday = comps == HCal.calendar.dateComponents([.year, .month, .day], from: Date())
     let isShabbat = HCal.calendar.dateComponents([.weekday], from: date).weekday == .some(7)
+    ParshaP = hcal.parchaActive
+    OmerP = hcal.omerActive
+    CholP = hcal.cholActive
+    let goodHeight : CGFloat = (hcal.parchaActive || hcal.omerActive || hcal.cholActive ? 100.0 : 80.0)
     let hdate = SecularToHebrewConversion(Int32(comps.year!),
                                           Int32(comps.month!),
                                           Int32(comps.day!),
-                                          false)
+                                          hcal.calendarType == .julian)
     let holiday = FindHoliday(hdate.month,
                               hdate.day,
                               hdate.day_of_week,
                               hdate.kvia,
                               hdate.hebrew_leap_year_p,
-                              false,
+                              hcal.holidayArea == .israel,
                               hdate.hebrew_day_number,
                               hdate.year)
         
@@ -82,11 +86,11 @@ struct DayView : View {
       }
       .padding([.bottom, .leading], 10)
     }
-    .frame(minWidth: 100,
-           idealWidth: 200,
+    .frame(minWidth: 120,
+           idealWidth: 120,
            maxWidth: 1000,
-           minHeight: 80,
-           idealHeight: 160,
+           minHeight: goodHeight,
+           idealHeight: goodHeight,
            maxHeight: 1000,
            alignment: .center)
       .background(Theming.dayBackgroundColor(theme: theme,

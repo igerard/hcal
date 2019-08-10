@@ -12,6 +12,33 @@ struct MainCalendarView : View {
   
   var body: some View {
     VStack {
+      HStack {
+        SegmentedControl(selection: $hcal.holidayArea) {
+          ForEach(HolidayArea.allCases, id: \.self) { area in
+            Text(area.rawValue).tag(area)
+          }
+        }
+        Spacer()
+        SegmentedControl(selection: $hcal.calendarType) {
+          ForEach(CalendarType.allCases, id: \.self) { cal in
+            Text(cal.rawValue).tag(cal)
+          }
+        }
+        Spacer()
+        Toggle(isOn: $hcal.parchaActive, label: {
+          Text("Parcha")
+        })
+        Spacer()
+        Toggle(isOn: $hcal.omerActive, label: {
+          Text("Omer")
+        })
+        Spacer()
+        Toggle(isOn: $hcal.cholActive, label: {
+          Text("Chol")
+        })
+        Spacer()
+      }
+      .fixedSize(horizontal: false, vertical: true)
       MonthSelector()
       MonthGrid()
     }

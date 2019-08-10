@@ -8,12 +8,59 @@
 import SwiftUI
 import Combine
 
+enum HolidayArea: String, CaseIterable, Codable {
+  case israel = "Israel"
+  case diaspora = "Diaspora"
+}
+
+enum CalendarType: String, CaseIterable, Codable {
+  case gregorian = "Gregorian"
+  case julian = "Julian"
+}
+
 final class HCal : ObservableObject {
-  
+  let objectWillChange = ObservableObjectPublisher()
+
   static var calendar = Calendar(identifier: .gregorian)
-  
-  @Published var year : Int = thisYear() ?? 2000
-  @Published var month : Int = thisMonth() ?? 1 {
+
+  // prefs
+  @UserDefault("HolidayArea", defaultValue: HolidayArea.diaspora)
+  var holidayArea : HolidayArea {
+    didSet {
+      objectWillChange.send()
+    }
+  }
+  @UserDefault("CalendarType", defaultValue: CalendarType.gregorian)
+  var calendarType : CalendarType {
+    didSet {
+      objectWillChange.send()
+    }
+  }
+  @UserDefault("ParchaActive", defaultValue: false)
+  var parchaActive : Bool {
+    didSet {
+      objectWillChange.send()
+    }
+  }
+  @UserDefault("OmerActive", defaultValue: false)
+  var omerActive : Bool {
+    didSet {
+      objectWillChange.send()
+    }
+  }
+  @UserDefault("CholActive", defaultValue: false)
+  var cholActive : Bool {
+    didSet {
+      objectWillChange.send()
+    }
+  }
+
+  var year : Int = thisYear() ?? 2000 {
+    didSet {
+      objectWillChange.send()
+    }
+  }
+  var month : Int = thisMonth() ?? 1 {
     didSet {
       if month < 1 {
         month = 1
@@ -21,9 +68,14 @@ final class HCal : ObservableObject {
       else if month > 12 {
         month = 12
       }
+      objectWillChange.send()
     }
   }
-  @Published var day : Int = HCal.calendar.dateComponents([.day], from: Date()).day ?? 1
+  var day : Int = HCal.calendar.dateComponents([.day], from: Date()).day ?? 1 {
+    didSet {
+      objectWillChange.send()
+    }
+  }
   
   var monthName : String {
     HCal.calendar.locale = Locale.autoupdatingCurrent

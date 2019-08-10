@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14814" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="6UQ-4Z-hbg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14814"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,11 +673,103 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="HCal" customModuleProvider="target">
+                    <connections>
+                        <outlet property="cholMenuItem" destination="XmU-0L-YQf" id="wRC-iJ-WS4"/>
+                        <outlet property="omerMenuItem" destination="rx1-wz-4jU" id="l1r-nD-TA0"/>
+                        <outlet property="parshaMenuItem" destination="yaP-Pf-a4S" id="zeD-59-yTE"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-516" y="-402"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="mDf-kt-O1S">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="6UQ-4Z-hbg" customClass="CalendarWindowController" customModule="HCal" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="VPK-LD-svm">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="372" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <connections>
+                            <outlet property="delegate" destination="6UQ-4Z-hbg" id="uOx-FS-Cea"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <outlet property="cholMenuItem" destination="XmU-0L-YQf" id="syc-hX-siw"/>
+                        <outlet property="diasporaMenuItem" destination="aJp-L3-yeD" id="7g3-LZ-sc2"/>
+                        <outlet property="gregorianMenuItem" destination="HCV-yk-gCi" id="cmZ-bD-dR3"/>
+                        <outlet property="israelMenuItem" destination="WBI-Jr-wfO" id="prK-ye-eZo"/>
+                        <outlet property="julianMenuItem" destination="DsJ-i2-T1Z" id="phj-EV-n3l"/>
+                        <outlet property="menuItem" destination="y1S-H8-LbY" id="81e-bj-zVK"/>
+                        <outlet property="omerMenuItem" destination="rx1-wz-4jU" id="XrC-zY-Wjt"/>
+                        <outlet property="parshaMenuItem" destination="yaP-Pf-a4S" id="uKL-oK-bXm"/>
+                    </connections>
+                </windowController>
+                <customObject id="r5O-Od-mlv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menuItem title="Holidays" id="y1S-H8-LbY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Holidays" id="i8g-tn-KpL">
+                        <items>
+                            <menuItem title="Reset" id="1bX-QL-dYq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="resetOptions:" target="6UQ-4Z-hbg" id="EY0-pX-aiJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="lpv-K1-tXx"/>
+                            <menuItem title="Gregorian" id="HCV-yk-gCi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="gregorianToggle:" target="6UQ-4Z-hbg" id="JCr-aJ-W1R"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Julian" id="DsJ-i2-T1Z">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="julianToggle:" target="6UQ-4Z-hbg" id="FeQ-TP-tRo"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="GTx-1P-uo1"/>
+                            <menuItem title="Israël" id="WBI-Jr-wfO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="israelToggle:" target="6UQ-4Z-hbg" id="7A0-fp-reE"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Diaspora" id="aJp-L3-yeD">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="diasporaToggle:" target="6UQ-4Z-hbg" id="Jei-5G-YIq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="ggo-fH-rOS"/>
+                            <menuItem title="Parsha" id="yaP-Pf-a4S">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="parshaToggle:" target="6UQ-4Z-hbg" id="KCD-9e-RRF"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Omer" id="rx1-wz-4jU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="omerToggle:" target="6UQ-4Z-hbg" id="e5g-dV-iKa"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Chol" id="XmU-0L-YQf">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="cholToggle:" target="6UQ-4Z-hbg" id="G61-G4-Gzk"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </objects>
+            <point key="canvasLocation" x="-406" y="-120"/>
         </scene>
     </scenes>
 </document>
