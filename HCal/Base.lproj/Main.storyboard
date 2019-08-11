@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="6UQ-4Z-hbg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -690,23 +691,118 @@
             <objects>
                 <windowController showSeguePresentationStyle="single" id="6UQ-4Z-hbg" customClass="CalendarWindowController" customModule="HCal" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="VPK-LD-svm">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="372" width="480" height="270"/>
+                        <rect key="contentRect" x="294" y="372" width="867" height="503"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <toolbar key="toolbar" implicitIdentifier="D296231A-A583-401E-9BD0-29E104EC11D5" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="hmp-Tl-Kpd">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="11223350-C0C7-47EB-9C24-BAE85088FF5E" label="Calendar" paletteLabel="Calendar" sizingBehavior="auto" id="adA-xF-VDf" userLabel="Calendar">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="pYm-00-rys">
+                                        <rect key="frame" x="0.0" y="14" width="152" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rwS-Po-pAc">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Gregorian"/>
+                                                <segment label="Julian" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="calendarChosen:" target="6UQ-4Z-hbg" id="NMu-S7-BzS"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4C85DCE4-06C7-405C-8C60-37F10B45E21F" label="Area" paletteLabel="Area" sizingBehavior="auto" id="gob-8x-keR">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="jig-h9-8WD">
+                                        <rect key="frame" x="0.0" y="14" width="143" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="ZVw-Gd-yXe">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Diaspora"/>
+                                                <segment label="Israel" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="holidayAreaChosen:" target="6UQ-4Z-hbg" id="7OL-fW-gOR"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T0U-oB-GBB"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="a0f-Rm-z4W"/>
+                                <toolbarItem implicitItemIdentifier="4328D051-9076-499F-A59F-7A3E5153A1E0" label="Parsha" paletteLabel="Parsha" image="NSBookmarksTemplate" sizingBehavior="auto" id="zsb-K0-2tG">
+                                    <nil key="toolTip"/>
+                                    <button key="view" id="tfI-zS-X4U">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSBookmarksTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Wlw-Ix-qWv">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="parshaChosen:" target="6UQ-4Z-hbg" id="SgY-OU-KUf"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="B98AB175-14ED-4553-AC2E-A912EF01173D" label="Omer" paletteLabel="Omer" image="Omer" sizingBehavior="auto" id="xH7-pj-lm5" userLabel="Omer">
+                                    <nil key="toolTip"/>
+                                    <button key="view" id="ANQ-Zz-0jH">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Omer" imagePosition="overlaps" alignment="center" alternateImage="Omer-alt" imageScaling="proportionallyUpOrDown" inset="2" id="7Sf-TV-NjM">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="omerChosen:" target="6UQ-4Z-hbg" id="GkL-wk-Ip8"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="DFDDBE22-9AB6-492A-8D70-9DA04D9E297B" label="Chol" paletteLabel="Chol" image="NSActionTemplate" sizingBehavior="auto" id="xbW-dD-Wse" userLabel="Chol">
+                                    <nil key="toolTip"/>
+                                    <button key="view" id="Tu3-NN-VIf">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2O1-PZ-6N7">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="cholChosen:" target="6UQ-4Z-hbg" id="sxa-Ef-98m"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="adA-xF-VDf"/>
+                                <toolbarItem reference="gob-8x-keR"/>
+                                <toolbarItem reference="a0f-Rm-z4W"/>
+                                <toolbarItem reference="zsb-K0-2tG"/>
+                                <toolbarItem reference="xH7-pj-lm5"/>
+                                <toolbarItem reference="xbW-dD-Wse"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="6UQ-4Z-hbg" id="uOx-FS-Cea"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="calendarToolBarItem" destination="pYm-00-rys" id="DBA-fe-26d"/>
                         <outlet property="cholMenuItem" destination="XmU-0L-YQf" id="syc-hX-siw"/>
+                        <outlet property="cholToolBarItem" destination="Tu3-NN-VIf" id="2Eb-PM-QOE"/>
                         <outlet property="diasporaMenuItem" destination="aJp-L3-yeD" id="7g3-LZ-sc2"/>
                         <outlet property="gregorianMenuItem" destination="HCV-yk-gCi" id="cmZ-bD-dR3"/>
+                        <outlet property="holidayAreaToolBarItem" destination="jig-h9-8WD" id="nSH-cS-PzK"/>
                         <outlet property="israelMenuItem" destination="WBI-Jr-wfO" id="prK-ye-eZo"/>
                         <outlet property="julianMenuItem" destination="DsJ-i2-T1Z" id="phj-EV-n3l"/>
                         <outlet property="menuItem" destination="y1S-H8-LbY" id="81e-bj-zVK"/>
                         <outlet property="omerMenuItem" destination="rx1-wz-4jU" id="XrC-zY-Wjt"/>
+                        <outlet property="omerToolBarItem" destination="ANQ-Zz-0jH" id="UD9-a4-Zet"/>
                         <outlet property="parshaMenuItem" destination="yaP-Pf-a4S" id="uKL-oK-bXm"/>
+                        <outlet property="parshaToolBarItem" destination="tfI-zS-X4U" id="hxD-wC-h83"/>
                     </connections>
                 </windowController>
                 <customObject id="r5O-Od-mlv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -769,7 +865,13 @@
                     </menu>
                 </menuItem>
             </objects>
-            <point key="canvasLocation" x="-406" y="-120"/>
+            <point key="canvasLocation" x="-547" y="-55"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSBookmarksTemplate" width="17" height="18"/>
+        <image name="Omer" width="32" height="24"/>
+        <image name="Omer-alt" width="32" height="24"/>
+    </resources>
 </document>

@@ -8,16 +8,6 @@
 import SwiftUI
 import Combine
 
-enum HolidayArea: String, CaseIterable, Codable {
-  case israel = "Israel"
-  case diaspora = "Diaspora"
-}
-
-enum CalendarType: String, CaseIterable, Codable {
-  case gregorian = "Gregorian"
-  case julian = "Julian"
-}
-
 final class HCal : ObservableObject {
   let objectWillChange = ObservableObjectPublisher()
 

@@ -24,6 +24,12 @@ class CalendarWindowController : NSWindowController {
   @IBOutlet var omerMenuItem : NSMenuItem?
   @IBOutlet var cholMenuItem : NSMenuItem?
 
+  @IBOutlet var calendarToolBarItem : NSSegmentedControl?
+  @IBOutlet var holidayAreaToolBarItem : NSSegmentedControl?
+  @IBOutlet var parshaToolBarItem : NSButton?
+  @IBOutlet var omerToolBarItem : NSButton?
+  @IBOutlet var cholToolBarItem : NSButton?
+
   override func awakeFromNib() {
     window?.contentView = NSHostingView(rootView:MainCalendarView().environmentObject(hcal))
 
@@ -47,6 +53,14 @@ class CalendarWindowController : NSWindowController {
     parshaMenuItem?.state = hcal.parchaActive ? .on : .off
     omerMenuItem?.state = hcal.omerActive ? .on : .off
     cholMenuItem?.state = hcal.cholActive ? .on : .off
+    
+    calendarToolBarItem?.setSelected(hcal.calendarType == .gregorian, forSegment: 0)
+    calendarToolBarItem?.setSelected(hcal.calendarType == .julian, forSegment: 1)
+    holidayAreaToolBarItem?.setSelected(hcal.holidayArea == .diaspora, forSegment: 0)
+    holidayAreaToolBarItem?.setSelected(hcal.holidayArea == .israel, forSegment: 1)
+    parshaToolBarItem?.state = hcal.parchaActive ? .on : .off
+    omerToolBarItem?.state = hcal.omerActive ? .on : .off
+    cholToolBarItem?.state = hcal.cholActive ? .on : .off
   }
 
   @IBAction func gregorianToggle(_ sender: NSMenuItem) {
@@ -93,6 +107,33 @@ class CalendarWindowController : NSWindowController {
 
   @IBAction func cholToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
+    hcal.cholActive = sender.state == .on
+  }
+
+  @IBAction func calendarChosen(_ sender: NSSegmentedControl) {
+    print("Calendar Chosen")
+    print("\(sender.indexOfSelectedItem)")
+    hcal.calendarType = (sender.selectedSegment == 0 ? .gregorian : .julian)
+  }
+
+  @IBAction func holidayAreaChosen(_ sender: NSSegmentedControl) {
+    print("Holiday Area Chosen")
+    print("\(sender.indexOfSelectedItem)")
+    hcal.holidayArea = (sender.selectedSegment == 0 ? .diaspora : .israel)
+  }
+
+  @IBAction func parshaChosen(_ sender: NSButton) {
+    print("\(sender.state)")
+    hcal.parchaActive = sender.state == .on
+  }
+
+  @IBAction func omerChosen(_ sender: NSButton) {
+    print("\(sender.state)")
+    hcal.omerActive = sender.state == .on
+  }
+
+  @IBAction func cholChosen(_ sender: NSButton) {
+    print("\(sender.state)")
     hcal.cholActive = sender.state == .on
   }
 
