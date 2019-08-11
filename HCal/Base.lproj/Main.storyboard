@@ -830,16 +830,16 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="GTx-1P-uo1"/>
-                            <menuItem title="Israël" id="WBI-Jr-wfO">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="israelToggle:" target="6UQ-4Z-hbg" id="7A0-fp-reE"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Diaspora" id="aJp-L3-yeD">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="diasporaToggle:" target="6UQ-4Z-hbg" id="Jei-5G-YIq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Israël" id="WBI-Jr-wfO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="israelToggle:" target="6UQ-4Z-hbg" id="7A0-fp-reE"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="ggo-fH-rOS"/>
