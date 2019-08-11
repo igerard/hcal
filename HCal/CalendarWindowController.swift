@@ -43,6 +43,8 @@ class CalendarWindowController : NSWindowController {
       self.syncMenuItems()
     }
     syncMenuItems()
+    
+    window?.titleVisibility = .hidden
   }
 
   fileprivate func syncMenuItems() {

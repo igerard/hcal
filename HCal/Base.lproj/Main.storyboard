@@ -695,7 +695,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="372" width="867" height="503"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
-                        <toolbar key="toolbar" implicitIdentifier="D296231A-A583-401E-9BD0-29E104EC11D5" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="hmp-Tl-Kpd">
+                        <toolbar key="toolbar" implicitIdentifier="D296231A-A583-401E-9BD0-29E104EC11D5" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="hmp-Tl-Kpd">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="11223350-C0C7-47EB-9C24-BAE85088FF5E" label="Calendar" paletteLabel="Calendar" sizingBehavior="auto" id="adA-xF-VDf" userLabel="Calendar">
                                     <nil key="toolTip"/>
@@ -731,8 +731,6 @@
                                         </connections>
                                     </segmentedControl>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T0U-oB-GBB"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="a0f-Rm-z4W"/>
                                 <toolbarItem implicitItemIdentifier="4328D051-9076-499F-A59F-7A3E5153A1E0" label="Parsha" paletteLabel="Parsha" image="NSBookmarksTemplate" sizingBehavior="auto" id="zsb-K0-2tG">
                                     <nil key="toolTip"/>
                                     <button key="view" id="tfI-zS-X4U">
@@ -761,12 +759,12 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="DFDDBE22-9AB6-492A-8D70-9DA04D9E297B" label="Chol" paletteLabel="Chol" image="NSActionTemplate" sizingBehavior="auto" id="xbW-dD-Wse" userLabel="Chol">
+                                <toolbarItem implicitItemIdentifier="DFDDBE22-9AB6-492A-8D70-9DA04D9E297B" label="Chol" paletteLabel="Chol" image="NSHomeTemplate" sizingBehavior="auto" id="xbW-dD-Wse" userLabel="Chol">
                                     <nil key="toolTip"/>
                                     <button key="view" id="Tu3-NN-VIf">
                                         <rect key="frame" x="0.0" y="14" width="48" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2O1-PZ-6N7">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSHomeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2O1-PZ-6N7">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -775,14 +773,18 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="a0f-Rm-z4W"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T0U-oB-GBB"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="T0U-oB-GBB"/>
                                 <toolbarItem reference="adA-xF-VDf"/>
                                 <toolbarItem reference="gob-8x-keR"/>
                                 <toolbarItem reference="a0f-Rm-z4W"/>
                                 <toolbarItem reference="zsb-K0-2tG"/>
                                 <toolbarItem reference="xH7-pj-lm5"/>
                                 <toolbarItem reference="xbW-dD-Wse"/>
+                                <toolbarItem reference="T0U-oB-GBB"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -869,8 +871,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSBookmarksTemplate" width="17" height="18"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="Omer" width="32" height="24"/>
         <image name="Omer-alt" width="32" height="24"/>
     </resources>
