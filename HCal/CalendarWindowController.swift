@@ -44,6 +44,7 @@ class CalendarWindowController : NSWindowController {
     }
     syncMenuItems()
     
+    // set the toolbar at the top without title
     window?.titleVisibility = .hidden
   }
 
@@ -65,6 +66,7 @@ class CalendarWindowController : NSWindowController {
     cholToolBarItem?.state = hcal.cholActive ? .on : .off
   }
 
+  // Menu actions
   @IBAction func gregorianToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     julianMenuItem?.state = (sender.state == .on ? .off : .on)
@@ -112,31 +114,52 @@ class CalendarWindowController : NSWindowController {
     hcal.cholActive = sender.state == .on
   }
 
+  // Toolbar actions
   @IBAction func calendarChosen(_ sender: NSSegmentedControl) {
-    print("Calendar Chosen")
-    print("\(sender.indexOfSelectedItem)")
     hcal.calendarType = (sender.selectedSegment == 0 ? .gregorian : .julian)
   }
 
   @IBAction func holidayAreaChosen(_ sender: NSSegmentedControl) {
-    print("Holiday Area Chosen")
-    print("\(sender.indexOfSelectedItem)")
     hcal.holidayArea = (sender.selectedSegment == 0 ? .diaspora : .israel)
   }
 
   @IBAction func parshaChosen(_ sender: NSButton) {
-    print("\(sender.state)")
     hcal.parchaActive = sender.state == .on
   }
 
   @IBAction func omerChosen(_ sender: NSButton) {
-    print("\(sender.state)")
     hcal.omerActive = sender.state == .on
   }
 
   @IBAction func cholChosen(_ sender: NSButton) {
-    print("\(sender.state)")
     hcal.cholActive = sender.state == .on
   }
 
+  override func keyDown(with event: NSEvent) {
+    switch event.keyCode {
+    case 121:
+      withAnimation{
+        hcal.today()
+      }
+    case 123:
+      withAnimation{
+        hcal.decrementMonth()
+      }
+    case 124:
+      withAnimation{
+        hcal.incrementMonth()
+      }
+    case 125:
+      withAnimation{
+        hcal.year -= 1
+      }
+    case 126:
+      withAnimation{
+        hcal.year += 1
+      }
+    default:
+      print("\(event)")
+      break;
+    }
+  }
 }

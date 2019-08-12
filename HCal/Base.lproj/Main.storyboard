@@ -773,18 +773,30 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="a0f-Rm-z4W"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T0U-oB-GBB"/>
+                                <toolbarItem implicitItemIdentifier="C0FC1CF3-21DC-4FFA-988B-ADA213419DEC" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="x94-CS-DrI">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LTj-x4-MHV">
+                                        <rect key="frame" x="3" y="14" width="70" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="JCalendar" id="dCm-oI-K18">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="a0f-Rm-z4W"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="T0U-oB-GBB"/>
                                 <toolbarItem reference="adA-xF-VDf"/>
                                 <toolbarItem reference="gob-8x-keR"/>
+                                <toolbarItem reference="a0f-Rm-z4W"/>
+                                <toolbarItem reference="x94-CS-DrI"/>
                                 <toolbarItem reference="a0f-Rm-z4W"/>
                                 <toolbarItem reference="zsb-K0-2tG"/>
                                 <toolbarItem reference="xH7-pj-lm5"/>
                                 <toolbarItem reference="xbW-dD-Wse"/>
-                                <toolbarItem reference="T0U-oB-GBB"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
