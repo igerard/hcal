@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591B16123246E1E0057A9E5 /* MonthSelector.swift */; };
+		D5D8957323246883006CE60D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8957223246883006CE60D /* AppDelegate.swift */; };
+		D5D8957723246884006CE60D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957623246884006CE60D /* Assets.xcassets */; };
+		D5D8957A23246884006CE60D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957923246884006CE60D /* Preview Assets.xcassets */; };
+		D5D8957D23246884006CE60D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957B23246884006CE60D /* Main.storyboard */; };
+		D5D8958D232468C7006CE60D /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = D5D89589232468C7006CE60D /* Holiday.c */; };
+		D5D8958E232468C7006CE60D /* Converter.c in Sources */ = {isa = PBXBuildFile; fileRef = D5D8958B232468C7006CE60D /* Converter.c */; };
+		D5D8958F232468C7006CE60D /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = D5D8958C232468C7006CE60D /* Parsha.c */; };
+		D5D8959F23246905006CE60D /* CalendarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959023246904006CE60D /* CalendarType.swift */; };
+		D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959223246904006CE60D /* GridDateGenerator.swift */; };
+		D5D895A223246905006CE60D /* DayNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959323246904006CE60D /* DayNumber.swift */; };
+		D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959523246905006CE60D /* MainCalendarView.swift */; };
+		D5D895A723246905006CE60D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959923246905006CE60D /* DayView.swift */; };
+		D5D895A823246905006CE60D /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959A23246905006CE60D /* Theming.swift */; };
+		D5D895A923246905006CE60D /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959B23246905006CE60D /* UserDefault.swift */; };
+		D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959C23246905006CE60D /* CalendarWindowController.swift */; };
+		D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959E23246905006CE60D /* HolidayArea.swift */; };
+		D5D895B223246910006CE60D /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895AE2324690F006CE60D /* MonthGrid.swift */; };
+		D5D895BA23246D34006CE60D /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895B923246D33006CE60D /* Hcal.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D591B16123246E1E0057A9E5 /* MonthSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelector.swift; sourceTree = "<group>"; };
+		D5D8956F23246883006CE60D /* JCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5D8957223246883006CE60D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D5D8957623246884006CE60D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D5D8957923246884006CE60D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D5D8957C23246884006CE60D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D5D8957E23246884006CE60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5D8957F23246884006CE60D /* JCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JCal.entitlements; sourceTree = "<group>"; };
+		D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCal-Bridging-Header.h"; sourceTree = "<group>"; };
+		D5D89587232468C7006CE60D /* Parsha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parsha.h; path = ../../../Source/Parsha.h; sourceTree = "<group>"; };
+		D5D89588232468C7006CE60D /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Holiday.h; path = ../../../Source/Holiday.h; sourceTree = "<group>"; };
+		D5D89589232468C7006CE60D /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Holiday.c; path = ../../../Source/Holiday.c; sourceTree = "<group>"; };
+		D5D8958A232468C7006CE60D /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Converter.h; path = ../../../Source/Converter.h; sourceTree = "<group>"; };
+		D5D8958B232468C7006CE60D /* Converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Converter.c; path = ../../../Source/Converter.c; sourceTree = "<group>"; };
+		D5D8958C232468C7006CE60D /* Parsha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Parsha.c; path = ../../../Source/Parsha.c; sourceTree = "<group>"; };
+		D5D8959023246904006CE60D /* CalendarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarType.swift; sourceTree = "<group>"; };
+		D5D8959223246904006CE60D /* GridDateGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridDateGenerator.swift; sourceTree = "<group>"; };
+		D5D8959323246904006CE60D /* DayNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayNumber.swift; sourceTree = "<group>"; };
+		D5D8959523246905006CE60D /* MainCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
+		D5D8959923246905006CE60D /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		D5D8959A23246905006CE60D /* Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
+		D5D8959B23246905006CE60D /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		D5D8959C23246905006CE60D /* CalendarWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWindowController.swift; sourceTree = "<group>"; };
+		D5D8959E23246905006CE60D /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
+		D5D895AE2324690F006CE60D /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
+		D5D895B923246D33006CE60D /* Hcal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Hcal.swift; path = Engine/Hcal.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D5D8956C23246883006CE60D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D5D8956623246883006CE60D = {
+			isa = PBXGroup;
+			children = (
+				D5D8957123246883006CE60D /* JCal */,
+				D5D8957023246883006CE60D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D5D8957023246883006CE60D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5D8956F23246883006CE60D /* JCal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5D8957123246883006CE60D /* JCal */ = {
+			isa = PBXGroup;
+			children = (
+				D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */,
+				D5D8959B23246905006CE60D /* UserDefault.swift */,
+				D5D895852324689C006CE60D /* Engine */,
+				D5D895B923246D33006CE60D /* Hcal.swift */,
+				D5D8959A23246905006CE60D /* Theming.swift */,
+				D5D8957223246883006CE60D /* AppDelegate.swift */,
+				D5D8959023246904006CE60D /* CalendarType.swift */,
+				D5D8959C23246905006CE60D /* CalendarWindowController.swift */,
+				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
+				D5D8959323246904006CE60D /* DayNumber.swift */,
+				D5D8959923246905006CE60D /* DayView.swift */,
+				D5D8959223246904006CE60D /* GridDateGenerator.swift */,
+				D5D8959E23246905006CE60D /* HolidayArea.swift */,
+				D5D8959523246905006CE60D /* MainCalendarView.swift */,
+				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
+				D5D8957623246884006CE60D /* Assets.xcassets */,
+				D5D8957B23246884006CE60D /* Main.storyboard */,
+				D5D8957E23246884006CE60D /* Info.plist */,
+				D5D8957F23246884006CE60D /* JCal.entitlements */,
+				D5D8957823246884006CE60D /* Preview Content */,
+			);
+			path = JCal;
+			sourceTree = "<group>";
+		};
+		D5D8957823246884006CE60D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D5D8957923246884006CE60D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D5D895852324689C006CE60D /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				D5D8958B232468C7006CE60D /* Converter.c */,
+				D5D8958A232468C7006CE60D /* Converter.h */,
+				D5D89589232468C7006CE60D /* Holiday.c */,
+				D5D89588232468C7006CE60D /* Holiday.h */,
+				D5D8958C232468C7006CE60D /* Parsha.c */,
+				D5D89587232468C7006CE60D /* Parsha.h */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D5D8956E23246883006CE60D /* JCal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5D8958223246884006CE60D /* Build configuration list for PBXNativeTarget "JCal" */;
+			buildPhases = (
+				D5D8956B23246883006CE60D /* Sources */,
+				D5D8956C23246883006CE60D /* Frameworks */,
+				D5D8956D23246883006CE60D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JCal;
+			productName = JCal;
+			productReference = D5D8956F23246883006CE60D /* JCal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D5D8956723246883006CE60D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Gerard Iglesias";
+				TargetAttributes = {
+					D5D8956E23246883006CE60D = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = D5D8956A23246883006CE60D /* Build configuration list for PBXProject "JCal" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D5D8956623246883006CE60D;
+			productRefGroup = D5D8957023246883006CE60D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D5D8956E23246883006CE60D /* JCal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D5D8956D23246883006CE60D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5D8957D23246884006CE60D /* Main.storyboard in Resources */,
+				D5D8957A23246884006CE60D /* Preview Assets.xcassets in Resources */,
+				D5D8957723246884006CE60D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D5D8956B23246883006CE60D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5D8958E232468C7006CE60D /* Converter.c in Sources */,
+				D5D8958F232468C7006CE60D /* Parsha.c in Sources */,
+				D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */,
+				D5D895A923246905006CE60D /* UserDefault.swift in Sources */,
+				D5D895A723246905006CE60D /* DayView.swift in Sources */,
+				D5D895A223246905006CE60D /* DayNumber.swift in Sources */,
+				D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */,
+				D5D8957323246883006CE60D /* AppDelegate.swift in Sources */,
+				D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */,
+				D5D8958D232468C7006CE60D /* Holiday.c in Sources */,
+				D5D895A823246905006CE60D /* Theming.swift in Sources */,
+				D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */,
+				D5D8959F23246905006CE60D /* CalendarType.swift in Sources */,
+				D5D895BA23246D34006CE60D /* Hcal.swift in Sources */,
+				D5D895B223246910006CE60D /* MonthGrid.swift in Sources */,
+				D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D5D8957B23246884006CE60D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D8957C23246884006CE60D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D5D8958023246884006CE60D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D5D8958123246884006CE60D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		D5D8958323246884006CE60D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JCal/JCal.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
+				DEVELOPMENT_TEAM = JLW43DLDF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = JCal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.visual-science.JCal";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JCal/JCal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D5D8958423246884006CE60D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JCal/JCal.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
+				DEVELOPMENT_TEAM = JLW43DLDF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = JCal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.visual-science.JCal";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JCal/JCal-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D5D8956A23246883006CE60D /* Build configuration list for PBXProject "JCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5D8958023246884006CE60D /* Debug */,
+				D5D8958123246884006CE60D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5D8958223246884006CE60D /* Build configuration list for PBXNativeTarget "JCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5D8958323246884006CE60D /* Debug */,
+				D5D8958423246884006CE60D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D5D8956723246883006CE60D /* Project object */;
+}
