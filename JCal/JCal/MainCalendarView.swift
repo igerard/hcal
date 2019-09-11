@@ -20,10 +20,8 @@ struct MainCalendarView : View {
     })
     .touchBarItemPrincipal(true)
       .touchBarItemPresence(.required("test"))
-    .frame(minWidth: 900,
-           idealWidth: 1200,
-           minHeight: 700,
-           idealHeight: 900,
+    .frame(width: 900,
+           height: 800,
            alignment: .center)
 
   }

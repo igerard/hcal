@@ -32,7 +32,6 @@ struct DayView : View {
     ParshaP = hcal.parchaActive
     OmerP = hcal.omerActive
     CholP = hcal.cholActive
-    let goodHeight : CGFloat = (hcal.parchaActive || hcal.omerActive || hcal.cholActive ? 40.0 : 30.0)
     let hdate = SecularToHebrewConversion(Int32(date.year),
                                           Int32(date.month),
                                           Int32(date.day),
@@ -85,27 +84,9 @@ struct DayView : View {
       }
       .padding([.bottom, .leading], 10)
     }
-    .frame(minWidth: 120,
-           idealWidth: 120,
-           maxWidth: 200,
-           minHeight: goodHeight,
-           idealHeight: goodHeight,
-           maxHeight: 200,
-           alignment: .center)
-      .background(Theming.dayBackgroundColor(theme: theme,
-                                             accentFlag: isShabbat))
-      .padding(0)
-      .foregroundColor(Color.red)
-//      .onTapGesture {
-//        let hc = Calendar(identifier: .hebrew)
-//        let hd = hc.dateComponents([.year,.month,.day,.weekday,.weekOfMonth], from: self.date)
-//        print("\(hd.day!) \(hc.weekdaySymbols[hd.weekday!-1]) - \(hc.monthSymbols[hd.month!-1]) - \(hd.year!)")
-//
-//        var gc = Calendar(identifier: .gregorian)
-//        gc.locale = Locale.autoupdatingCurrent
-//        let gd = gc.dateComponents([.year,.month,.day,.weekday,.weekOfMonth], from: self.date)
-//        print("\(gd.day!) \(gc.weekdaySymbols[gd.weekday!-1]) - \(gc.monthSymbols[gd.month!-1]) - \(gd.year!)")
-//    }
+    .background(Theming.dayBackgroundColor(theme: theme, accentFlag: isShabbat))
+    .padding(0)
+    .foregroundColor(Color.red)
   }
 }
 
@@ -113,32 +94,9 @@ struct DayView : View {
 struct DayView_Previews : PreviewProvider {
   static let hcal = HCal()
   static var previews: some View {
-//    VStack(alignment: .center, spacing: 1) {
-//
-//      HStack(alignment: .center, spacing: 1) {
-//        ForEach((0..<5), id: \.self) {dayIndex in
-//          HStack{
-//            Spacer()
-//            Text("\(dayIndex)")
-//              .fontWeight(.bold)
-//            Spacer()
-//          }
-//        }
-//      }.frame(width: nil, height: nil, alignment: .center)
-//
-//      ForEach(0 ..< 5) { item in
-//        HStack(alignment: .center, spacing: 1) {
-//          ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-//            VStack(alignment: .center, spacing: 1) {
-    DayView(date: SimpleDate(calendarType: .gregorian, date: Date().addingTimeInterval(00000)))
-                //.frame(width: 120, height: 120, alignment: .leading)
+    DayView(date: SimpleDate(calendarType: .gregorian,
+                             date: Date().addingTimeInterval(00000)))
                 .environmentObject(hcal)
-//            }
-//          }
-//        }
-//      }
-//    }
-//    .frame(width: 620, height: 820, alignment: .leading)
   }
 }
 #endif

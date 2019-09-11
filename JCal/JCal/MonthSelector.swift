@@ -57,7 +57,6 @@ struct MonthSelector : View {
     }
     .padding(.top, 10)
     .padding([.bottom], 5)
-    .fixedSize(horizontal: false, vertical: true)
   }
 }
 
