@@ -22,21 +22,20 @@ extension Text {
 struct DayView : View {
   @Environment(\.colorScheme) var theme
   @EnvironmentObject var hcal: HCal
-  let date : Date
+  let date : SimpleDate
   let fontSize = Font.subheadline
   
   var body: some View {
-    let comps = HCal.calendar.dateComponents([.month, .year, .day], from: date)
-    let inMonth = comps.month == hcal.month
-    let isToday = comps == HCal.calendar.dateComponents([.year, .month, .day], from: Date())
-    let isShabbat = HCal.calendar.dateComponents([.weekday], from: date).weekday == .some(7)
+    let inMonth = date.month == hcal.month
+    let isToday = hcal.isToday(date: date)
+    let isShabbat = date.weekday == 7
     ParshaP = hcal.parchaActive
     OmerP = hcal.omerActive
     CholP = hcal.cholActive
     let goodHeight : CGFloat = (hcal.parchaActive || hcal.omerActive || hcal.cholActive ? 40.0 : 30.0)
-    let hdate = SecularToHebrewConversion(Int32(comps.year!),
-                                          Int32(comps.month!),
-                                          Int32(comps.day!),
+    let hdate = SecularToHebrewConversion(Int32(date.year),
+                                          Int32(date.month),
+                                          Int32(date.day),
                                           hcal.calendarType == .julian)
     let holiday = FindHoliday(hdate.month,
                               hdate.day,
@@ -50,7 +49,7 @@ struct DayView : View {
     return VStack {
       HStack {
         Spacer()
-        DayNumber(value: comps.day!, isActive: inMonth, visibleDisk: isToday)
+        DayNumber(value: date.day, isActive: inMonth, visibleDisk: isToday)
       }
       .padding([.top, .trailing], 5)
 
@@ -97,16 +96,16 @@ struct DayView : View {
                                              accentFlag: isShabbat))
       .padding(0)
       .foregroundColor(Color.red)
-      .onTapGesture {
-        let hc = Calendar(identifier: .hebrew)
-        let hd = hc.dateComponents([.year,.month,.day,.weekday,.weekOfMonth], from: self.date)
-        print("\(hd.day!) \(hc.weekdaySymbols[hd.weekday!-1]) - \(hc.monthSymbols[hd.month!-1]) - \(hd.year!)")
-
-        var gc = Calendar(identifier: .gregorian)
-        gc.locale = Locale.autoupdatingCurrent
-        let gd = gc.dateComponents([.year,.month,.day,.weekday,.weekOfMonth], from: self.date)
-        print("\(gd.day!) \(gc.weekdaySymbols[gd.weekday!-1]) - \(gc.monthSymbols[gd.month!-1]) - \(gd.year!)")
-    }
+//      .onTapGesture {
+//        let hc = Calendar(identifier: .hebrew)
+//        let hd = hc.dateComponents([.year,.month,.day,.weekday,.weekOfMonth], from: self.date)
+//        print("\(hd.day!) \(hc.weekdaySymbols[hd.weekday!-1]) - \(hc.monthSymbols[hd.month!-1]) - \(hd.year!)")
+//
+//        var gc = Calendar(identifier: .gregorian)
+//        gc.locale = Locale.autoupdatingCurrent
+//        let gd = gc.dateComponents([.year,.month,.day,.weekday,.weekOfMonth], from: self.date)
+//        print("\(gd.day!) \(gc.weekdaySymbols[gd.weekday!-1]) - \(gc.monthSymbols[gd.month!-1]) - \(gd.year!)")
+//    }
   }
 }
 
@@ -131,7 +130,7 @@ struct DayView_Previews : PreviewProvider {
 //        HStack(alignment: .center, spacing: 1) {
 //          ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
 //            VStack(alignment: .center, spacing: 1) {
-    DayView(date: Date().addingTimeInterval(00000))
+    DayView(date: SimpleDate(calendarType: .gregorian, date: Date().addingTimeInterval(00000)))
                 //.frame(width: 120, height: 120, alignment: .leading)
                 .environmentObject(hcal)
 //            }

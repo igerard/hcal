@@ -26,6 +26,7 @@
 		D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959E23246905006CE60D /* HolidayArea.swift */; };
 		D5D895B223246910006CE60D /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895AE2324690F006CE60D /* MonthGrid.swift */; };
 		D5D895BA23246D34006CE60D /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895B923246D33006CE60D /* Hcal.swift */; };
+		D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E329B623288CA60029FB37 /* SimpleDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		D5D8959E23246905006CE60D /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
 		D5D895AE2324690F006CE60D /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
 		D5D895B923246D33006CE60D /* Hcal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Hcal.swift; path = Engine/Hcal.swift; sourceTree = "<group>"; };
+		D5E329B623288CA60029FB37 /* SimpleDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				D5D8959B23246905006CE60D /* UserDefault.swift */,
 				D5D895852324689C006CE60D /* Engine */,
 				D5D895B923246D33006CE60D /* Hcal.swift */,
+				D5E329B623288CA60029FB37 /* SimpleDate.swift */,
 				D5D8959A23246905006CE60D /* Theming.swift */,
 				D5D8957223246883006CE60D /* AppDelegate.swift */,
 				D5D8959023246904006CE60D /* CalendarType.swift */,
@@ -213,6 +216,7 @@
 				D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */,
 				D5D8957323246883006CE60D /* AppDelegate.swift in Sources */,
 				D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */,
+				D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */,
 				D5D8958D232468C7006CE60D /* Holiday.c in Sources */,
 				D5D895A823246905006CE60D /* Theming.swift in Sources */,
 				D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */,

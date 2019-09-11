@@ -14,7 +14,7 @@ struct MonthGrid : View {
   
   var body: some View {
 
-    let generator = GridDateGenerator(firstDay: 1, year: hcal.year, month: hcal.month)
+    let generator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
 
     return VStack(alignment: .center, spacing: 1){
       
@@ -35,7 +35,7 @@ struct MonthGrid : View {
         ForEach((0...6), id: \.self) {j in
           VStack(alignment: .center, spacing: 1) {
             ForEach((0...5), id: \.self){i in
-              DayView(date: generator?.dateAt(i, j) ?? Date())
+              DayView(date: generator?.dateAt(i, j) ?? SimpleDate(calendarType: self.hcal.calendarType, absolute: 0))
             }
           }
         }

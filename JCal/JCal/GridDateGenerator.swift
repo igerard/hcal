@@ -8,37 +8,28 @@
 import Foundation
 
 final class GridDateGenerator {
+  let date : SimpleDate
+  // what day start the week ? 1 for Sunday
   let firstDay : Int
-  let year : Int
-  let month : Int
   let calendar = Locale.current.calendar
-  let date : Date
   let dayIndex : Int
   
-  init?(firstDay: Int, year: Int, month: Int) {
+  init?(firstDay: Int, cType: CalendarType, year: Int, month: Int) {
     self.firstDay = firstDay
-    self.year = year
-    self.month = month
-    let comps = DateComponents(calendar: calendar, year: year, month: month, day: 1, hour: 12)
-    if let d = self.calendar.date(from: comps) {
-      self.date = d
-    } else {
-      return nil
-    }
-    self.dayIndex = ((calendar.component(.weekday, from: self.date) - firstDay) + 7) % 7
+    date = SimpleDate(calendarType: cType, year: year, month: month, day: 1)
+    self.dayIndex = (date.weekday - firstDay) % 7
   }
   
-  func dateAt(_ i : Int, _ j : Int) -> Date? {
+  func dateAt(_ i : Int, _ j : Int) -> SimpleDate? {
     guard (0..<7).contains(j) else {
       return nil
     }
-    return calendar.date(byAdding: .day, value: 7*i+j - dayIndex, to: date)
+    return SimpleDate(calendarType: date.type, absolute:date.absolute + 7*i+j - dayIndex)
   }
   
-  func format(date: Date) -> String {
+  func format(date: SimpleDate) -> String {
     let dash = "-"
     let emptyString = ""
-    let comps = calendar.dateComponents([.day, .month, .year, .weekday], from: date)
-    return "\(calendar.weekdaySymbols[comps.weekday!-1]) \(comps.day!) \(calendar.monthSymbols[comps.month!-1]) \(comps.year!) \(comps.month == month ? dash : emptyString)"
+    return "\(calendar.weekdaySymbols[date.weekday-1]) \(date.day) \(calendar.monthSymbols[date.month-1]) \(date.year) \(date.month == self.date.month ? dash : emptyString)"
   }
 }

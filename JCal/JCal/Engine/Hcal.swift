@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+
 final class HCal : ObservableObject {
   let objectWillChange = ObservableObjectPublisher()
   
@@ -23,7 +24,22 @@ final class HCal : ObservableObject {
   @UserDefault("CalendarType", defaultValue: CalendarType.gregorian)
   var calendarType : CalendarType {
     didSet {
+      switch oldValue {
+      case .gregorian:
+        let oldDate = SimpleDate(calendarType: .gregorian, year: year, month: month, day: day)
+        let newDate = SimpleDate(calendarType: .julian, absolute: oldDate.absolute)
+        year = newDate.year
+        month = newDate.month
+        day = newDate.day
+      case .julian:
+        let oldDate = SimpleDate(calendarType: .julian, year: year, month: month, day: day)
+        let newDate = SimpleDate(calendarType: .gregorian, absolute: oldDate.absolute)
+        year = newDate.year
+        month = newDate.month
+        day = newDate.day
+      }
       objectWillChange.send()
+      //      toThisYearAndMonth()
     }
   }
   @UserDefault("ParchaActive", defaultValue: false)
@@ -45,12 +61,15 @@ final class HCal : ObservableObject {
     }
   }
   
-  var year : Int = thisYear() ?? 2000 {
+  @UserDefault("ThisYear", defaultValue: SimpleDate(calendarType: .gregorian, date: Date()).year)
+  var year : Int {
     didSet {
       objectWillChange.send()
     }
   }
-  var month : Int = thisMonth() ?? 1 {
+  
+  @UserDefault("ThisMonth", defaultValue: SimpleDate(calendarType: .gregorian, date: Date()).month)
+  var month : Int {
     didSet {
       if month < 1 {
         month = 1
@@ -61,7 +80,7 @@ final class HCal : ObservableObject {
       objectWillChange.send()
     }
   }
-  var day : Int = HCal.calendar.dateComponents([.day], from: Date()).day ?? 1 {
+  var day : Int = 1 {
     didSet {
       objectWillChange.send()
     }
@@ -69,7 +88,7 @@ final class HCal : ObservableObject {
   
   var monthName : String {
     HCal.calendar.locale = Locale.autoupdatingCurrent
-    return HCal.calendar.monthSymbols[month-1]
+    return HCal.calendar.monthSymbols[Int(month-1)]
   }
   
   enum HcalType {
@@ -104,8 +123,8 @@ final class HCal : ObservableObject {
                                   in: .month,
                                   for: HCal.calendar.date(from:
                                     DateComponents(calendar: HCal.calendar,
-                                                   year: year,
-                                                   month: month,
+                                                   year: Int(year),
+                                                   month: Int(month),
                                                    day: 1,
                                                    hour: 12))!)
       let hdatel = SecularToHebrewConversion(Int32(year),
@@ -130,11 +149,6 @@ final class HCal : ObservableObject {
     }
   }
   
-  func toThisYearAndMonth() {
-    year = HCal.thisYear() ?? 2000
-    month = HCal.thisMonth() ?? 1
-  }
-  
   func decrementMonth() {
     if month == 1 {
       month = 12
@@ -145,16 +159,28 @@ final class HCal : ObservableObject {
     }
   }
   
-  static func thisYear() -> Int? {
-    return HCal.calendar.dateComponents([.year], from: Date()).year
+  func thisYear() -> Int {
+    return SimpleDate(calendarType: calendarType, date: Date()).year
   }
   
-  static func thisMonth() -> Int? {
-    return HCal.calendar.dateComponents([.month], from: Date()).month
+  func thisMonth() -> Int {
+    return SimpleDate(calendarType: calendarType, date: Date()).month
   }
   
-  static func isToday(date: Date) -> Bool {
-    HCal.calendar.dateComponents([.year, .month, .day], from: date) == HCal.calendar.dateComponents([.year, .month, .day], from: Date())
+  func toThisYearAndMonth() {
+    let date = SimpleDate(calendarType: calendarType, date: Date())
+    year = date.year
+    month = date.month
+    day = 1
+  }
+  
+  func today() -> SimpleDate {
+    return SimpleDate(calendarType: self.calendarType, date: Date())
+  }
+  
+  func isToday(date: SimpleDate) -> Bool {
+    let today = SimpleDate(calendarType: calendarType, date: Date())
+    return date == today
   }
   
 }
