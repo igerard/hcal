@@ -30,25 +30,19 @@ struct MonthSelector : View {
         .allowsTightening(true)
       
       Button(action: {
-        withAnimation(.easeOut) {
-          self.hcal.decrementMonth()
-        }
+        self.hcal.decrementMonth()
       }) {
         Text("⇦")
       }
       .focusable(false)
       Button(action: {
-        withAnimation(.easeOut) {
-          self.hcal.toThisYearAndMonth()
-        }
+        self.hcal.toThisYearAndMonth()
       }) {
         Text("♢")
       }
       .focusable(false)
       Button(action: {
-        withAnimation(.easeOut) {
           self.hcal.incrementMonth()
-        }
       }) {
         Text("⇨")
       }

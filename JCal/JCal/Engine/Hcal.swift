@@ -11,6 +11,7 @@ import Combine
 
 final class HCal : ObservableObject {
   let objectWillChange = ObservableObjectPublisher()
+  let calendarTypeWillChange = PassthroughSubject<CalendarType,Never>()
   
   static var calendar = Calendar(identifier: .gregorian)
   

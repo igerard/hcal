@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D52059EA232A236E003B5882 /* CalTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52059E9232A236E003B5882 /* CalTouchBar.swift */; };
 		D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591B16123246E1E0057A9E5 /* MonthSelector.swift */; };
 		D5D8957323246883006CE60D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8957223246883006CE60D /* AppDelegate.swift */; };
 		D5D8957723246884006CE60D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957623246884006CE60D /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D52059E9232A236E003B5882 /* CalTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalTouchBar.swift; sourceTree = "<group>"; };
 		D591B16123246E1E0057A9E5 /* MonthSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelector.swift; sourceTree = "<group>"; };
 		D5D8956F23246883006CE60D /* JCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D8957223246883006CE60D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				D5D8959223246904006CE60D /* GridDateGenerator.swift */,
 				D5D8959E23246905006CE60D /* HolidayArea.swift */,
 				D5D8959523246905006CE60D /* MainCalendarView.swift */,
+				D52059E9232A236E003B5882 /* CalTouchBar.swift */,
 				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
 				D5D8957623246884006CE60D /* Assets.xcassets */,
 				D5D8957B23246884006CE60D /* Main.storyboard */,
@@ -223,6 +226,7 @@
 				D5D8959F23246905006CE60D /* CalendarType.swift in Sources */,
 				D5D895BA23246D34006CE60D /* Hcal.swift in Sources */,
 				D5D895B223246910006CE60D /* MonthGrid.swift in Sources */,
+				D52059EA232A236E003B5882 /* CalTouchBar.swift in Sources */,
 				D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

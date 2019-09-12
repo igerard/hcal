@@ -23,13 +23,13 @@ class CalendarWindowController : NSWindowController {
   @IBOutlet var parshaMenuItem : NSMenuItem?
   @IBOutlet var omerMenuItem : NSMenuItem?
   @IBOutlet var cholMenuItem : NSMenuItem?
-
+  
   @IBOutlet var calendarToolBarItem : NSSegmentedControl?
   @IBOutlet var holidayAreaToolBarItem : NSSegmentedControl?
   @IBOutlet var parshaToolBarItem : NSButton?
   @IBOutlet var omerToolBarItem : NSButton?
   @IBOutlet var cholToolBarItem : NSButton?
-
+  
   override func windowDidLoad() {
     window?.contentView = NSHostingView(rootView:MainCalendarView().environmentObject(hcal))
     
@@ -65,14 +65,14 @@ class CalendarWindowController : NSWindowController {
     omerToolBarItem?.state = hcal.omerActive ? .on : .off
     cholToolBarItem?.state = hcal.cholActive ? .on : .off
   }
-
+  
   // Menu actions
   @IBAction func gregorianToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     julianMenuItem?.state = (sender.state == .on ? .off : .on)
     hcal.calendarType = (sender.state == .on ? .gregorian : .julian)
   }
-
+  
   @IBAction func resetOptions(_ sender: NSMenuItem) {
     hcal.holidayArea = .diaspora
     hcal.calendarType = .gregorian
@@ -80,83 +80,73 @@ class CalendarWindowController : NSWindowController {
     hcal.omerActive = false
     hcal.cholActive = false
   }
-
+  
   @IBAction func julianToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     gregorianMenuItem?.state = (sender.state == .on ? .off : .on)
     hcal.calendarType = (sender.state == .on ? .julian : .gregorian)
   }
-
+  
   @IBAction func israelToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     diasporaMenuItem?.state = (sender.state == .on ? .off : .on)
     hcal.holidayArea = (sender.state == .on ? .israel : .diaspora)
   }
-
+  
   @IBAction func diasporaToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     israelMenuItem?.state = (sender.state == .on ? .off : .on)
     hcal.holidayArea = (sender.state == .on ? .diaspora : .israel)
   }
-
+  
   @IBAction func parshaToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     hcal.parchaActive = sender.state == .on
   }
-
+  
   @IBAction func omerToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     hcal.omerActive = sender.state == .on
   }
-
+  
   @IBAction func cholToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     hcal.cholActive = sender.state == .on
   }
-
+  
   // Toolbar actions
   @IBAction func calendarChosen(_ sender: NSSegmentedControl) {
     hcal.calendarType = (sender.selectedSegment == 0 ? .gregorian : .julian)
   }
-
+  
   @IBAction func holidayAreaChosen(_ sender: NSSegmentedControl) {
     hcal.holidayArea = (sender.selectedSegment == 0 ? .diaspora : .israel)
   }
-
+  
   @IBAction func parshaChosen(_ sender: NSButton) {
     hcal.parchaActive = sender.state == .on
   }
-
+  
   @IBAction func omerChosen(_ sender: NSButton) {
     hcal.omerActive = sender.state == .on
   }
-
+  
   @IBAction func cholChosen(_ sender: NSButton) {
     hcal.cholActive = sender.state == .on
   }
-
+  
   override func keyDown(with event: NSEvent) {
     switch event.keyCode {
     case 121:
-      withAnimation{
-        hcal.toThisYearAndMonth()
-      }
+      hcal.toThisYearAndMonth()
     case 123:
-      withAnimation{
-        hcal.decrementMonth()
-      }
+      hcal.decrementMonth()
     case 124:
-      withAnimation{
-        hcal.incrementMonth()
-      }
+      hcal.incrementMonth()
     case 125:
-      withAnimation{
-        hcal.year -= 1
-      }
+      hcal.year -= 1
     case 126:
-      withAnimation{
-        hcal.year += 1
-      }
+      hcal.year += 1
     default:
       print("\(event)")
       break;

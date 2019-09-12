@@ -44,7 +44,6 @@ struct DayView : View {
                               hcal.holidayArea == .israel,
                               hdate.hebrew_day_number,
                               hdate.year)
-        
     return VStack {
       HStack {
         Spacer()
