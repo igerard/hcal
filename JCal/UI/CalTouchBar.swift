@@ -12,7 +12,7 @@ struct CalTouchBar: View {
   @EnvironmentObject var hcal: HCal
   
   var body: some View {
-    HStack {
+    HStack(alignment: .center, spacing: 30) {
       Spacer()
       HStack{
         Button(action: {
@@ -62,7 +62,6 @@ struct CalTouchBar: View {
           Text("⇨")
         })
       }
-      Spacer()
     }
   }
 }

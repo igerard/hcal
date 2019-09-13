@@ -8,30 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		D52059EA232A236E003B5882 /* CalTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52059E9232A236E003B5882 /* CalTouchBar.swift */; };
+		D5205A7A232BA902003B5882 /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5205A78232BA902003B5882 /* Hcal.swift */; };
+		D5205A7E232BAACE003B5882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5205A7D232BAACE003B5882 /* UserDefault.swift */; };
+		D5205A85232BABF9003B5882 /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A7F232BABF8003B5882 /* Holiday.c */; };
+		D5205A86232BABF9003B5882 /* Converter.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A81232BABF8003B5882 /* Converter.c */; };
+		D5205A87232BABF9003B5882 /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A83232BABF8003B5882 /* Parsha.c */; };
 		D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591B16123246E1E0057A9E5 /* MonthSelector.swift */; };
 		D5D8957323246883006CE60D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8957223246883006CE60D /* AppDelegate.swift */; };
 		D5D8957723246884006CE60D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957623246884006CE60D /* Assets.xcassets */; };
 		D5D8957A23246884006CE60D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957923246884006CE60D /* Preview Assets.xcassets */; };
 		D5D8957D23246884006CE60D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957B23246884006CE60D /* Main.storyboard */; };
-		D5D8958D232468C7006CE60D /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = D5D89589232468C7006CE60D /* Holiday.c */; };
-		D5D8958E232468C7006CE60D /* Converter.c in Sources */ = {isa = PBXBuildFile; fileRef = D5D8958B232468C7006CE60D /* Converter.c */; };
-		D5D8958F232468C7006CE60D /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = D5D8958C232468C7006CE60D /* Parsha.c */; };
 		D5D8959F23246905006CE60D /* CalendarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959023246904006CE60D /* CalendarType.swift */; };
 		D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959223246904006CE60D /* GridDateGenerator.swift */; };
 		D5D895A223246905006CE60D /* DayNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959323246904006CE60D /* DayNumber.swift */; };
 		D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959523246905006CE60D /* MainCalendarView.swift */; };
 		D5D895A723246905006CE60D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959923246905006CE60D /* DayView.swift */; };
 		D5D895A823246905006CE60D /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959A23246905006CE60D /* Theming.swift */; };
-		D5D895A923246905006CE60D /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959B23246905006CE60D /* UserDefault.swift */; };
 		D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959C23246905006CE60D /* CalendarWindowController.swift */; };
 		D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959E23246905006CE60D /* HolidayArea.swift */; };
 		D5D895B223246910006CE60D /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895AE2324690F006CE60D /* MonthGrid.swift */; };
-		D5D895BA23246D34006CE60D /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895B923246D33006CE60D /* Hcal.swift */; };
 		D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E329B623288CA60029FB37 /* SimpleDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D52059E9232A236E003B5882 /* CalTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalTouchBar.swift; sourceTree = "<group>"; };
+		D5205A78232BA902003B5882 /* Hcal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hcal.swift; sourceTree = "<group>"; };
+		D5205A7D232BAACE003B5882 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		D5205A7F232BABF8003B5882 /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Holiday.c; sourceTree = "<group>"; };
+		D5205A80232BABF8003B5882 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
+		D5205A81232BABF8003B5882 /* Converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Converter.c; sourceTree = "<group>"; };
+		D5205A82232BABF8003B5882 /* Parsha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parsha.h; sourceTree = "<group>"; };
+		D5205A83232BABF8003B5882 /* Parsha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Parsha.c; sourceTree = "<group>"; };
+		D5205A84232BABF8003B5882 /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holiday.h; sourceTree = "<group>"; };
 		D591B16123246E1E0057A9E5 /* MonthSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelector.swift; sourceTree = "<group>"; };
 		D5D8956F23246883006CE60D /* JCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D8957223246883006CE60D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,23 +49,15 @@
 		D5D8957E23246884006CE60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5D8957F23246884006CE60D /* JCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JCal.entitlements; sourceTree = "<group>"; };
 		D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCal-Bridging-Header.h"; sourceTree = "<group>"; };
-		D5D89587232468C7006CE60D /* Parsha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parsha.h; path = ../../../Source/Parsha.h; sourceTree = "<group>"; };
-		D5D89588232468C7006CE60D /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Holiday.h; path = ../../../Source/Holiday.h; sourceTree = "<group>"; };
-		D5D89589232468C7006CE60D /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Holiday.c; path = ../../../Source/Holiday.c; sourceTree = "<group>"; };
-		D5D8958A232468C7006CE60D /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Converter.h; path = ../../../Source/Converter.h; sourceTree = "<group>"; };
-		D5D8958B232468C7006CE60D /* Converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Converter.c; path = ../../../Source/Converter.c; sourceTree = "<group>"; };
-		D5D8958C232468C7006CE60D /* Parsha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Parsha.c; path = ../../../Source/Parsha.c; sourceTree = "<group>"; };
 		D5D8959023246904006CE60D /* CalendarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarType.swift; sourceTree = "<group>"; };
 		D5D8959223246904006CE60D /* GridDateGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridDateGenerator.swift; sourceTree = "<group>"; };
 		D5D8959323246904006CE60D /* DayNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayNumber.swift; sourceTree = "<group>"; };
 		D5D8959523246905006CE60D /* MainCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
 		D5D8959923246905006CE60D /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D5D8959A23246905006CE60D /* Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
-		D5D8959B23246905006CE60D /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		D5D8959C23246905006CE60D /* CalendarWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWindowController.swift; sourceTree = "<group>"; };
 		D5D8959E23246905006CE60D /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
 		D5D895AE2324690F006CE60D /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
-		D5D895B923246D33006CE60D /* Hcal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Hcal.swift; path = Engine/Hcal.swift; sourceTree = "<group>"; };
 		D5E329B623288CA60029FB37 /* SimpleDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +72,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D5205A6D232BA8B2003B5882 /* C-Engine */ = {
+			isa = PBXGroup;
+			children = (
+				D5205A81232BABF8003B5882 /* Converter.c */,
+				D5205A80232BABF8003B5882 /* Converter.h */,
+				D5205A7F232BABF8003B5882 /* Holiday.c */,
+				D5205A84232BABF8003B5882 /* Holiday.h */,
+				D5205A83232BABF8003B5882 /* Parsha.c */,
+				D5205A82232BABF8003B5882 /* Parsha.h */,
+			);
+			path = "C-Engine";
+			sourceTree = "<group>";
+		};
+		D5205A7B232BA91B003B5882 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5205A7D232BAACE003B5882 /* UserDefault.swift */,
+				D5D8959E23246905006CE60D /* HolidayArea.swift */,
+				D5D8959023246904006CE60D /* CalendarType.swift */,
+				D5E329B623288CA60029FB37 /* SimpleDate.swift */,
+				D5D8959223246904006CE60D /* GridDateGenerator.swift */,
+				D5205A78232BA902003B5882 /* Hcal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D5205A7C232BA965003B5882 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D5D8959A23246905006CE60D /* Theming.swift */,
+				D5D8959323246904006CE60D /* DayNumber.swift */,
+				D5D8959923246905006CE60D /* DayView.swift */,
+				D52059E9232A236E003B5882 /* CalTouchBar.swift */,
+				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
+				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
+				D5D8959523246905006CE60D /* MainCalendarView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		D5D8956623246883006CE60D = {
 			isa = PBXGroup;
 			children = (
@@ -92,22 +132,11 @@
 			isa = PBXGroup;
 			children = (
 				D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */,
-				D5D8959B23246905006CE60D /* UserDefault.swift */,
-				D5D895852324689C006CE60D /* Engine */,
-				D5D895B923246D33006CE60D /* Hcal.swift */,
-				D5E329B623288CA60029FB37 /* SimpleDate.swift */,
-				D5D8959A23246905006CE60D /* Theming.swift */,
+				D5205A6D232BA8B2003B5882 /* C-Engine */,
+				D5205A7B232BA91B003B5882 /* Model */,
+				D5205A7C232BA965003B5882 /* UI */,
 				D5D8957223246883006CE60D /* AppDelegate.swift */,
-				D5D8959023246904006CE60D /* CalendarType.swift */,
 				D5D8959C23246905006CE60D /* CalendarWindowController.swift */,
-				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
-				D5D8959323246904006CE60D /* DayNumber.swift */,
-				D5D8959923246905006CE60D /* DayView.swift */,
-				D5D8959223246904006CE60D /* GridDateGenerator.swift */,
-				D5D8959E23246905006CE60D /* HolidayArea.swift */,
-				D5D8959523246905006CE60D /* MainCalendarView.swift */,
-				D52059E9232A236E003B5882 /* CalTouchBar.swift */,
-				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
 				D5D8957623246884006CE60D /* Assets.xcassets */,
 				D5D8957B23246884006CE60D /* Main.storyboard */,
 				D5D8957E23246884006CE60D /* Info.plist */,
@@ -123,19 +152,6 @@
 				D5D8957923246884006CE60D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D5D895852324689C006CE60D /* Engine */ = {
-			isa = PBXGroup;
-			children = (
-				D5D8958B232468C7006CE60D /* Converter.c */,
-				D5D8958A232468C7006CE60D /* Converter.h */,
-				D5D89589232468C7006CE60D /* Holiday.c */,
-				D5D89588232468C7006CE60D /* Holiday.h */,
-				D5D8958C232468C7006CE60D /* Parsha.c */,
-				D5D89587232468C7006CE60D /* Parsha.h */,
-			);
-			path = Engine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,22 +226,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D8958E232468C7006CE60D /* Converter.c in Sources */,
-				D5D8958F232468C7006CE60D /* Parsha.c in Sources */,
 				D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */,
-				D5D895A923246905006CE60D /* UserDefault.swift in Sources */,
 				D5D895A723246905006CE60D /* DayView.swift in Sources */,
 				D5D895A223246905006CE60D /* DayNumber.swift in Sources */,
 				D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */,
+				D5205A87232BABF9003B5882 /* Parsha.c in Sources */,
+				D5205A85232BABF9003B5882 /* Holiday.c in Sources */,
 				D5D8957323246883006CE60D /* AppDelegate.swift in Sources */,
 				D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */,
 				D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */,
-				D5D8958D232468C7006CE60D /* Holiday.c in Sources */,
 				D5D895A823246905006CE60D /* Theming.swift in Sources */,
 				D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */,
 				D5D8959F23246905006CE60D /* CalendarType.swift in Sources */,
-				D5D895BA23246D34006CE60D /* Hcal.swift in Sources */,
 				D5D895B223246910006CE60D /* MonthGrid.swift in Sources */,
+				D5205A7E232BAACE003B5882 /* UserDefault.swift in Sources */,
+				D5205A86232BABF9003B5882 /* Converter.c in Sources */,
+				D5205A7A232BA902003B5882 /* Hcal.swift in Sources */,
 				D52059EA232A236E003B5882 /* CalTouchBar.swift in Sources */,
 				D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */,
 			);
