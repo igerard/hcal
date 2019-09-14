@@ -23,7 +23,6 @@ struct DayView : View {
   @Environment(\.colorScheme) var theme
   @EnvironmentObject var hcal: HCal
   let date : SimpleDate
-  let fontSize = Font.subheadline
   
   var body: some View {
     let inMonth = date.month == hcal.month

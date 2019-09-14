@@ -49,17 +49,17 @@ struct CalTouchBar: View {
         Button(action: {
           self.hcal.decrementMonth()
         }, label: {
-          Text("⇦")
+          Text("Previous")
         })
         Button(action: {
           self.hcal.toThisYearAndMonth()
         }, label: {
-          Text("♢")
+          Text("Today")
         })
         Button(action: {
           self.hcal.incrementMonth()
         }, label: {
-          Text("⇨")
+          Text("Next")
         })
       }
     }
