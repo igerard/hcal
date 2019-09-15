@@ -89,12 +89,19 @@ struct DayView : View {
 }
 
 #if DEBUG
+var hcal : HCal = {
+  let h = HCal()
+  h.year = 2010
+  h.month = 4
+  return h
+}()
+
 struct DayView_Previews : PreviewProvider {
-  static let hcal = HCal()
   static var previews: some View {
     DayView(date: SimpleDate(calendarType: .gregorian,
-                             date: Date().addingTimeInterval(00000)))
+                             year: 2020, month: 4, day: 16))
                 .environmentObject(hcal)
+      .frame(width: 100, height: 80)
   }
 }
 #endif
