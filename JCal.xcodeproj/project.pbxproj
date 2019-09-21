@@ -82,7 +82,8 @@
 				D5205A83232BABF8003B5882 /* Parsha.c */,
 				D5205A82232BABF8003B5882 /* Parsha.h */,
 			);
-			path = "C-Engine";
+			name = "C-Engine";
+			path = "../C-Engine";
 			sourceTree = "<group>";
 		};
 		D5205A7B232BA91B003B5882 /* Model */ = {
