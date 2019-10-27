@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,21 +675,110 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="HCal" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-115" y="-208"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="800" height="277"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="7D612035-371D-4A86-A616-FB9C38C83F4D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="ZGv-KQ-ZSS">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="11223350-C0C7-47EB-9C24-BAE85088FF5E" label="Calendar" paletteLabel="Calendar" sizingBehavior="auto" id="AEG-HC-s3k" userLabel="Calendar">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="XV5-nL-89j">
+                                        <rect key="frame" x="0.0" y="14" width="152" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="cM3-ZU-QRZ">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Gregorian"/>
+                                                <segment label="Julian" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4C85DCE4-06C7-405C-8C60-37F10B45E21F" label="Area" paletteLabel="Area" sizingBehavior="auto" id="b3K-ce-TEB">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="Pnw-UW-9Ha">
+                                        <rect key="frame" x="0.0" y="14" width="143" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="iUT-PT-Hmv">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Diaspora"/>
+                                                <segment label="Israel" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4328D051-9076-499F-A59F-7A3E5153A1E0" label="Parsha" paletteLabel="Parsha" sizingBehavior="auto" id="RmQ-4n-jNE">
+                                    <nil key="toolTip"/>
+                                    <button key="view" id="pOq-gm-fRL">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" title="📖" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="J0E-um-J3Y">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="B98AB175-14ED-4553-AC2E-A912EF01173D" label="Omer" paletteLabel="Omer" sizingBehavior="auto" id="MdB-eG-Dl3" userLabel="Omer">
+                                    <nil key="toolTip"/>
+                                    <button key="view" id="7xx-8E-avj">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" title="🔥" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="NG7-NV-dqL">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="DFDDBE22-9AB6-492A-8D70-9DA04D9E297B" label="Chol" paletteLabel="Chol" sizingBehavior="auto" id="th6-eB-V7B" userLabel="Chol">
+                                    <nil key="toolTip"/>
+                                    <button key="view" id="sbx-Pc-Jc3">
+                                        <rect key="frame" x="0.0" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="square" title="⛺️" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="tAv-Le-yYy">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1E5-EJ-XJs"/>
+                                <toolbarItem implicitItemIdentifier="C0FC1CF3-21DC-4FFA-988B-ADA213419DEC" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="QLr-Vb-BPa">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W8G-hi-bpF">
+                                        <rect key="frame" x="3" y="14" width="70" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="JCalendar" id="5Dl-ak-aGg">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="F4i-BS-fDm"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="AEG-HC-s3k"/>
+                                <toolbarItem reference="b3K-ce-TEB"/>
+                                <toolbarItem reference="F4i-BS-fDm"/>
+                                <toolbarItem reference="QLr-Vb-BPa"/>
+                                <toolbarItem reference="F4i-BS-fDm"/>
+                                <toolbarItem reference="RmQ-4n-jNE"/>
+                                <toolbarItem reference="MdB-eG-Dl3"/>
+                                <toolbarItem reference="th6-eB-V7B"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -698,20 +789,125 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="58" y="97"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="CalendarController" customModule="HCal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="575"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="335" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="FQd-mu-j2s">
+                                <rect key="frame" x="20" y="522" width="562" height="43"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="9XJ-IB-wKG">
+                                        <rect key="frame" x="-2" y="0.0" width="99" height="43"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="November-2019" id="9Mk-eh-EYx">
+                                            <font key="font" metaFont="system" size="36"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-bT-Ihm">
+                                        <rect key="frame" x="428" y="8" width="136" height="28"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Nissan / Ivar" id="Xcv-mz-mfC">
+                                            <font key="font" metaFont="system" size="24"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <collectionView translatesAutoresizingMaskIntoConstraints="NO" id="NzH-ry-41m">
+                                <rect key="frame" x="0.0" y="0.0" width="712" height="480"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="460" id="N2r-XA-5Sz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="712" id="lzg-sd-w7p"/>
+                                </constraints>
+                                <collectionViewLayout key="collectionViewLayout" id="qn2-Xu-Miq" customClass="CalendarGridLayout" customModule="HCal" customModuleProvider="target"/>
+                                <color key="primaryBackgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XfG-lQ-9wD" id="Yt9-MY-3si"/>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="GSY-0I-igY"/>
+                                </connections>
+                            </collectionView>
+                            <button focusRingType="none" verticalHuggingPriority="750" id="13R-bz-dF7">
+                                <rect key="frame" x="590" y="526" width="42" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="⇦" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="uJw-1S-K2m">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button focusRingType="none" verticalHuggingPriority="750" id="3Zm-Jy-cYh">
+                                <rect key="frame" x="625" y="526" width="38" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="♢" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="NvT-HH-VD0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button focusRingType="none" verticalHuggingPriority="750" id="gx8-gm-6d5">
+                                <rect key="frame" x="656" y="526" width="42" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="⇨" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="Ix4-8p-ahU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="2" columnSpacing="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ZJp-al-h9U">
+                                <rect key="frame" x="0.0" y="488" width="712" height="30"/>
+                                <rows>
+                                    <gridRow id="exI-uH-Sxf"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn id="jDR-wa-Uus"/>
+                                    <gridColumn id="cnf-Ic-Wg6"/>
+                                    <gridColumn id="Z1G-LY-bKu"/>
+                                    <gridColumn id="h4o-N6-l2H"/>
+                                    <gridColumn id="JcS-sA-J7A"/>
+                                    <gridColumn id="Kkw-BC-crE"/>
+                                    <gridColumn id="Vbx-gs-8kV"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="exI-uH-Sxf" column="jDR-wa-Uus" id="dL7-8E-mxx"/>
+                                    <gridCell row="exI-uH-Sxf" column="cnf-Ic-Wg6" id="zmo-oQ-ZWf"/>
+                                    <gridCell row="exI-uH-Sxf" column="Z1G-LY-bKu" id="q6S-14-qKf"/>
+                                    <gridCell row="exI-uH-Sxf" column="h4o-N6-l2H" id="78Q-a6-7Qz"/>
+                                    <gridCell row="exI-uH-Sxf" column="JcS-sA-J7A" id="MMh-MU-Zny"/>
+                                    <gridCell row="exI-uH-Sxf" column="Kkw-BC-crE" id="KUc-9N-XSR"/>
+                                    <gridCell row="exI-uH-Sxf" column="Vbx-gs-8kV" id="4C4-YX-Oo5"/>
+                                </gridCells>
+                            </gridView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZJp-al-h9U" secondAttribute="trailing" id="0tD-ri-U1g"/>
+                            <constraint firstItem="NzH-ry-41m" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="57X-D5-8fT"/>
+                            <constraint firstAttribute="trailing" secondItem="NzH-ry-41m" secondAttribute="trailing" id="5ir-aF-1pa"/>
+                            <constraint firstAttribute="bottom" secondItem="NzH-ry-41m" secondAttribute="bottom" id="BGt-gA-AbP"/>
+                            <constraint firstItem="ZJp-al-h9U" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="57" id="ExH-hJ-Rpn"/>
+                            <constraint firstItem="ZJp-al-h9U" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="rHd-D7-hee"/>
+                            <constraint firstItem="NzH-ry-41m" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="95" id="rqI-TR-GRP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="monthGridView" destination="NzH-ry-41m" id="dbw-0w-hOL"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="87" y="755.5"/>
         </scene>
     </scenes>
 </document>

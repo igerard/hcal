@@ -28,6 +28,7 @@
 		D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959E23246905006CE60D /* HolidayArea.swift */; };
 		D5D895B223246910006CE60D /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895AE2324690F006CE60D /* MonthGrid.swift */; };
 		D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E329B623288CA60029FB37 /* SimpleDate.swift */; };
+		D5E5A933235C597800FD1B2A /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E5A932235C597800FD1B2A /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		D5D8959E23246905006CE60D /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
 		D5D895AE2324690F006CE60D /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
 		D5E329B623288CA60029FB37 /* SimpleDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDate.swift; sourceTree = "<group>"; };
+		D5E5A932235C597800FD1B2A /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
 				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
 				D5D8959523246905006CE60D /* MainCalendarView.swift */,
+				D5E5A932235C597800FD1B2A /* GridView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E5A933235C597800FD1B2A /* GridView.swift in Sources */,
 				D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */,
 				D5D895A723246905006CE60D /* DayView.swift in Sources */,
 				D5D895A223246905006CE60D /* DayNumber.swift in Sources */,

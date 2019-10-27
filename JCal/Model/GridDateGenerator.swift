@@ -14,7 +14,7 @@ final class GridDateGenerator {
   let calendar = Locale.current.calendar
   let dayIndex : Int
   
-  init?(firstDay: Int, cType: CalendarType, year: Int, month: Int) {
+  init(firstDay: Int, cType: CalendarType, year: Int, month: Int) {
     self.firstDay = firstDay
     date = SimpleDate(calendarType: cType, year: year, month: month, day: 1)
     self.dayIndex = (date.weekday - firstDay) % 7

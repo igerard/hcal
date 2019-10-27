@@ -156,8 +156,10 @@ FindParshaName(int daynumber, int kvia, bool leap_p, bool israel_p)
 	 		if (kvia == 1) 	 	 array = israel_p ? Tue_normal_Israel : Tue_normal;
 	 		break;
 		case 3:  /* RH was on a Thu */
-			if (kvia == 1)		array = israel_p ? Thu_normal_Israel : Thu_normal;
-			else if (kvia == 2) array = Thu_long;
+			if (kvia == 1)
+        array = israel_p ? Thu_normal_Israel : Thu_normal;
+			else if
+        (kvia == 2) array = Thu_long;
 			break;
 		}
 	} else /* leap year */

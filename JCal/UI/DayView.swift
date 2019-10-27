@@ -48,7 +48,8 @@ struct DayView : View {
         Spacer()
         DayNumber(value: date.day, isActive: inMonth, visibleDisk: isToday)
       }
-      .padding([.top, .trailing], 5)
+      .padding([.trailing], 5)
+      .padding([.top], 2)
 
       HStack {
         Text("\(hdate.day)")
@@ -57,12 +58,12 @@ struct DayView : View {
           .hcalDayTextStyle(theme: theme, isActive: inMonth)
         Spacer()
       }
-      .padding([.bottom, .leading], 10)
+      .padding([.leading], 5)
       .font(.subheadline)
 
       Spacer()
 
-      VStack{
+//      VStack{
         holiday?.pointee.flatMap{p in
           HStack {
             Text(String(cString: p))
@@ -70,6 +71,7 @@ struct DayView : View {
               .font(Font.caption.italic())
             Spacer()
           }
+          .padding([.bottom, .leading], 5)
         }
         (holiday?.advanced(by: 1).pointee).flatMap{p in
           HStack {
@@ -78,12 +80,12 @@ struct DayView : View {
               .font(Font.caption.italic())
             Spacer()
           }
+          .padding([.bottom, .leading], 5)
         }
-      }
-      .padding([.bottom, .leading], 10)
+//      }
+//     .padding([.bottom, .leading], 5)
     }
     .background(Theming.dayBackgroundColor(theme: theme, accentFlag: isShabbat))
-    .padding(0)
     .foregroundColor(Color.red)
   }
 }
@@ -101,7 +103,7 @@ struct DayView_Previews : PreviewProvider {
     DayView(date: SimpleDate(calendarType: .gregorian,
                              year: 2020, month: 4, day: 16))
                 .environmentObject(hcal)
-      .frame(width: 100, height: 80)
+      .frame(width: 100, height: 90)
   }
 }
 #endif

@@ -68,6 +68,6 @@ struct CalTouchBar: View {
 
 struct CalTouchBar_Previews: PreviewProvider {
   static var previews: some View {
-    CalTouchBar()
+    CalTouchBar().environmentObject(HCal())
   }
 }

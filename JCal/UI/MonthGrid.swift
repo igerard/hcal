@@ -30,17 +30,19 @@ struct MonthGrid : View {
       .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
       .padding([.top, .bottom], 2)
       .frame(width: nil, height: 20, alignment: .center)
-      
-      HStack(alignment: .center, spacing: 1){
-        ForEach((0...6), id: \.self) {j in
-          VStack(alignment: .center, spacing: 1) {
-            ForEach((0...5), id: \.self){i in
-              DayView(date: generator?.dateAt(i, j) ?? SimpleDate(calendarType: self.hcal.calendarType, absolute: 0))
+      GeometryReader { geometry in
+        HStack(alignment: .center, spacing: 1){
+          ForEach((0...6), id: \.self) {j in
+            VStack(alignment: .center, spacing: 1) {
+              ForEach((0...5), id: \.self){i in
+                DayView(date: generator.dateAt(i, j) ?? SimpleDate(calendarType: self.hcal.calendarType, absolute: 0))
+                  .frame(height: geometry.size.height/6)
+              }
             }
           }
         }
+        .background(self.theme == .light ? Color(white: 0.84) : Color(white: 0.26))
       }
-      .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
     }
     .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
   }
@@ -50,7 +52,7 @@ struct MonthGrid : View {
 struct MonthGrid_Previews : PreviewProvider {
   static var previews: some View {
     MonthGrid().environmentObject(HCal())
-      .frame(width: nil, height: 800, alignment: .center)
+      .frame(width: 800, height: 600, alignment: .center)
   }
 }
 #endif

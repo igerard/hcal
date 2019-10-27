@@ -43,9 +43,6 @@ class CalendarWindowController : NSWindowController {
       self.syncMenuItems()
     }
     syncMenuItems()
-    
-    // set the toolbar at the top without title
-    window?.titleVisibility = .hidden
   }
   
   fileprivate func syncMenuItems() {

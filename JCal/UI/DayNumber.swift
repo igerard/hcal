@@ -31,7 +31,7 @@ struct DayNumber: View {
 #if DEBUG
 struct DayNumber_Previews: PreviewProvider {
   static var previews: some View {
-    DayNumber(value: 31,
+    DayNumber(value: 22,
               isActive: false,
               visibleDisk: true)
   }
