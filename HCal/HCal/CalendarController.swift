@@ -15,8 +15,8 @@ class CalendarController: NSViewController {
   var hcal = HCal()
   var dateGenerator : GridDateGenerator
 
-  let ids = [NSUserInterfaceItemIdentifier("DayViewItem"), NSUserInterfaceItemIdentifier("WeekDayItem")]
-  let nbItems = [7,42]
+  let ids = [NSUserInterfaceItemIdentifier("DayItem")]
+  let nbItems = [42]
 
   @IBOutlet var monthGridView: NSCollectionView? = nil
 
@@ -35,6 +35,11 @@ class CalendarController: NSViewController {
     dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
     super.init(coder: coder)
     representedObject = hcal
+
+    subscription = hcal.objectWillChange.sink {
+      self.dateGenerator = GridDateGenerator(firstDay: 1, cType: self.hcal.calendarType, year: self.hcal.year, month: self.hcal.month)
+      self.monthGridView?.reloadData()
+    }
   }
   
   override func viewDidLoad() {
@@ -60,23 +65,7 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
   
   func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
     let item = collectionView.makeItem(withIdentifier: ids[indexPath[0]], for: indexPath)
-    item.syncDataWith(calendar: hcal, gridGenerator: dateGenerator, forPosition: indexPath)
+    (item as? DayViewController)?.day = indexPath[1]
     return item
-  }
-}
-
-protocol CalendarFillingProtocol {
-  func syncDataWith(calendar: HCal, gridGenerator: GridDateGenerator, forPosition: IndexPath)
-}
-
-extension NSCollectionViewItem: CalendarFillingProtocol {
-  func syncDataWith(calendar: HCal, gridGenerator: GridDateGenerator, forPosition: IndexPath){
-    // do nothing here
-  }
-}
-
-extension DayViewController {
-  override func syncDataWith(calendar: HCal, gridGenerator: GridDateGenerator, forPosition: IndexPath){
-    
   }
 }
