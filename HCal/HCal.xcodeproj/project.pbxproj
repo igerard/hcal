@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D519020E23619D5B006BED27 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D519020D23619D5B006BED27 /* DayViewController.swift */; };
-		D526BDBF2364EC9A007A2467 /* WeekDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = D526BDBE2364EC9A007A2467 /* WeekDay.xib */; };
-		D526BDC12364F22F007A2467 /* WeekDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC02364F22F007A2467 /* WeekDayController.swift */; };
 		D526BDC9236651C8007A2467 /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC3236651C8007A2467 /* HolidayArea.swift */; };
 		D526BDCA236651C8007A2467 /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC4236651C8007A2467 /* Hcal.swift */; };
 		D526BDCB236651C8007A2467 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC5236651C8007A2467 /* UserDefault.swift */; };
 		D526BDCC236651C8007A2467 /* SimpleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC6236651C8007A2467 /* SimpleDate.swift */; };
 		D526BDCD236651C8007A2467 /* CalendarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC7236651C8007A2467 /* CalendarType.swift */; };
 		D526BDCE236651C8007A2467 /* GridDateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDC8236651C8007A2467 /* GridDateGenerator.swift */; };
+		D526BDD02367312C007A2467 /* DiskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526BDCF2367312C007A2467 /* DiskView.swift */; };
 		D5733CDC2336A2A700C0A75E /* Converter.c in Sources */ = {isa = PBXBuildFile; fileRef = D5733CD72336A2A700C0A75E /* Converter.c */; };
 		D5733CDD2336A2A700C0A75E /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = D5733CD82336A2A700C0A75E /* Parsha.c */; };
 		D5733CDE2336A2A700C0A75E /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = D5733CDA2336A2A700C0A75E /* Holiday.c */; };
@@ -29,14 +28,13 @@
 
 /* Begin PBXFileReference section */
 		D519020D23619D5B006BED27 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
-		D526BDBE2364EC9A007A2467 /* WeekDay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDay.xib; sourceTree = "<group>"; };
-		D526BDC02364F22F007A2467 /* WeekDayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayController.swift; sourceTree = "<group>"; };
 		D526BDC3236651C8007A2467 /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
 		D526BDC4236651C8007A2467 /* Hcal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hcal.swift; sourceTree = "<group>"; };
 		D526BDC5236651C8007A2467 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		D526BDC6236651C8007A2467 /* SimpleDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDate.swift; sourceTree = "<group>"; };
 		D526BDC7236651C8007A2467 /* CalendarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarType.swift; sourceTree = "<group>"; };
 		D526BDC8236651C8007A2467 /* GridDateGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridDateGenerator.swift; sourceTree = "<group>"; };
+		D526BDCF2367312C007A2467 /* DiskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskView.swift; sourceTree = "<group>"; };
 		D5733CD52336A2A600C0A75E /* HCal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HCal-Bridging-Header.h"; sourceTree = "<group>"; };
 		D5733CD62336A2A700C0A75E /* Parsha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parsha.h; sourceTree = "<group>"; };
 		D5733CD72336A2A700C0A75E /* Converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Converter.c; sourceTree = "<group>"; };
@@ -119,12 +117,11 @@
 				D5B91081232F6387002A4A43 /* AppDelegate.swift */,
 				D5B91083232F6387002A4A43 /* CalendarController.swift */,
 				D519020D23619D5B006BED27 /* DayViewController.swift */,
-				D526BDC02364F22F007A2467 /* WeekDayController.swift */,
 				D5ACC669236237CD001DFC35 /* CalendarGridLayout.swift */,
+				D526BDCF2367312C007A2467 /* DiskView.swift */,
 				D5B91085232F6388002A4A43 /* Assets.xcassets */,
 				D5B91087232F6388002A4A43 /* Main.storyboard */,
 				D5774D21236198CC004E4B4D /* DayItem.xib */,
-				D526BDBE2364EC9A007A2467 /* WeekDay.xib */,
 				D5B9108A232F6388002A4A43 /* Info.plist */,
 				D5B9108B232F6388002A4A43 /* HCal.entitlements */,
 			);
@@ -192,7 +189,6 @@
 			files = (
 				D5B91086232F6388002A4A43 /* Assets.xcassets in Resources */,
 				D5B91089232F6388002A4A43 /* Main.storyboard in Resources */,
-				D526BDBF2364EC9A007A2467 /* WeekDay.xib in Resources */,
 				D5774D22236198CC004E4B4D /* DayItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,7 +200,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D526BDC12364F22F007A2467 /* WeekDayController.swift in Sources */,
 				D5733CDD2336A2A700C0A75E /* Parsha.c in Sources */,
 				D5733CDC2336A2A700C0A75E /* Converter.c in Sources */,
 				D526BDCE236651C8007A2467 /* GridDateGenerator.swift in Sources */,
@@ -212,6 +207,7 @@
 				D526BDCD236651C8007A2467 /* CalendarType.swift in Sources */,
 				D526BDC9236651C8007A2467 /* HolidayArea.swift in Sources */,
 				D5733CDE2336A2A700C0A75E /* Holiday.c in Sources */,
+				D526BDD02367312C007A2467 /* DiskView.swift in Sources */,
 				D5B91084232F6387002A4A43 /* CalendarController.swift in Sources */,
 				D526BDCC236651C8007A2467 /* SimpleDate.swift in Sources */,
 				D5B91082232F6387002A4A43 /* AppDelegate.swift in Sources */,

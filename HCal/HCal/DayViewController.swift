@@ -9,13 +9,9 @@
 import AppKit
 
 class DayViewController: NSCollectionViewItem {
-  
-  let date : SimpleDate? = nil
-
-  @objc dynamic var day: Int = 0
-  
-  @IBOutlet var dayNumber:   NSTextField? = nil
-  @IBOutlet var dayName:     NSTextField? = nil
-  @IBOutlet var specialDay2: NSTextField? = nil
-  @IBOutlet var specialDay1: NSTextField? = nil
+  @IBOutlet var dayNumber:   NSTextField!
+  @IBOutlet var dayName:     NSTextField!
+  @IBOutlet var specialDay2: NSTextField!
+  @IBOutlet var specialDay1: NSTextField!
+  @IBOutlet weak var diskView: DiskView!
 }
