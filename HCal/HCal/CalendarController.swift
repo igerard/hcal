@@ -22,6 +22,13 @@ class CalendarController: NSViewController {
   @IBOutlet weak var hebrewMonthsField: NSTextField!
   @IBOutlet weak var monthField: NSTextField!
   
+  @IBOutlet weak var preMadeTouchBar: NSTouchBar!
+  @IBOutlet weak var calendarTBToggle: NSButton!
+  @IBOutlet weak var areaTBToggle: NSButton!
+//  @IBOutlet weak var parshaTBToggle: NSButton!
+//  @IBOutlet weak var omerTBToggle: NSButton!
+//  @IBOutlet weak var cholTBToggle: NSButton!
+
   override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
     dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -45,9 +52,14 @@ class CalendarController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     ids.forEach{monthGridView?.register(NSNib(nibNamed: NSNib.Name($0.rawValue), bundle: Bundle.main), forItemWithIdentifier: $0)}
+    touchBar = preMadeTouchBar
     updateUI()
   }
-
+  
+//  override func makeTouchBar() -> NSTouchBar? {
+//    return preMadeTouchBar
+//  }
+  
   func formattedYear(year: Int) -> String {
     return String(format: "%d", year)
   }
@@ -57,6 +69,12 @@ class CalendarController: NSViewController {
     hebrewMonthsField.stringValue = "\(hcal.hebrewMonths) - \(formattedYear(year: hcal.hebrewYear))"
     self.dateGenerator = GridDateGenerator(firstDay: 1, cType: self.hcal.calendarType, year: self.hcal.year, month: self.hcal.month)
     self.monthGridView?.reloadData()
+    
+    calendarTBToggle.title = hcal.calendarType == .gregorian ? "Julian" : "Gregorian"
+    areaTBToggle.title = hcal.holidayArea == .diaspora ? "Israel" : "Diaspora"
+//    parshaTBToggle.state = hcal.parchaActive ? .on : .off
+//    omerTBToggle.state = hcal.omerActive ? .on : .off
+//    cholTBToggle.state = hcal.cholActive ? .on : .off
   }
   override var representedObject: Any? {
     didSet {
@@ -119,13 +137,13 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
         box.fillColor = { () -> NSColor in
           switch (inMonth, isShabbat) {
           case (true, true):
-            return NSColor.textBackgroundColor.shadow(withLevel: 0.05) ?? NSColor.textBackgroundColor
+            return NSColor(named: NSColor.Name("shabbatDay")) ?? NSColor.textBackgroundColor
           case (true, false):
             return NSColor.textBackgroundColor
           case (false, true):
-            return NSColor.textBackgroundColor.shadow(withLevel: 0.07) ?? NSColor.textBackgroundColor
+            return NSColor(named: NSColor.Name("shabbaDayNotInMonth")) ?? NSColor.textBackgroundColor
           case (false, false):
-            return NSColor.textBackgroundColor.shadow(withLevel: 0.1) ?? NSColor.textBackgroundColor
+            return NSColor(named: NSColor.Name("dayNotInMonth")) ?? NSColor.textBackgroundColor
           }
         }()
       }
@@ -139,9 +157,11 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
       }
       else if let p = holiday?.advanced(by: 1).pointee {
         ditem.specialDay1?.stringValue = String(cString: p)
+        ditem.specialDay2?.stringValue = ""
       }
       else if let p = holiday?.pointee {
         ditem.specialDay1?.stringValue = String(cString: p)
+        ditem.specialDay2?.stringValue = ""
       }
       else {
           ditem.specialDay2?.stringValue = ""
@@ -157,8 +177,16 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
     hcal.calendarType = (sender.selectedSegment == 0 ? .gregorian : .julian)
   }
   
+  @IBAction func calendarToggle(_ sender: Any) {
+    hcal.calendarType = hcal.calendarType == CalendarType.gregorian ? CalendarType.julian : CalendarType.gregorian
+  }
+  
   @IBAction func holidayAreaChosen(_ sender: NSSegmentedControl) {
     hcal.holidayArea = (sender.selectedSegment == 0 ? .diaspora : .israel)
+  }
+  
+  @IBAction func holidayAreaToggle(_ sender: Any) {
+    hcal.holidayArea = hcal.holidayArea == .israel ? .diaspora : .israel
   }
   
   @IBAction func parshaChosen(_ sender: NSButton) {

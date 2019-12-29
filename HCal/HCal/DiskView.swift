@@ -11,7 +11,7 @@ import AppKit
 class DiskView: NSView {
   
   override func draw(_ dirtyRect: NSRect) {
-    NSColor(named: NSColor.Name("dayDiskColor"))!.set()
+    NSColor(named: NSColor.Name("dayDisk"))!.set()
     NSBezierPath(ovalIn: bounds).fill()
   }
 }

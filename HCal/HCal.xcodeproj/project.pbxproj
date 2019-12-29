@@ -24,6 +24,7 @@
 		D5B91084232F6387002A4A43 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B91083232F6387002A4A43 /* CalendarController.swift */; };
 		D5B91086232F6388002A4A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B91085232F6388002A4A43 /* Assets.xcassets */; };
 		D5B91089232F6388002A4A43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B91087232F6388002A4A43 /* Main.storyboard */; };
+		D5EBE54B23682A9C00362FFE /* CalendarWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EBE54A23682A9C00362FFE /* CalendarWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		D5B91088232F6388002A4A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5B9108A232F6388002A4A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5B9108B232F6388002A4A43 /* HCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HCal.entitlements; sourceTree = "<group>"; };
+		D5EBE54A23682A9C00362FFE /* CalendarWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D5B91081232F6387002A4A43 /* AppDelegate.swift */,
+				D5EBE54A23682A9C00362FFE /* CalendarWindowController.swift */,
 				D5B91083232F6387002A4A43 /* CalendarController.swift */,
 				D519020D23619D5B006BED27 /* DayViewController.swift */,
 				D5ACC669236237CD001DFC35 /* CalendarGridLayout.swift */,
@@ -211,6 +214,7 @@
 				D5B91084232F6387002A4A43 /* CalendarController.swift in Sources */,
 				D526BDCC236651C8007A2467 /* SimpleDate.swift in Sources */,
 				D5B91082232F6387002A4A43 /* AppDelegate.swift in Sources */,
+				D5EBE54B23682A9C00362FFE /* CalendarWindowController.swift in Sources */,
 				D519020E23619D5B006BED27 /* DayViewController.swift in Sources */,
 				D5ACC66A236237CD001DFC35 /* CalendarGridLayout.swift in Sources */,
 				D526BDCA236651C8007A2467 /* Hcal.swift in Sources */,

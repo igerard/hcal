@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -679,16 +681,16 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-115" y="-208"/>
+            <point key="canvasLocation" x="-160" y="-524"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="CalendarWindowController" customModule="HCal" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="HCal" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="800" height="429"/>
+                        <rect key="contentRect" x="196" y="240" width="800" height="508"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <toolbar key="toolbar" implicitIdentifier="7D612035-371D-4A86-A616-FB9C38C83F4D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="ZGv-KQ-ZSS">
                             <allowedToolbarItems>
@@ -799,12 +801,83 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="calendarToolBarItem" destination="XV5-nL-89j" id="8Lt-As-Fod"/>
+                        <outlet property="cholMenuItem" destination="vDE-HF-OkP" id="9IW-Xh-DQj"/>
+                        <outlet property="cholToolBarItem" destination="sbx-Pc-Jc3" id="KP7-qb-Gla"/>
+                        <outlet property="diasporaMenuItem" destination="zHN-Zy-U5s" id="aBR-td-vx6"/>
+                        <outlet property="gregorianMenuItem" destination="Gz6-1b-j3o" id="8yD-Oh-P6B"/>
+                        <outlet property="holidayAreaToolBarItem" destination="Pnw-UW-9Ha" id="wO0-Y8-bsG"/>
+                        <outlet property="israelMenuItem" destination="87H-c2-71a" id="FxR-Vx-yY6"/>
+                        <outlet property="julianMenuItem" destination="JHb-hZ-zlZ" id="vu8-px-UXg"/>
+                        <outlet property="menuItem" destination="Ae1-mX-lx0" id="SnK-1h-Di9"/>
+                        <outlet property="omerMenuItem" destination="UyV-Dw-MIi" id="3qT-6u-kGO"/>
+                        <outlet property="omerToolBarItem" destination="7xx-8E-avj" id="zgo-MN-XYO"/>
+                        <outlet property="parshaMenuItem" destination="RFZ-SJ-pD6" id="SLu-bn-ONQ"/>
+                        <outlet property="parshaToolBarItem" destination="pOq-gm-fRL" id="qcf-9O-j8C"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menuItem title="Holidays" id="Ae1-mX-lx0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Holidays" id="a94-nK-AEe">
+                        <items>
+                            <menuItem title="Reset" id="LgW-zq-4OF">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="resetOptions:" target="B8D-0N-5wS" id="GqU-qx-cyO"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="X4M-pm-TQv"/>
+                            <menuItem title="Gregorian" id="Gz6-1b-j3o">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="gregorianToggle:" target="B8D-0N-5wS" id="1UZ-3g-8va"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Julian" id="JHb-hZ-zlZ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="julianToggle:" target="B8D-0N-5wS" id="3f0-fn-GDN"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="h9I-GC-PUf"/>
+                            <menuItem title="Diaspora" id="zHN-Zy-U5s">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="diasporaToggle:" target="B8D-0N-5wS" id="wnF-vl-vR6"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Israël" id="87H-c2-71a">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="israelToggle:" target="B8D-0N-5wS" id="Lni-w4-gtc"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="sga-0p-etn"/>
+                            <menuItem title="Parsha" id="RFZ-SJ-pD6">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="parshaToggle:" target="B8D-0N-5wS" id="XqD-Cf-Wcf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Omer" id="UyV-Dw-MIi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="omerToggle:" target="B8D-0N-5wS" id="mZJ-OT-V27"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Chol" id="vDE-HF-OkP">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="cholToggle:" target="B8D-0N-5wS" id="NNe-jc-G1N"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </objects>
-            <point key="canvasLocation" x="58" y="172.5"/>
+            <point key="canvasLocation" x="58" y="151"/>
         </scene>
         <!--Calendar Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -818,7 +891,7 @@
                                 <rect key="frame" x="17" y="512" width="299" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="November-2019" id="9Mk-eh-EYx">
-                                    <font key="font" metaFont="system" size="25"/>
+                                    <font key="font" metaFont="system" size="24"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -866,7 +939,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-jU-BiV">
                                             <rect key="frame" x="44" y="4" width="12" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="S" id="coD-An-w8i">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -889,7 +962,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ocR-uq-f8k">
                                             <rect key="frame" x="42" y="4" width="15" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="fbW-ix-jIR">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -912,7 +985,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E7A-AE-XRZ">
                                             <rect key="frame" x="44" y="4" width="12" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="T" id="8Ha-Ft-YiV">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -935,7 +1008,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FGI-0U-O4E">
                                             <rect key="frame" x="42" y="4" width="16" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="W" id="bJb-yF-SA8">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -958,7 +1031,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v2e-GB-0sP">
                                             <rect key="frame" x="44" y="4" width="12" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="T" id="cYR-Tv-sLp">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -981,7 +1054,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-J8-Xn4">
                                             <rect key="frame" x="44" y="4" width="12" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="S" id="jLj-gt-Ogn">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1004,7 +1077,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kA9-bJ-fPS">
                                             <rect key="frame" x="44" y="4" width="11" height="15"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="F" id="VmQ-17-lkR">
-                                                <font key="font" metaFont="controlContent"/>
+                                                <font key="font" metaFont="label" size="12"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1021,7 +1094,7 @@
                                 <rect key="frame" x="320" y="517" width="251" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Nissan / Ivar" id="Xcv-mz-mfC">
-                                    <font key="font" metaFont="system" size="18"/>
+                                    <font key="font" metaFont="system" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1048,46 +1121,47 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="areaTBToggle" destination="Es4-sd-VMl" id="ofm-s5-BNz"/>
+                        <outlet property="calendarTBToggle" destination="6gK-IP-VTW" id="z5x-52-dKq"/>
                         <outlet property="hebrewMonthsField" destination="g8N-bT-Ihm" id="dvy-O1-dKY"/>
                         <outlet property="monthField" destination="9XJ-IB-wKG" id="kZo-ck-gtt"/>
                         <outlet property="monthGridView" destination="NzH-ry-41m" id="dbw-0w-hOL"/>
+                        <outlet property="preMadeTouchBar" destination="4eE-zd-Jnu" id="H26-dw-Lc5"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menuItem title="Holidays" id="Ae1-mX-lx0">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Holidays" id="a94-nK-AEe">
-                        <items>
-                            <menuItem title="Reset" id="LgW-zq-4OF">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="X4M-pm-TQv"/>
-                            <menuItem title="Gregorian" id="Gz6-1b-j3o">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Julian" id="JHb-hZ-zlZ">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="h9I-GC-PUf"/>
-                            <menuItem title="Diaspora" id="zHN-Zy-U5s">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Israël" id="87H-c2-71a">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="sga-0p-etn"/>
-                            <menuItem title="Parsha" id="RFZ-SJ-pD6">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Omer" id="UyV-Dw-MIi">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Chol" id="vDE-HF-OkP">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
+                <touchBar id="4eE-zd-Jnu">
+                    <touchBarItems>
+                        <touchBarItem id="oCH-BN-eIh">
+                            <viewController key="viewController" id="YlK-Ll-TUm">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6gK-IP-VTW">
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                    <buttonCell key="cell" type="push" title="calendar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4e4-cd-p02">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="calendarToggle:" target="XfG-lQ-9wD" id="G0h-D1-ibp"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="BPl-MP-BiQ">
+                            <viewController key="viewController" id="0Wg-WS-ugg">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Es4-sd-VMl">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="area" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p0p-KB-wTu">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="holidayAreaToggle:" target="XfG-lQ-9wD" id="GSc-vF-yzs"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                    </touchBarItems>
+                </touchBar>
             </objects>
             <point key="canvasLocation" x="58" y="802"/>
         </scene>
