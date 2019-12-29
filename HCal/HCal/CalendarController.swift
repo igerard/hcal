@@ -25,9 +25,9 @@ class CalendarController: NSViewController {
   @IBOutlet weak var preMadeTouchBar: NSTouchBar!
   @IBOutlet weak var calendarTBToggle: NSButton!
   @IBOutlet weak var areaTBToggle: NSButton!
-//  @IBOutlet weak var parshaTBToggle: NSButton!
-//  @IBOutlet weak var omerTBToggle: NSButton!
-//  @IBOutlet weak var cholTBToggle: NSButton!
+  @IBOutlet weak var parshaTBToggle: NSButton!
+  @IBOutlet weak var omerTBToggle: NSButton!
+  @IBOutlet weak var cholTBToggle: NSButton!
 
   override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
     dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
@@ -72,9 +72,9 @@ class CalendarController: NSViewController {
     
     calendarTBToggle.title = hcal.calendarType == .gregorian ? "Julian" : "Gregorian"
     areaTBToggle.title = hcal.holidayArea == .diaspora ? "Israel" : "Diaspora"
-//    parshaTBToggle.state = hcal.parchaActive ? .on : .off
-//    omerTBToggle.state = hcal.omerActive ? .on : .off
-//    cholTBToggle.state = hcal.cholActive ? .on : .off
+    parshaTBToggle.state = hcal.parchaActive ? .on : .off
+    omerTBToggle.state = hcal.omerActive ? .on : .off
+    cholTBToggle.state = hcal.cholActive ? .on : .off
   }
   override var representedObject: Any? {
     didSet {

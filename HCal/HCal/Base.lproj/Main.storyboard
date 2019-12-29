@@ -1123,9 +1123,12 @@
                     <connections>
                         <outlet property="areaTBToggle" destination="Es4-sd-VMl" id="ofm-s5-BNz"/>
                         <outlet property="calendarTBToggle" destination="6gK-IP-VTW" id="z5x-52-dKq"/>
+                        <outlet property="cholTBToggle" destination="v32-dM-yWd" id="aiL-Z2-o08"/>
                         <outlet property="hebrewMonthsField" destination="g8N-bT-Ihm" id="dvy-O1-dKY"/>
                         <outlet property="monthField" destination="9XJ-IB-wKG" id="kZo-ck-gtt"/>
                         <outlet property="monthGridView" destination="NzH-ry-41m" id="dbw-0w-hOL"/>
+                        <outlet property="omerTBToggle" destination="aQn-p9-Yvk" id="9QE-tQ-wol"/>
+                        <outlet property="parshaTBToggle" destination="qSg-8p-CAn" id="CUK-CD-kOI"/>
                         <outlet property="preMadeTouchBar" destination="4eE-zd-Jnu" id="H26-dw-Lc5"/>
                     </connections>
                 </viewController>
@@ -1156,6 +1159,92 @@
                                     </buttonCell>
                                     <connections>
                                         <action selector="holidayAreaToggle:" target="XfG-lQ-9wD" id="GSc-vF-yzs"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="Qpx-I3-fJh"/>
+                        <touchBarItem id="nef-Bu-HYu">
+                            <viewController key="viewController" id="H72-QK-wZH">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qSg-8p-CAn">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="Parsha" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bcE-JH-NRN">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="parshaChosen:" target="XfG-lQ-9wD" id="yro-fq-i0G"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="h37-iN-YYR">
+                            <viewController key="viewController" id="1Rn-Xo-dOm">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aQn-p9-Yvk">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="Omer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoW-IE-T7W">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="omerChosen:" target="XfG-lQ-9wD" id="34W-CL-Yw5"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="xTk-m0-3rI">
+                            <viewController key="viewController" id="m6V-QR-cYJ">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v32-dM-yWd">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="Chol" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7z1-kF-bvm">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="cholChosen:" target="XfG-lQ-9wD" id="cGO-M8-iRu"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="ngs-6K-cfU"/>
+                        <touchBarItem id="rWQ-z3-SVC">
+                            <viewController key="viewController" id="9iQ-MK-MzA">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlb-Qh-T3U">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="Prev" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gMb-qb-Dgg">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="previousMonth:" target="XfG-lQ-9wD" id="vRL-cx-lc3"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="1TV-1a-Vs7">
+                            <viewController key="viewController" id="nwN-fn-O4Q">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7MT-9L-345">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8NA-Op-fSb">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="todayMonth:" target="XfG-lQ-9wD" id="HdR-3C-8h4"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="UIZ-Zc-shn">
+                            <viewController key="viewController" id="Jmx-Ej-BBh">
+                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X33-pP-BUv">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lWw-0N-twi">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="nextMonth:" target="XfG-lQ-9wD" id="npO-B4-TAJ"/>
                                     </connections>
                                 </button>
                             </viewController>
