@@ -10,7 +10,6 @@ import AppKit
 import Combine
 
 class CalendarWindowController: NSWindowController {
-  var subscription : AnyCancellable!
 
   var hcal: HCal!
   
@@ -41,7 +40,7 @@ class CalendarWindowController: NSWindowController {
     }
     
     // Menu item
-    subscription = hcal.objectWillChange.sink {
+    NotificationCenter.default.addObserver(forName: HCal.hcalModifiedName, object: hcal, queue: .main) { _ in
       self.syncMenuItems()
     }
     syncMenuItems()

@@ -10,7 +10,6 @@ import Cocoa
 import Combine
 
 class CalendarController: NSViewController {
-  var subscription : AnyCancellable!
 
   var hcal = HCal()
   var dateGenerator : GridDateGenerator
@@ -33,8 +32,8 @@ class CalendarController: NSViewController {
     dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     representedObject = hcal
-    
-    subscription = hcal.objectWillChange.sink {
+  
+    NotificationCenter.default.addObserver(forName: HCal.hcalModifiedName, object: hcal, queue: .main) { _ in
       self.updateUI()
     }
   }
@@ -44,7 +43,7 @@ class CalendarController: NSViewController {
     super.init(coder: coder)
     representedObject = hcal
 
-    subscription = hcal.objectWillChange.sink {
+    NotificationCenter.default.addObserver(forName: HCal.hcalModifiedName, object: hcal, queue: .main) { _ in
       self.updateUI()
     }
   }

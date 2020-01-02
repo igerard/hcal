@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import Combine
 
 
-final class HCal : ObservableObject {
-  let objectWillChange = ObservableObjectPublisher()
-  let calendarTypeWillChange = PassthroughSubject<CalendarType,Never>()
+final class HCal  {
+  public static var hcalModifiedName = Notification.Name("HcalModified")
+  var hcalModifiedNotification: Notification {
+    Notification(name: HCal.hcalModifiedName, object: self, userInfo: nil)
+  }
   
   static var calendar = Calendar(identifier: .gregorian)
   
@@ -19,7 +20,7 @@ final class HCal : ObservableObject {
   @UserDefault("HolidayArea", defaultValue: HolidayArea.diaspora)
   var holidayArea : HolidayArea {
     didSet {
-      if oldValue != holidayArea {objectWillChange.send()}
+      if oldValue != holidayArea {NotificationCenter.default.post(hcalModifiedNotification)}
     }
   }
   @UserDefault("CalendarType", defaultValue: CalendarType.gregorian)
@@ -40,33 +41,32 @@ final class HCal : ObservableObject {
         month = newDate.month
         day = newDate.day
       }
-      objectWillChange.send()
-      //      toThisYearAndMonth()
+      NotificationCenter.default.post(hcalModifiedNotification)
     }
   }
   @UserDefault("ParchaActive", defaultValue: false)
   var parchaActive : Bool {
     didSet {
-      if oldValue != parchaActive {objectWillChange.send()}
+      if oldValue != parchaActive {NotificationCenter.default.post(hcalModifiedNotification)}
     }
   }
   @UserDefault("OmerActive", defaultValue: false)
   var omerActive : Bool {
     didSet {
-      if oldValue != omerActive {objectWillChange.send()}
+      if oldValue != omerActive {NotificationCenter.default.post(hcalModifiedNotification)}
     }
   }
   @UserDefault("CholActive", defaultValue: false)
   var cholActive : Bool {
     didSet {
-      if oldValue != cholActive {objectWillChange.send()}
+      if oldValue != cholActive {NotificationCenter.default.post(hcalModifiedNotification)}
     }
   }
   
   @UserDefault("ThisYear", defaultValue: SimpleDate(calendarType: .gregorian, date: Date()).year)
   var year : Int {
     didSet {
-      if oldValue != year {objectWillChange.send()}
+      if oldValue != year {NotificationCenter.default.post(hcalModifiedNotification)}
     }
   }
   
@@ -80,12 +80,12 @@ final class HCal : ObservableObject {
       else if month > 12 {
         month = 12
       }
-      objectWillChange.send()
+      NotificationCenter.default.post(hcalModifiedNotification)
     }
   }
   var day : Int = 1 {
     didSet {
-      if oldValue != day {objectWillChange.send()}
+      if oldValue != day {NotificationCenter.default.post(hcalModifiedNotification)}
     }
   }
   
@@ -98,8 +98,16 @@ final class HCal : ObservableObject {
     case gregorian
     case julian
   }
-  @Published var hCalType : HcalType = .gregorian
-  @Published var israelHoliday : Bool = false
+  var hCalType : HcalType = .gregorian {
+    didSet {
+      if oldValue != hCalType {NotificationCenter.default.post(hcalModifiedNotification)}
+    }
+  }
+  var israelHoliday : Bool = false {
+    didSet {
+      if oldValue != israelHoliday {NotificationCenter.default.post(hcalModifiedNotification)}
+    }
+  }
   
   var hebrewMonth : String {
     get {
