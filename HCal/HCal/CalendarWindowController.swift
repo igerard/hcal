@@ -7,7 +7,6 @@
 //
 
 import AppKit
-import Combine
 
 class CalendarWindowController: NSWindowController {
 
@@ -44,6 +43,9 @@ class CalendarWindowController: NSWindowController {
       self.syncMenuItems()
     }
     syncMenuItems()
+    
+//    window?.makeKeyAndOrderFront(self)
+//    window?.makeFirstResponder(self)
   }
   
   
@@ -52,65 +54,65 @@ class CalendarWindowController: NSWindowController {
     julianMenuItem?.state = (hcal.calendarType == .julian ? .on : .off)
     israelMenuItem?.state = (hcal.holidayArea == .israel ? .on : .off)
     diasporaMenuItem?.state = (hcal.holidayArea == .diaspora ? .on : .off)
-    parshaMenuItem?.state = hcal.parchaActive ? .on : .off
-    omerMenuItem?.state = hcal.omerActive ? .on : .off
-    cholMenuItem?.state = hcal.cholActive ? .on : .off
+    parshaMenuItem?.state = hcal.parchaActive.wrappedValue ? .on : .off
+    omerMenuItem?.state = hcal.omerActive.wrappedValue ? .on : .off
+    cholMenuItem?.state = hcal.cholActive.wrappedValue ? .on : .off
     
     calendarToolBarItem?.setSelected(hcal.calendarType == .gregorian, forSegment: 0)
     calendarToolBarItem?.setSelected(hcal.calendarType == .julian, forSegment: 1)
     holidayAreaToolBarItem?.setSelected(hcal.holidayArea == .diaspora, forSegment: 0)
     holidayAreaToolBarItem?.setSelected(hcal.holidayArea == .israel, forSegment: 1)
-    parshaToolBarItem?.state = hcal.parchaActive ? .on : .off
-    omerToolBarItem?.state = hcal.omerActive ? .on : .off
-    cholToolBarItem?.state = hcal.cholActive ? .on : .off
+    parshaToolBarItem?.state = hcal.parchaActive.wrappedValue ? .on : .off
+    omerToolBarItem?.state = hcal.omerActive.wrappedValue ? .on : .off
+    cholToolBarItem?.state = hcal.cholActive.wrappedValue ? .on : .off
   }
   
   // Menu actions
   @IBAction func gregorianToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     julianMenuItem?.state = (sender.state == .on ? .off : .on)
-    hcal.calendarType = (sender.state == .on ? .gregorian : .julian)
+    hcal.calendarType <- (sender.state == .on ? .gregorian : .julian)
   }
   
   @IBAction func resetOptions(_ sender: NSMenuItem) {
-    hcal.holidayArea = .diaspora
-    hcal.calendarType = .gregorian
-    hcal.parchaActive = false
-    hcal.omerActive = false
-    hcal.cholActive = false
+    hcal.holidayArea <- .diaspora
+    hcal.calendarType <- .gregorian
+    hcal.parchaActive <- false
+    hcal.omerActive <- false
+    hcal.cholActive <- false
   }
   
   @IBAction func julianToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     gregorianMenuItem?.state = (sender.state == .on ? .off : .on)
-    hcal.calendarType = (sender.state == .on ? .julian : .gregorian)
+    hcal.calendarType <- (sender.state == .on ? .julian : .gregorian)
   }
   
   @IBAction func israelToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     diasporaMenuItem?.state = (sender.state == .on ? .off : .on)
-    hcal.holidayArea = (sender.state == .on ? .israel : .diaspora)
+    hcal.holidayArea <- (sender.state == .on ? .israel : .diaspora)
   }
   
   @IBAction func diasporaToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
     israelMenuItem?.state = (sender.state == .on ? .off : .on)
-    hcal.holidayArea = (sender.state == .on ? .diaspora : .israel)
+    hcal.holidayArea <- (sender.state == .on ? .diaspora : .israel)
   }
   
   @IBAction func parshaToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
-    hcal.parchaActive = sender.state == .on
+    hcal.parchaActive <- sender.state == .on
   }
   
   @IBAction func omerToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
-    hcal.omerActive = sender.state == .on
+    hcal.omerActive <- sender.state == .on
   }
   
   @IBAction func cholToggle(_ sender: NSMenuItem) {
     sender.state = (sender.state == .on ? .off : .on)
-    hcal.cholActive = sender.state == .on
+    hcal.cholActive <- sender.state == .on
   }
   
 }

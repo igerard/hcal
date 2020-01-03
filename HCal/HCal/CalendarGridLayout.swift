@@ -53,6 +53,6 @@ class CalendarGridLayout: NSCollectionViewLayout {
   }
   
   override func shouldInvalidateLayout(forBoundsChange newBounds: NSRect) -> Bool {
-    true
+    return true
   }
 }

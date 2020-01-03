@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Combine
 
 class CalendarController: NSViewController {
 
@@ -29,7 +28,7 @@ class CalendarController: NSViewController {
   @IBOutlet weak var cholTBToggle: NSButton!
 
   override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
-    dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
+    dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType.wrappedValue, year: hcal.year.wrappedValue, month: hcal.month.wrappedValue)
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     representedObject = hcal
   
@@ -39,7 +38,7 @@ class CalendarController: NSViewController {
   }
   
   required init?(coder: NSCoder) {
-    dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
+    dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType.wrappedValue, year: hcal.year.wrappedValue, month: hcal.month.wrappedValue)
     super.init(coder: coder)
     representedObject = hcal
 
@@ -64,16 +63,19 @@ class CalendarController: NSViewController {
   }
 
   func updateUI() {
-    monthField.stringValue =  "\(hcal.monthName) - \(formattedYear(year: hcal.year))"
+    monthField.stringValue =  "\(hcal.monthName) - \(formattedYear(year: hcal.year.wrappedValue))"
     hebrewMonthsField.stringValue = "\(hcal.hebrewMonths) - \(formattedYear(year: hcal.hebrewYear))"
-    self.dateGenerator = GridDateGenerator(firstDay: 1, cType: self.hcal.calendarType, year: self.hcal.year, month: self.hcal.month)
+    self.dateGenerator = GridDateGenerator(firstDay: 1,
+                                           cType: self.hcal.calendarType.wrappedValue,
+                                           year: self.hcal.year.wrappedValue,
+                                           month: self.hcal.month.wrappedValue)
     self.monthGridView?.reloadData()
     
-    calendarTBToggle.title = hcal.calendarType == .gregorian ? "Julian" : "Gregorian"
-    areaTBToggle.title = hcal.holidayArea == .diaspora ? "Israel" : "Diaspora"
-    parshaTBToggle.state = hcal.parchaActive ? .on : .off
-    omerTBToggle.state = hcal.omerActive ? .on : .off
-    cholTBToggle.state = hcal.cholActive ? .on : .off
+    calendarTBToggle.title = hcal.calendarType.wrappedValue == .gregorian ? "Julian" : "Gregorian"
+    areaTBToggle.title = hcal.holidayArea.wrappedValue == .diaspora ? "Israel" : "Diaspora"
+    parshaTBToggle.state = hcal.parchaActive.wrappedValue ? .on : .off
+    omerTBToggle.state = hcal.omerActive.wrappedValue ? .on : .off
+    cholTBToggle.state = hcal.cholActive.wrappedValue ? .on : .off
   }
   override var representedObject: Any? {
     didSet {
@@ -116,19 +118,19 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
       let inMonth = date.month == hcal.month
       let isToday = hcal.isToday(date: date)
       let isShabbat = date.weekday == 7
-      ParshaP = hcal.parchaActive
-      OmerP = hcal.omerActive
-      CholP = hcal.cholActive
+      ParshaP = hcal.parchaActive.wrappedValue
+      OmerP = hcal.omerActive.wrappedValue
+      CholP = hcal.cholActive.wrappedValue
       let hdate = SecularToHebrewConversion(Int32(date.year),
                                             Int32(date.month),
                                             Int32(date.day),
-                                            hcal.calendarType == .julian)
+                                            hcal.calendarType.wrappedValue == .julian)
       let holiday = FindHoliday(hdate.month,
                                 hdate.day,
                                 hdate.day_of_week,
                                 hdate.kvia,
                                 hdate.hebrew_leap_year_p,
-                                hcal.holidayArea == .israel,
+                                hcal.holidayArea.wrappedValue == .israel,
                                 hdate.hebrew_day_number,
                                 hdate.year)
 
@@ -173,31 +175,31 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
   
   // Toolbar actions
   @IBAction func calendarChosen(_ sender: NSSegmentedControl) {
-    hcal.calendarType = (sender.selectedSegment == 0 ? .gregorian : .julian)
+    hcal.calendarType.wrappedValue = (sender.selectedSegment == 0 ? .gregorian : .julian)
   }
   
   @IBAction func calendarToggle(_ sender: Any) {
-    hcal.calendarType = hcal.calendarType == CalendarType.gregorian ? CalendarType.julian : CalendarType.gregorian
+    hcal.calendarType.wrappedValue = hcal.calendarType.wrappedValue == CalendarType.gregorian ? CalendarType.julian : CalendarType.gregorian
   }
   
   @IBAction func holidayAreaChosen(_ sender: NSSegmentedControl) {
-    hcal.holidayArea = (sender.selectedSegment == 0 ? .diaspora : .israel)
+    hcal.holidayArea.wrappedValue = (sender.selectedSegment == 0 ? .diaspora : .israel)
   }
   
   @IBAction func holidayAreaToggle(_ sender: Any) {
-    hcal.holidayArea = hcal.holidayArea == .israel ? .diaspora : .israel
+    hcal.holidayArea.wrappedValue = hcal.holidayArea.wrappedValue == .israel ? .diaspora : .israel
   }
   
   @IBAction func parshaChosen(_ sender: NSButton) {
-    hcal.parchaActive = sender.state == .on
+    hcal.parchaActive <- sender.state == .on
   }
   
   @IBAction func omerChosen(_ sender: NSButton) {
-    hcal.omerActive = sender.state == .on
+    hcal.omerActive <- sender.state == .on
   }
   
   @IBAction func cholChosen(_ sender: NSButton) {
-    hcal.cholActive = sender.state == .on
+    hcal.cholActive <- sender.state == .on
   }
   
   override func keyDown(with event: NSEvent) {
@@ -209,11 +211,10 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
     case 124:
       hcal.incrementMonth()
     case 125:
-      hcal.year -= 1
+      hcal.year.wrappedValue -= 1
     case 126:
-      hcal.year += 1
+      hcal.year.wrappedValue += 1
     default:
-      print("\(event)")
       break;
     }
   }

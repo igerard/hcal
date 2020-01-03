@@ -7,8 +7,14 @@
 
 import Foundation
 
-@propertyWrapper
-struct UserDefault<T> where T : Codable {
+infix operator <- : AssignmentPrecedence
+infix operator == : ComparisonPrecedence
+infix operator != : ComparisonPrecedence
+//infix operator < : ComparisonPrecedence
+//infix operator > : ComparisonPrecedence
+
+//@propertyWrapper
+struct UserDefault<T> where T : Codable, T : Equatable {
   let key: String
   let defaultValue: T
   
@@ -28,4 +34,52 @@ struct UserDefault<T> where T : Codable {
       UserDefaults.standard.set(data, forKey: key)
     }
   }
+
+  static func <- (left: inout UserDefault, right: T) {
+    left.wrappedValue = right
+  }
+
+  static func == (left: UserDefault, right: T) -> Bool {
+    return left.wrappedValue == right
+  }
+
+  static func == (left: UserDefault, right: UserDefault) -> Bool {
+    return left.wrappedValue == right.wrappedValue
+  }
+
+  static func == (left: T, right: UserDefault) -> Bool {
+    return right.wrappedValue == left
+  }
+
+  static func != (left: UserDefault, right: T) -> Bool {
+    return left.wrappedValue != right
+  }
+
+  static func != (left: UserDefault, right: UserDefault) -> Bool {
+    return left.wrappedValue != right.wrappedValue
+  }
+
+//  static func < (left: UserDefault, right: UserDefault) -> Bool {
+//    return left.wrappedValue < right.wrappedValue
+//  }
+//
+//  static func < (left: UserDefault, right: T) -> Bool {
+//    return left.wrappedValue < right
+//  }
+//
+//  static func < (left: UserDefault, right: UserDefault) -> Bool {
+//    return left.wrappedValue < right.wrappedValue
+//  }
+//
+//  static func > (left: UserDefault, right: UserDefault) -> Bool {
+//    return left.wrappedValue > right.wrappedValue
+//  }
+//
+//  static func > (left: UserDefault, right: T) -> Bool {
+//    return left.wrappedValue > right
+//  }
+//
+//  static func > (left: UserDefault, right: UserDefault) -> Bool {
+//    return left.wrappedValue > right.wrappedValue
+//  }
 }
