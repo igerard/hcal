@@ -93,20 +93,13 @@ final class HCal : ObservableObject {
     HCal.calendar.locale = Locale.autoupdatingCurrent
     return HCal.calendar.monthSymbols[Int(month-1)]
   }
-  
-  enum HcalType {
-    case gregorian
-    case julian
-  }
-  @Published var hCalType : HcalType = .gregorian
-  @Published var israelHoliday : Bool = false
-  
+    
   var hebrewMonth : String {
     get {
       let hdate = SecularToHebrewConversion(Int32(year),
                                             Int32(month),
                                             Int32(day),
-                                            hCalType == .julian)
+                                            calendarType == .julian)
       return String(cString: hdate.hebrew_month_name)
     }
   }
@@ -115,7 +108,7 @@ final class HCal : ObservableObject {
       let hdate = SecularToHebrewConversion(Int32(year),
                                             Int32(month),
                                             Int32(day),
-                                            hCalType == .julian)
+                                            calendarType == .julian)
       return Int(hdate.year)
     }
   }
@@ -133,11 +126,11 @@ final class HCal : ObservableObject {
       let hdatel = SecularToHebrewConversion(Int32(year),
                                              Int32(month),
                                              Int32(r!.lowerBound),
-                                             hCalType == .julian)
+                                             calendarType == .julian)
       let hdateu = SecularToHebrewConversion(Int32(year),
                                              Int32(month),
                                              Int32(r!.upperBound-1),
-                                             hCalType == .julian)
+                                             calendarType == .julian)
       return "\(String(cString: hdatel.hebrew_month_name)) / \(String(cString: hdateu.hebrew_month_name))"
     }
   }
