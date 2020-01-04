@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14460.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -693,7 +693,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="800" height="508"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="7D612035-371D-4A86-A616-FB9C38C83F4D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="ZGv-KQ-ZSS">
+                        <toolbar key="toolbar" implicitIdentifier="7D612035-371D-4A86-A616-FB9C38C83F4D" centeredItem="th6-eB-V7B" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="ZGv-KQ-ZSS">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="11223350-C0C7-47EB-9C24-BAE85088FF5E" label="Calendar" paletteLabel="Calendar" sizingBehavior="auto" id="AEG-HC-s3k" userLabel="Calendar">
                                     <nil key="toolTip"/>
@@ -938,9 +938,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-jU-BiV">
-                                            <rect key="frame" x="44" y="4" width="12" height="15"/>
+                                            <rect key="frame" x="44" y="3" width="12" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="S" id="coD-An-w8i">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -961,9 +961,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ocR-uq-f8k">
-                                            <rect key="frame" x="42" y="4" width="15" height="15"/>
+                                            <rect key="frame" x="42" y="3" width="15" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="fbW-ix-jIR">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -984,9 +984,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E7A-AE-XRZ">
-                                            <rect key="frame" x="44" y="4" width="12" height="15"/>
+                                            <rect key="frame" x="44" y="3" width="12" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="T" id="8Ha-Ft-YiV">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1007,9 +1007,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FGI-0U-O4E">
-                                            <rect key="frame" x="42" y="4" width="16" height="15"/>
+                                            <rect key="frame" x="42" y="3" width="16" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="W" id="bJb-yF-SA8">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1030,9 +1030,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v2e-GB-0sP">
-                                            <rect key="frame" x="44" y="4" width="12" height="15"/>
+                                            <rect key="frame" x="44" y="3" width="12" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="T" id="cYR-Tv-sLp">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1053,9 +1053,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-J8-Xn4">
-                                            <rect key="frame" x="44" y="4" width="12" height="15"/>
+                                            <rect key="frame" x="44" y="3" width="12" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="S" id="jLj-gt-Ogn">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1076,9 +1076,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kA9-bJ-fPS">
-                                            <rect key="frame" x="44" y="4" width="11" height="15"/>
+                                            <rect key="frame" x="44" y="3" width="11" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="F" id="VmQ-17-lkR">
-                                                <font key="font" metaFont="label" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1139,7 +1139,8 @@
                         <touchBarItem id="oCH-BN-eIh">
                             <viewController key="viewController" id="YlK-Ll-TUm">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6gK-IP-VTW">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="calendar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4e4-cd-p02">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1153,7 +1154,8 @@
                         <touchBarItem id="BPl-MP-BiQ">
                             <viewController key="viewController" id="0Wg-WS-ugg">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Es4-sd-VMl">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="area" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p0p-KB-wTu">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1168,7 +1170,8 @@
                         <touchBarItem id="nef-Bu-HYu">
                             <viewController key="viewController" id="H72-QK-wZH">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qSg-8p-CAn">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Parsha" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bcE-JH-NRN">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1182,7 +1185,8 @@
                         <touchBarItem id="h37-iN-YYR">
                             <viewController key="viewController" id="1Rn-Xo-dOm">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aQn-p9-Yvk">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Omer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoW-IE-T7W">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1196,7 +1200,8 @@
                         <touchBarItem id="xTk-m0-3rI">
                             <viewController key="viewController" id="m6V-QR-cYJ">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v32-dM-yWd">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Chol" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7z1-kF-bvm">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1211,7 +1216,8 @@
                         <touchBarItem id="rWQ-z3-SVC">
                             <viewController key="viewController" id="9iQ-MK-MzA">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlb-Qh-T3U">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Prev" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gMb-qb-Dgg">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1225,7 +1231,8 @@
                         <touchBarItem id="1TV-1a-Vs7">
                             <viewController key="viewController" id="nwN-fn-O4Q">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7MT-9L-345">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8NA-Op-fSb">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -1239,7 +1246,8 @@
                         <touchBarItem id="UIZ-Zc-shn">
                             <viewController key="viewController" id="Jmx-Ej-BBh">
                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X33-pP-BUv">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lWw-0N-twi">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
