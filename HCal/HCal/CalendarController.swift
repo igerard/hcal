@@ -54,10 +54,6 @@ class CalendarController: NSViewController {
     updateUI()
   }
   
-//  override func makeTouchBar() -> NSTouchBar? {
-//    return preMadeTouchBar
-//  }
-  
   func formattedYear(year: Int) -> String {
     return String(format: "%d", year)
   }

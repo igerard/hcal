@@ -18,6 +18,10 @@ struct UserDefault<T> where T : Codable, T : Equatable {
   let key: String
   let defaultValue: T
   
+  struct Wrapper<T: Codable> : Codable {
+    let v : T
+  }
+  
   init(_ key: String, defaultValue: T) {
     self.key = key
     self.defaultValue = defaultValue
@@ -26,12 +30,18 @@ struct UserDefault<T> where T : Codable, T : Equatable {
   var wrappedValue: T {
     get {
       let data = UserDefaults.standard.data(forKey: key)
-      let value = data.flatMap { try? JSONDecoder().decode(T.self, from: $0) }
-      return value ?? defaultValue
+      let value = data.flatMap { try? JSONDecoder().decode(Wrapper<T>.self, from: $0) }
+      return value?.v ?? defaultValue
     }
     set {
-      let data = try? JSONEncoder().encode(newValue)
-      UserDefaults.standard.set(data, forKey: key)
+      do {
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(Wrapper<T>(v: newValue))
+        UserDefaults.standard.set(data, forKey: key)
+      }
+      catch {
+        print(error.localizedDescription)
+      }
     }
   }
 
