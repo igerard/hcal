@@ -214,7 +214,6 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
     case 126:
       hcal.year += 1
     default:
-      print("\(event)")
       break;
     }
   }
