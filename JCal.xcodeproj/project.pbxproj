@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D52059EA232A236E003B5882 /* CalTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52059E9232A236E003B5882 /* CalTouchBar.swift */; };
 		D5205A7A232BA902003B5882 /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5205A78232BA902003B5882 /* Hcal.swift */; };
 		D5205A7E232BAACE003B5882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5205A7D232BAACE003B5882 /* UserDefault.swift */; };
 		D5205A85232BABF9003B5882 /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A7F232BABF8003B5882 /* Holiday.c */; };
@@ -27,12 +26,11 @@
 		D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959C23246905006CE60D /* CalendarWindowController.swift */; };
 		D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959E23246905006CE60D /* HolidayArea.swift */; };
 		D5D895B223246910006CE60D /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895AE2324690F006CE60D /* MonthGrid.swift */; };
+		D5E0D5AE242AC937007C209A /* CellInGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E0D5AD242AC937007C209A /* CellInGrid.swift */; };
 		D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E329B623288CA60029FB37 /* SimpleDate.swift */; };
-		D5E5A933235C597800FD1B2A /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E5A932235C597800FD1B2A /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D52059E9232A236E003B5882 /* CalTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalTouchBar.swift; sourceTree = "<group>"; };
 		D5205A78232BA902003B5882 /* Hcal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hcal.swift; sourceTree = "<group>"; };
 		D5205A7D232BAACE003B5882 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		D5205A7F232BABF8003B5882 /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Holiday.c; sourceTree = "<group>"; };
@@ -59,8 +57,8 @@
 		D5D8959C23246905006CE60D /* CalendarWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWindowController.swift; sourceTree = "<group>"; };
 		D5D8959E23246905006CE60D /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
 		D5D895AE2324690F006CE60D /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
+		D5E0D5AD242AC937007C209A /* CellInGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellInGrid.swift; sourceTree = "<group>"; };
 		D5E329B623288CA60029FB37 /* SimpleDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDate.swift; sourceTree = "<group>"; };
-		D5E5A932235C597800FD1B2A /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +103,12 @@
 			isa = PBXGroup;
 			children = (
 				D5D8959A23246905006CE60D /* Theming.swift */,
+				D5E0D5AD242AC937007C209A /* CellInGrid.swift */,
 				D5D8959323246904006CE60D /* DayNumber.swift */,
 				D5D8959923246905006CE60D /* DayView.swift */,
-				D52059E9232A236E003B5882 /* CalTouchBar.swift */,
 				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
 				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
 				D5D8959523246905006CE60D /* MainCalendarView.swift */,
-				D5E5A932235C597800FD1B2A /* GridView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -185,7 +182,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Gerard Iglesias";
 				TargetAttributes = {
 					D5D8956E23246883006CE60D = {
@@ -230,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5E5A933235C597800FD1B2A /* GridView.swift in Sources */,
+				D5E0D5AE242AC937007C209A /* CellInGrid.swift in Sources */,
 				D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */,
 				D5D895A723246905006CE60D /* DayView.swift in Sources */,
 				D5D895A223246905006CE60D /* DayNumber.swift in Sources */,
@@ -247,7 +244,6 @@
 				D5205A7E232BAACE003B5882 /* UserDefault.swift in Sources */,
 				D5205A86232BABF9003B5882 /* Converter.c in Sources */,
 				D5205A7A232BA902003B5882 /* Hcal.swift in Sources */,
-				D52059EA232A236E003B5882 /* CalTouchBar.swift in Sources */,
 				D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +288,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -352,6 +349,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -385,6 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JCal/JCal.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
@@ -399,6 +398,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.visual-science.JCal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JCal/JCal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -411,6 +411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JCal/JCal.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
@@ -425,6 +426,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.visual-science.JCal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JCal/JCal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};

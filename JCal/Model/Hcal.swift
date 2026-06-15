@@ -40,7 +40,6 @@ final class HCal : ObservableObject {
         day = newDate.day
       }
       objectWillChange.send()
-      //      toThisYearAndMonth()
     }
   }
   @UserDefault("ParchaActive", defaultValue: false)
@@ -148,6 +147,7 @@ final class HCal : ObservableObject {
     else {
       month += 1
     }
+    objectWillChange.send()
   }
   
   func decrementMonth() {
@@ -158,6 +158,7 @@ final class HCal : ObservableObject {
     else {
       month -= 1
     }
+    objectWillChange.send()
   }
   
   func thisYear() -> Int {

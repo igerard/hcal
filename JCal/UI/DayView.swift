@@ -62,8 +62,8 @@ struct DayView : View {
       .font(.subheadline)
 
       Spacer()
-
-//      VStack{
+            
+      VStack{
         holiday?.pointee.flatMap{p in
           HStack {
             Text(String(cString: p))
@@ -71,7 +71,7 @@ struct DayView : View {
               .font(Font.caption.italic())
             Spacer()
           }
-          .padding([.bottom, .leading], 5)
+          .padding([.bottom, .leading], 2)
         }
         (holiday?.advanced(by: 1).pointee).flatMap{p in
           HStack {
@@ -80,13 +80,14 @@ struct DayView : View {
               .font(Font.caption.italic())
             Spacer()
           }
-          .padding([.bottom, .leading], 5)
+          .padding([.bottom, .leading], 2)
         }
-//      }
-//     .padding([.bottom, .leading], 5)
+      }
+     .padding([.bottom, .leading], 5)
     }
+//    .frame(minWidth: 120, minHeight: 100, alignment: .center)
     .background(Theming.dayBackgroundColor(theme: theme, accentFlag: isShabbat))
-    .foregroundColor(Color.red)
+//    .foregroundColor(Color.red)
   }
 }
 
@@ -100,10 +101,22 @@ var hcal : HCal = {
 
 struct DayView_Previews : PreviewProvider {
   static var previews: some View {
-    DayView(date: SimpleDate(calendarType: .gregorian,
-                             year: 2020, month: 4, day: 16))
-                .environmentObject(hcal)
-      .frame(width: 100, height: 90)
+    Group{
+      DayView(date: SimpleDate(calendarType: .gregorian,
+                               year: 2020, month: 11, day: 1))
+        .environmentObject(hcal)
+        .frame(width: 120, height: 100)
+
+      DayView(date: SimpleDate(calendarType: .gregorian,
+                               year: 2020, month: 11, day: 13))
+        .environmentObject(hcal)
+        .frame(width: 120, height: 100)
+
+      DayView(date: SimpleDate(calendarType: .gregorian,
+                               year: 2020, month: 11, day: 30))
+        .environmentObject(hcal)
+        .frame(width: 120, height: 100)
+    }
   }
 }
 #endif

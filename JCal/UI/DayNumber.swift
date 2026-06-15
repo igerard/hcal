@@ -31,9 +31,17 @@ struct DayNumber: View {
 #if DEBUG
 struct DayNumber_Previews: PreviewProvider {
   static var previews: some View {
-    DayNumber(value: 22,
-              isActive: false,
+    Group {
+      DayNumber(value: 1,
+                isActive: false,
               visibleDisk: true)
+      DayNumber(value: 18,
+                isActive: false,
+                visibleDisk: true)
+      DayNumber(value: 31,
+                isActive: false,
+                visibleDisk: true)
+    }
   }
 }
 #endif

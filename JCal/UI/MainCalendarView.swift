@@ -12,12 +12,11 @@ struct MainCalendarView : View {
   
   var body: some View {
         
-    return VStack(alignment: .center) {
+    VStack(alignment: .center) {
       MonthSelector()
       MonthGrid()
     }
     .frame(minWidth: 800, minHeight: 650, alignment: .center)
-    .touchBar(TouchBar(id: "com.visual-science.Jcal.Grid") {CalTouchBar()})
   }
 }
 
@@ -25,8 +24,11 @@ struct MainCalendarView : View {
 #if DEBUG
 struct MainCalendarView_Previews : PreviewProvider {
   static var previews: some View {
-    MainCalendarView().environmentObject(HCal())
-//      .frame(width: nil, height: 800, alignment: .center)
+    Group {
+      MainCalendarView()
+        .environmentObject(HCal())
+        .frame(width: nil, height: 700, alignment: .center)
+    }
   }
 }
 #endif

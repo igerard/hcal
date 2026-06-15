@@ -11,13 +11,13 @@ import Combine
 
 class CalendarController: NSViewController {
   var subscription : AnyCancellable!
-
-  var hcal = HCal()
+  
+  let hcal = HCal()
   var dateGenerator : GridDateGenerator
-
+  
   let ids = [NSUserInterfaceItemIdentifier("DayItem")]
   let nbItems = [42]
-
+  
   @IBOutlet var monthGridView: NSCollectionView!
   @IBOutlet weak var hebrewMonthsField: NSTextField!
   @IBOutlet weak var monthField: NSTextField!
@@ -28,7 +28,7 @@ class CalendarController: NSViewController {
   @IBOutlet weak var parshaTBToggle: NSButton!
   @IBOutlet weak var omerTBToggle: NSButton!
   @IBOutlet weak var cholTBToggle: NSButton!
-
+  
   override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
     dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -43,7 +43,7 @@ class CalendarController: NSViewController {
     dateGenerator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
     super.init(coder: coder)
     representedObject = hcal
-
+    
     subscription = hcal.objectWillChange.sink {
       self.updateUI()
     }
@@ -56,14 +56,14 @@ class CalendarController: NSViewController {
     updateUI()
   }
   
-//  override func makeTouchBar() -> NSTouchBar? {
-//    return preMadeTouchBar
-//  }
+  //  override func makeTouchBar() -> NSTouchBar? {
+  //    return preMadeTouchBar
+  //  }
   
   func formattedYear(year: Int) -> String {
     return String(format: "%d", year)
   }
-
+  
   func updateUI() {
     monthField.stringValue =  "\(hcal.monthName) - \(formattedYear(year: hcal.year))"
     hebrewMonthsField.stringValue = "\(hcal.hebrewMonths) - \(formattedYear(year: hcal.hebrewYear))"
@@ -80,7 +80,7 @@ class CalendarController: NSViewController {
     didSet {
     }
   }
-
+  
   @IBAction func previousMonth(_ sender: Any) {
     hcal.decrementMonth()
   }
@@ -100,7 +100,7 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
   func numberOfSections(in collectionView: NSCollectionView) -> Int{
     return nbItems.count
   }
-
+  
   func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
     return nbItems[section]
   }
@@ -132,7 +132,7 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
                                 hcal.holidayArea == .israel,
                                 hdate.hebrew_day_number,
                                 hdate.year)
-
+      
       if let box = ditem.view as? NSBox {
         box.fillColor = { () -> NSColor in
           switch (inMonth, isShabbat) {
@@ -164,10 +164,10 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
         ditem.specialDay2?.stringValue = ""
       }
       else {
-          ditem.specialDay2?.stringValue = ""
-          ditem.specialDay1?.stringValue = ""
+        ditem.specialDay2?.stringValue = ""
+        ditem.specialDay1?.stringValue = ""
       }
-
+      
     }
     return item
   }
@@ -217,5 +217,5 @@ extension CalendarController: NSCollectionViewDelegate, NSCollectionViewDataSour
       break;
     }
   }
-
+  
 }

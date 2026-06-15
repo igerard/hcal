@@ -24,14 +24,14 @@ static char *song = "Sh. Shirah";
  */
 
 char **
-FindHoliday(int month,
-            int day,
-            int weekday,
-            int kvia,
+FindHoliday(int  month,
+            int  day,
+            int  weekday,
+            int  kvia,
             bool leap_year_p,
             bool israel_p,
-            int day_number,
-            int year)
+            int  day_number,
+            int  year)
 {
 	enum { Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday };
 	static char *holidays[5];		// The value returned

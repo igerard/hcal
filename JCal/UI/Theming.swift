@@ -69,3 +69,9 @@ final class Theming {
   static let lightGray = Color(white: 0.95)
   static let darkGray = Color(white: 0.05)
 }
+
+struct Theming_Previews: PreviewProvider {
+  static var previews: some View {
+    /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+  }
+}
