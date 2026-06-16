@@ -21,9 +21,10 @@ extension Text {
 
 struct DayView : View {
   @Environment(\.colorScheme) var theme
-  @EnvironmentObject var hcal: HCal
+  @Environment(HebrewCalendar.self) private var hcal
   let date : SimpleDate
-  
+  @State private var showExplanation = false
+
   var body: some View {
     let inMonth = date.month == hcal.month
     let isToday = hcal.isToday(date: date)
@@ -31,18 +32,19 @@ struct DayView : View {
     ParshaP = hcal.parchaActive
     OmerP = hcal.omerActive
     CholP = hcal.cholActive
-    let hdate = SecularToHebrewConversion(Int32(date.year),
-                                          Int32(date.month),
-                                          Int32(date.day),
+    let hdate = SecularToHebrewConversion(date.year,
+                                          date.month,
+                                          date.day,
                                           hcal.calendarType == .julian)
-    let holiday = FindHoliday(hdate.month,
-                              hdate.day,
-                              hdate.day_of_week,
-                              hdate.kvia,
+    let holiday = FindHoliday(Int32(hdate.month),
+                              Int32(hdate.day),
+                              Int32(hdate.day_of_week),
+                              Int32(hdate.kvia),
                               hdate.hebrew_leap_year_p,
                               hcal.holidayArea == .israel,
-                              hdate.hebrew_day_number,
-                              hdate.year)
+                              Int32(hdate.hebrew_day_number),
+                              Int32(hdate.year))
+    let hasEvent = holiday?.pointee != nil
     return VStack {
       HStack {
         Spacer()
@@ -87,36 +89,39 @@ struct DayView : View {
     }
 //    .frame(minWidth: 120, minHeight: 100, alignment: .center)
     .background(Theming.dayBackgroundColor(theme: theme, accentFlag: isShabbat))
-//    .foregroundColor(Color.red)
-  }
-}
-
-#if DEBUG
-var hcal : HCal = {
-  let h = HCal()
-  h.year = 2010
-  h.month = 4
-  return h
-}()
-
-struct DayView_Previews : PreviewProvider {
-  static var previews: some View {
-    Group{
-      DayView(date: SimpleDate(calendarType: .gregorian,
-                               year: 2020, month: 11, day: 1))
-        .environmentObject(hcal)
-        .frame(width: 120, height: 100)
-
-      DayView(date: SimpleDate(calendarType: .gregorian,
-                               year: 2020, month: 11, day: 13))
-        .environmentObject(hcal)
-        .frame(width: 120, height: 100)
-
-      DayView(date: SimpleDate(calendarType: .gregorian,
-                               year: 2020, month: 11, day: 30))
-        .environmentObject(hcal)
-        .frame(width: 120, height: 100)
+    .contentShape(Rectangle())
+    .onTapGesture {
+      if hasEvent { showExplanation = true }
+    }
+    .popover(isPresented: $showExplanation, arrowEdge: .trailing) {
+      DayExplanationView(date: date)
+        .environment(hcal)
     }
   }
 }
-#endif
+
+#Preview {
+  let hcal: HebrewCalendar = {
+    let h = HebrewCalendar()
+    h.year = 2026
+    h.month = 9
+    return h
+  }()
+
+  Group {
+    DayView(date: SimpleDate(calendarType: .gregorian,
+                             year: 2026, month: 9, day: 5))
+      .environment(hcal)
+      .frame(width: 120, height: 100)
+
+    DayView(date: SimpleDate(calendarType: .gregorian,
+                             year: 2020, month: 11, day: 13))
+      .environment(hcal)
+      .frame(width: 120, height: 100)
+
+    DayView(date: SimpleDate(calendarType: .gregorian,
+                             year: 2020, month: 11, day: 30))
+      .environment(hcal)
+      .frame(width: 120, height: 100)
+  }
+}

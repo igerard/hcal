@@ -23,15 +23,15 @@ struct SimpleDate : Equatable {
     self.day = day
     switch calendarType {
     case .gregorian:
-      absolute = absolute_from_gregorian(Int32(year), Int32(month), Int32(day))
+      absolute = absolute_from_gregorian(year, month, day)
     case .julian:
-      absolute = absolute_from_julian(Int32(year), Int32(month), Int32(day))
+      absolute = absolute_from_julian(year, month, day)
     }
   }
   
   init(calendarType: CalendarType, date: Date) {
-    let comps = HCal.calendar.dateComponents([.year, .month, .day], from: date)
-    absolute = absolute_from_gregorian(Int32(comps.year!), Int32(comps.month!), Int32(comps.day!))
+    let comps = HebrewCalendar.calendar.dateComponents([.year, .month, .day], from: date)
+    absolute = absolute_from_gregorian(comps.year!, comps.month!, comps.day!)
     switch calendarType {
     case .gregorian:
       type = .gregorian
@@ -39,32 +39,32 @@ struct SimpleDate : Equatable {
       month = comps.month!
       day = comps.day!
     case .julian:
-      var year : Int32 = 0
-      var month : Int32 = 0
-      var day : Int32 = 0
+      var year : Int = 0
+      var month : Int = 0
+      var day : Int = 0
       julian_from_absolute(absolute, &year, &month, &day)
       type = .julian
-      self.year = Int(year)
-      self.month = Int(month)
-      self.day = Int(day)
+      self.year = year
+      self.month = month
+      self.day = day
     }
   }
   
   init(calendarType: CalendarType, absolute: Int) {
     self.type = calendarType
     self.absolute = absolute
-    var year : Int32 = 0
-    var month : Int32 = 0
-    var day : Int32 = 0
+    var year : Int = 0
+    var month : Int = 0
+    var day : Int = 0
     switch calendarType {
     case .gregorian:
       gregorian_from_absolute(absolute, &year, &month, &day)
     case .julian:
       julian_from_absolute(absolute, &year, &month, &day)
     }
-    self.year = Int(year)
-    self.month = Int(month)
-    self.day = Int(day)
+    self.year = year
+    self.month = month
+    self.day = day
   }
   
   var weekday: Int {

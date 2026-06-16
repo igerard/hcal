@@ -63,15 +63,24 @@ final class Theming {
     }
   }
   
+  /// Distinct color per holiday category, shown in the day explanation popover.
+  static func holidayCategoryColor(_ category: HolidayInfo.Category) -> Color {
+    switch category {
+    case .majorFestival:  return .blue
+    case .intermediate:   return .teal
+    case .minorFestival:  return .green
+    case .fast:           return .brown
+    case .modernIsraeli:  return .cyan
+    case .specialShabbat: return .purple
+    case .omer:           return .orange
+    case .eve:            return .gray
+    case .parsha:         return .indigo
+    }
+  }
+
   static let paleBlue = Color(red: 240.0/255.0, green: 250.0/255.0, blue: 250.0/255.0)
   static let maraschino = Color(red: 255.0/255.0, green: 38.0/255.0, blue: 0.0/255.0)
   static let salmon = Color(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0)
   static let lightGray = Color(white: 0.95)
   static let darkGray = Color(white: 0.05)
-}
-
-struct Theming_Previews: PreviewProvider {
-  static var previews: some View {
-    /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-  }
 }

@@ -9,57 +9,43 @@ import SwiftUI
 
 struct MonthGrid : View {
   @Environment(\.colorScheme) var theme
-  @EnvironmentObject var hcal: HCal
-  private let weekDaysLetter = HCal.calendar.weekdaySymbols.map{$0.prefix(1)}
-  
+  @Environment(HebrewCalendar.self) private var hcal
+  private let weekDaysLetter = HebrewCalendar.calendar.weekdaySymbols.map { $0.prefix(1) }
+
   var body: some View {
     let nbRows = 6
     let nbColumns = 7
-    let spacing = 1
-    let minWidth = CGFloat(nbColumns * 120 + (nbColumns-1)*spacing)
-//    let minHeight = CGFloat(nbRows * 100 + (nbRows-1)*spacing)
-
     let generator = GridDateGenerator(firstDay: 1, cType: hcal.calendarType, year: hcal.year, month: hcal.month)
-    
-    return VStack(alignment: .center, spacing: 1){
-      
-      GeometryReader { geometry in
-        ForEach((0...6), id: \.self) {dayIndex in
-          Text(self.weekDaysLetter[dayIndex])
+
+    // Native, equally-distributed layout: each cell uses .infinity frames so the
+    // grid resizes cleanly with the window. The 1pt spacing over a gray background
+    // renders as the grid lines.
+    VStack(spacing: 1) {
+      HStack(spacing: 1) {
+        ForEach(0..<nbColumns, id: \.self) { dayIndex in
+          Text(weekDaysLetter[dayIndex])
             .fontWeight(.bold)
-            .gridOffset(nbRows: 1, nbColumns: 7, spacing: 1, inSize: geometry.size, index: dayIndex)
+            .frame(maxWidth: .infinity)
         }
       }
       .padding([.top, .bottom], 2)
-      .frame(width: nil, height: 20, alignment: .center)
-      
-      GeometryReader { geometry in
-        ForEach((0..<nbColumns), id: \.self) {j in
-          ForEach((0..<nbRows), id: \.self){i in
-            DayView(date: generator.dateAt(i, j) ?? SimpleDate(calendarType: self.hcal.calendarType, absolute: 0))
-              .gridOffset(nbRows: nbRows,
-                          nbColumns: nbColumns,
-                          spacing: spacing,
-                          inSize: geometry.size,
-                          index: i * nbColumns + j)
+      .frame(height: 20)
+
+      ForEach(0..<nbRows, id: \.self) { i in
+        HStack(spacing: 1) {
+          ForEach(0..<nbColumns, id: \.self) { j in
+            DayView(date: generator.dateAt(i, j) ?? SimpleDate(calendarType: hcal.calendarType, absolute: 0))
+              .frame(maxWidth: .infinity, maxHeight: .infinity)
           }
         }
       }
     }
     .background(theme == .light ? Color(white: 0.84) : Color(white: 0.26))
-    .frame(minWidth: minWidth)//,
-//           idealWidth: minWidth,
-//           minHeight: minHeight,
-//           idealHeight: minHeight,
-//           alignment: .center)
   }
 }
 
-#if DEBUG
-struct MonthGrid_Previews : PreviewProvider {
-  static var previews: some View {
-    MonthGrid().environmentObject(HCal())
-      .frame(width: 900, height: 700, alignment: .center)
-  }
+#Preview {
+  MonthGrid()
+    .environment(HebrewCalendar())
+    .frame(width: 900, height: 700)
 }
-#endif

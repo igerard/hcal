@@ -3,48 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5205A7A232BA902003B5882 /* Hcal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5205A78232BA902003B5882 /* Hcal.swift */; };
-		D5205A7E232BAACE003B5882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5205A7D232BAACE003B5882 /* UserDefault.swift */; };
 		D5205A85232BABF9003B5882 /* Holiday.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A7F232BABF8003B5882 /* Holiday.c */; };
 		D5205A86232BABF9003B5882 /* Converter.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A81232BABF8003B5882 /* Converter.c */; };
 		D5205A87232BABF9003B5882 /* Parsha.c in Sources */ = {isa = PBXBuildFile; fileRef = D5205A83232BABF8003B5882 /* Parsha.c */; };
+		D52F8D052FE0B3AC007E228A /* HebrewCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52F8D042FE0B3AC007E228A /* HebrewCalendar.swift */; };
+		D52F8D072FE0B42D007E228A /* JCalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52F8D062FE0B42D007E228A /* JCalApp.swift */; };
+		D52F8D092FE0B4C9007E228A /* HolidayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52F8D082FE0B4C9007E228A /* HolidayInfo.swift */; };
+		D52F8D0B2FE11564007E228A /* DayExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52F8D0A2FE11564007E228A /* DayExplanationView.swift */; };
+		D52F8D0E2FE115C9007E228A /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D52F8D0C2FE115C9007E228A /* InfoPlist.xcstrings */; };
+		D52F8D0F2FE115C9007E228A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D52F8D0D2FE115C9007E228A /* Localizable.xcstrings */; };
 		D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591B16123246E1E0057A9E5 /* MonthSelector.swift */; };
-		D5D8957323246883006CE60D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8957223246883006CE60D /* AppDelegate.swift */; };
 		D5D8957723246884006CE60D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957623246884006CE60D /* Assets.xcassets */; };
 		D5D8957A23246884006CE60D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957923246884006CE60D /* Preview Assets.xcassets */; };
-		D5D8957D23246884006CE60D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957B23246884006CE60D /* Main.storyboard */; };
 		D5D8959F23246905006CE60D /* CalendarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959023246904006CE60D /* CalendarType.swift */; };
 		D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959223246904006CE60D /* GridDateGenerator.swift */; };
 		D5D895A223246905006CE60D /* DayNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959323246904006CE60D /* DayNumber.swift */; };
 		D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959523246905006CE60D /* MainCalendarView.swift */; };
 		D5D895A723246905006CE60D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959923246905006CE60D /* DayView.swift */; };
 		D5D895A823246905006CE60D /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959A23246905006CE60D /* Theming.swift */; };
-		D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959C23246905006CE60D /* CalendarWindowController.swift */; };
 		D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D8959E23246905006CE60D /* HolidayArea.swift */; };
 		D5D895B223246910006CE60D /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D895AE2324690F006CE60D /* MonthGrid.swift */; };
-		D5E0D5AE242AC937007C209A /* CellInGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E0D5AD242AC937007C209A /* CellInGrid.swift */; };
 		D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E329B623288CA60029FB37 /* SimpleDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5205A78232BA902003B5882 /* Hcal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hcal.swift; sourceTree = "<group>"; };
-		D5205A7D232BAACE003B5882 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		D5205A7F232BABF8003B5882 /* Holiday.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Holiday.c; sourceTree = "<group>"; };
 		D5205A80232BABF8003B5882 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
 		D5205A81232BABF8003B5882 /* Converter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Converter.c; sourceTree = "<group>"; };
 		D5205A82232BABF8003B5882 /* Parsha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parsha.h; sourceTree = "<group>"; };
 		D5205A83232BABF8003B5882 /* Parsha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Parsha.c; sourceTree = "<group>"; };
 		D5205A84232BABF8003B5882 /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holiday.h; sourceTree = "<group>"; };
+		D52F8D042FE0B3AC007E228A /* HebrewCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HebrewCalendar.swift; sourceTree = "<group>"; };
+		D52F8D062FE0B42D007E228A /* JCalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCalApp.swift; sourceTree = "<group>"; };
+		D52F8D082FE0B4C9007E228A /* HolidayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayInfo.swift; sourceTree = "<group>"; };
+		D52F8D0A2FE11564007E228A /* DayExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayExplanationView.swift; sourceTree = "<group>"; };
+		D52F8D0C2FE115C9007E228A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		D52F8D0D2FE115C9007E228A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D591B16123246E1E0057A9E5 /* MonthSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelector.swift; sourceTree = "<group>"; };
 		D5D8956F23246883006CE60D /* JCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5D8957223246883006CE60D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5D8957623246884006CE60D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5D8957923246884006CE60D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D5D8957C23246884006CE60D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5D8957E23246884006CE60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5D8957F23246884006CE60D /* JCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JCal.entitlements; sourceTree = "<group>"; };
 		D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCal-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -54,10 +56,8 @@
 		D5D8959523246905006CE60D /* MainCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
 		D5D8959923246905006CE60D /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D5D8959A23246905006CE60D /* Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
-		D5D8959C23246905006CE60D /* CalendarWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWindowController.swift; sourceTree = "<group>"; };
 		D5D8959E23246905006CE60D /* HolidayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayArea.swift; sourceTree = "<group>"; };
 		D5D895AE2324690F006CE60D /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
-		D5E0D5AD242AC937007C209A /* CellInGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellInGrid.swift; sourceTree = "<group>"; };
 		D5E329B623288CA60029FB37 /* SimpleDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,12 +89,12 @@
 		D5205A7B232BA91B003B5882 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D5205A7D232BAACE003B5882 /* UserDefault.swift */,
 				D5D8959E23246905006CE60D /* HolidayArea.swift */,
 				D5D8959023246904006CE60D /* CalendarType.swift */,
 				D5E329B623288CA60029FB37 /* SimpleDate.swift */,
 				D5D8959223246904006CE60D /* GridDateGenerator.swift */,
-				D5205A78232BA902003B5882 /* Hcal.swift */,
+				D52F8D042FE0B3AC007E228A /* HebrewCalendar.swift */,
+				D52F8D082FE0B4C9007E228A /* HolidayInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,12 +103,12 @@
 			isa = PBXGroup;
 			children = (
 				D5D8959A23246905006CE60D /* Theming.swift */,
-				D5E0D5AD242AC937007C209A /* CellInGrid.swift */,
 				D5D8959323246904006CE60D /* DayNumber.swift */,
 				D5D8959923246905006CE60D /* DayView.swift */,
 				D5D895AE2324690F006CE60D /* MonthGrid.swift */,
 				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
 				D5D8959523246905006CE60D /* MainCalendarView.swift */,
+				D52F8D0A2FE11564007E228A /* DayExplanationView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -132,17 +132,17 @@
 		D5D8957123246883006CE60D /* JCal */ = {
 			isa = PBXGroup;
 			children = (
+				D52F8D0C2FE115C9007E228A /* InfoPlist.xcstrings */,
+				D52F8D0D2FE115C9007E228A /* Localizable.xcstrings */,
 				D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */,
 				D5205A6D232BA8B2003B5882 /* C-Engine */,
 				D5205A7B232BA91B003B5882 /* Model */,
 				D5205A7C232BA965003B5882 /* UI */,
-				D5D8957223246883006CE60D /* AppDelegate.swift */,
-				D5D8959C23246905006CE60D /* CalendarWindowController.swift */,
 				D5D8957623246884006CE60D /* Assets.xcassets */,
-				D5D8957B23246884006CE60D /* Main.storyboard */,
 				D5D8957E23246884006CE60D /* Info.plist */,
 				D5D8957F23246884006CE60D /* JCal.entitlements */,
 				D5D8957823246884006CE60D /* Preview Content */,
+				D52F8D062FE0B42D007E228A /* JCalApp.swift */,
 			);
 			path = JCal;
 			sourceTree = "<group>";
@@ -181,8 +181,9 @@
 		D5D8956723246883006CE60D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "Gerard Iglesias";
 				TargetAttributes = {
 					D5D8956E23246883006CE60D = {
@@ -198,6 +199,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = D5D8956623246883006CE60D;
 			productRefGroup = D5D8957023246883006CE60D /* Products */;
@@ -214,9 +216,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D8957D23246884006CE60D /* Main.storyboard in Resources */,
 				D5D8957A23246884006CE60D /* Preview Assets.xcassets in Resources */,
 				D5D8957723246884006CE60D /* Assets.xcassets in Resources */,
+				D52F8D0E2FE115C9007E228A /* InfoPlist.xcstrings in Resources */,
+				D52F8D0F2FE115C9007E228A /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,39 +230,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5E0D5AE242AC937007C209A /* CellInGrid.swift in Sources */,
+				D52F8D052FE0B3AC007E228A /* HebrewCalendar.swift in Sources */,
 				D5D895AC23246905006CE60D /* HolidayArea.swift in Sources */,
+				D52F8D092FE0B4C9007E228A /* HolidayInfo.swift in Sources */,
 				D5D895A723246905006CE60D /* DayView.swift in Sources */,
 				D5D895A223246905006CE60D /* DayNumber.swift in Sources */,
+				D52F8D072FE0B42D007E228A /* JCalApp.swift in Sources */,
 				D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */,
 				D5205A87232BABF9003B5882 /* Parsha.c in Sources */,
 				D5205A85232BABF9003B5882 /* Holiday.c in Sources */,
-				D5D8957323246883006CE60D /* AppDelegate.swift in Sources */,
 				D5D895A423246905006CE60D /* MainCalendarView.swift in Sources */,
 				D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */,
 				D5D895A823246905006CE60D /* Theming.swift in Sources */,
 				D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */,
 				D5D8959F23246905006CE60D /* CalendarType.swift in Sources */,
+				D52F8D0B2FE11564007E228A /* DayExplanationView.swift in Sources */,
 				D5D895B223246910006CE60D /* MonthGrid.swift in Sources */,
-				D5205A7E232BAACE003B5882 /* UserDefault.swift in Sources */,
 				D5205A86232BABF9003B5882 /* Converter.c in Sources */,
-				D5205A7A232BA902003B5882 /* Hcal.swift in Sources */,
-				D5D895AA23246905006CE60D /* CalendarWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D5D8957B23246884006CE60D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D5D8957C23246884006CE60D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D5D8958023246884006CE60D /* Debug */ = {
@@ -296,9 +287,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = JLW43DLDF7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -318,6 +312,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -357,9 +352,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = JLW43DLDF7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -372,6 +370,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -386,8 +385,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
-				DEVELOPMENT_TEAM = JLW43DLDF7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = JCal/Info.plist;
@@ -395,10 +394,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.visual-science.JCal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "JCal/JCal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -414,8 +414,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
-				DEVELOPMENT_TEAM = JLW43DLDF7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = JCal/Info.plist;
@@ -423,10 +423,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.visual-science.JCal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "JCal/JCal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
