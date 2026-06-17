@@ -45,6 +45,13 @@ struct DayView : View {
                               Int32(hdate.hebrew_day_number),
                               Int32(hdate.year))
     let hasEvent = holiday?.pointee != nil
+    var holidayNames: [String] = []
+    if let base = holiday {
+      for i in 0..<5 {                     // FindHoliday returns up to 5 slots
+        guard let cstr = base.advanced(by: i).pointee else { break }
+        holidayNames.append(String(cString: cstr))
+      }
+    }
     return VStack {
       HStack {
         Spacer()
@@ -65,20 +72,12 @@ struct DayView : View {
 
       Spacer()
             
-      VStack{
-        holiday?.pointee.flatMap{p in
+      VStack {
+        ForEach(Array(holidayNames.prefix(2).enumerated()), id: \.offset) { _, name in
           HStack {
-            Text(String(cString: p))
-              .hcalHolidayTextStyle(theme: theme, isActive: inMonth)
-              .font(Font.caption.italic())
-            Spacer()
-          }
-          .padding([.bottom, .leading], 2)
-        }
-        (holiday?.advanced(by: 1).pointee).flatMap{p in
-          HStack {
-            Text(String(cString: p))
-              .hcalHolidayTextStyle(theme: theme, isActive: inMonth)
+            Text(name)
+              .foregroundStyle(Theming.holidayCategoryColor(HolidayInfo.category(for: name))
+                .opacity(Theming.opacityLevel(inMonth)))
               .font(Font.caption.italic())
             Spacer()
           }

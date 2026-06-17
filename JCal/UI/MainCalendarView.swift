@@ -32,19 +32,28 @@ struct MainCalendarView : View {
         }
         .pickerStyle(.segmented)
 
-        HolidayIconToggle(emoji: "📖", help: "Parsha", isOn: $hcal.parchaActive)
-        HolidayIconToggle(emoji: "🔥", help: "Omer", isOn: $hcal.omerActive)
-        HolidayIconToggle(emoji: "⛺️", help: "Chol Hamoed", isOn: $hcal.cholActive)
+        HolidayIconToggle(systemImage: "scroll.fill",
+                          activeColor: Theming.holidayCategoryColor(.parsha),
+                          help: "Parsha",
+                          isOn: $hcal.parchaActive)
+        HolidayIconToggle(systemImage: "leaf.fill",
+                          activeColor: Theming.holidayCategoryColor(.omer),
+                          help: "Omer",
+                          isOn: $hcal.omerActive)
+        HolidayIconToggle(systemImage: "tent.fill",
+                          activeColor: Theming.holidayCategoryColor(.intermediate),
+                          help: "Chol Hamoed",
+                          isOn: $hcal.cholActive)
       }
     }
   }
 }
 
-/// A toolbar toggle that keeps its emoji icon but conveys state through the
-/// glyph itself: desaturated and dimmed when off, full color when on — no
-/// button background highlight.
+/// A toolbar toggle that conveys state through the SF Symbol itself: gray when
+/// off, in its category color when on — no button background highlight.
 struct HolidayIconToggle: View {
-  let emoji: String
+  let systemImage: String
+  let activeColor: Color
   let help: LocalizedStringKey
   @Binding var isOn: Bool
 
@@ -52,12 +61,12 @@ struct HolidayIconToggle: View {
     Button {
       isOn.toggle()
     } label: {
-      Text(emoji)
+      Image(systemName: systemImage)
         .font(.title3)
-        .grayscale(isOn ? 0 : 1)
-        .opacity(isOn ? 1 : 0.4)
+        .foregroundStyle(isOn ? activeColor : Color.secondary)
+        .opacity(isOn ? 1 : 0.55)
     }
-    .buttonStyle(.plain)
+    .buttonStyle(.automatic)
     .help(help)
   }
 }
