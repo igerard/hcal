@@ -16,6 +16,8 @@
 		D52F8D0B2FE11564007E228A /* DayExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52F8D0A2FE11564007E228A /* DayExplanationView.swift */; };
 		D52F8D0E2FE115C9007E228A /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D52F8D0C2FE115C9007E228A /* InfoPlist.xcstrings */; };
 		D52F8D0F2FE115C9007E228A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D52F8D0D2FE115C9007E228A /* Localizable.xcstrings */; };
+		D52F8D112FE334F7007E228A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52F8D102FE334F7007E228A /* HelpView.swift */; };
+		D52F8D152FE3DF27007E228A /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = D52F8D142FE3DF27007E228A /* AppIcon.icon */; };
 		D591B16323246E1E0057A9E5 /* MonthSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591B16123246E1E0057A9E5 /* MonthSelector.swift */; };
 		D5D8957723246884006CE60D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957623246884006CE60D /* Assets.xcassets */; };
 		D5D8957A23246884006CE60D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D8957923246884006CE60D /* Preview Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		D52F8D0A2FE11564007E228A /* DayExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayExplanationView.swift; sourceTree = "<group>"; };
 		D52F8D0C2FE115C9007E228A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		D52F8D0D2FE115C9007E228A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D52F8D102FE334F7007E228A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		D52F8D142FE3DF27007E228A /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		D591B16123246E1E0057A9E5 /* MonthSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthSelector.swift; sourceTree = "<group>"; };
 		D5D8956F23246883006CE60D /* JCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D8957623246884006CE60D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				D591B16123246E1E0057A9E5 /* MonthSelector.swift */,
 				D5D8959523246905006CE60D /* MainCalendarView.swift */,
 				D52F8D0A2FE11564007E228A /* DayExplanationView.swift */,
+				D52F8D102FE334F7007E228A /* HelpView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			children = (
 				D52F8D0C2FE115C9007E228A /* InfoPlist.xcstrings */,
 				D52F8D0D2FE115C9007E228A /* Localizable.xcstrings */,
+				D52F8D142FE3DF27007E228A /* AppIcon.icon */,
 				D5D89586232468C7006CE60D /* JCal-Bridging-Header.h */,
 				D5205A6D232BA8B2003B5882 /* C-Engine */,
 				D5205A7B232BA91B003B5882 /* Model */,
@@ -220,6 +226,7 @@
 				D5D8957723246884006CE60D /* Assets.xcassets in Resources */,
 				D52F8D0E2FE115C9007E228A /* InfoPlist.xcstrings in Resources */,
 				D52F8D0F2FE115C9007E228A /* Localizable.xcstrings in Resources */,
+				D52F8D152FE3DF27007E228A /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +250,7 @@
 				D5E329B723288CA60029FB37 /* SimpleDate.swift in Sources */,
 				D5D895A823246905006CE60D /* Theming.swift in Sources */,
 				D5D895A123246905006CE60D /* GridDateGenerator.swift in Sources */,
+				D52F8D112FE334F7007E228A /* HelpView.swift in Sources */,
 				D5D8959F23246905006CE60D /* CalendarType.swift in Sources */,
 				D52F8D0B2FE11564007E228A /* DayExplanationView.swift in Sources */,
 				D5D895B223246910006CE60D /* MonthGrid.swift in Sources */,
@@ -387,6 +395,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = JCal/Info.plist;
@@ -416,6 +425,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JCal/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = JCal/Info.plist;

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainCalendarView : View {
   @Environment(HebrewCalendar.self) private var hcal
+  @State private var showHelp = false
 
   var body: some View {
     @Bindable var hcal = hcal
@@ -44,6 +45,16 @@ struct MainCalendarView : View {
                           activeColor: Theming.holidayCategoryColor(.intermediate),
                           help: "Chol Hamoed",
                           isOn: $hcal.cholActive)
+
+        Button {
+          showHelp.toggle()
+        } label: {
+          Image(systemName: "questionmark.circle")
+        }
+        .help("Help")
+        .popover(isPresented: $showHelp, arrowEdge: .bottom) {
+          HelpView()
+        }
       }
     }
   }

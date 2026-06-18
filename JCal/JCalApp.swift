@@ -20,7 +20,16 @@ struct JCalApp: App {
     .commands {
       HolidayCommands(hcal: hcal)
       NavigationCommands(hcal: hcal)
+      CommandGroup(replacing: .help) {
+        HelpMenuButton()
+      }
     }
+
+    Window("JCal Help", id: "help") {
+      HelpView()
+    }
+    .defaultSize(width: 360, height: 460)
+    .windowResizability(.contentSize)
   }
 }
 

@@ -79,7 +79,28 @@ private struct HolidayExplanationRow: View {
           .font(.caption)
           .foregroundStyle(.secondary)
           .fixedSize(horizontal: false, vertical: true)
+        if let url = HolidayInfo.learnMoreURL(for: name) {
+          Link("Learn more", destination: url)
+            .font(.caption2)
+            .padding(.top, 1)
+            .focusable(false)
+            .focusEffectDisabled()
+        }
       }
     }
   }
+}
+
+#Preview {
+  let hcal: HebrewCalendar = {
+    let h = HebrewCalendar()
+    h.year = 2026
+    h.month = 9
+    return h
+  }()
+
+  DayExplanationView(date: SimpleDate(calendarType: .gregorian,
+                                      year: 2026, month: 7, day: 4))
+  .environment(hcal)
+  
 }

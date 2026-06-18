@@ -53,6 +53,16 @@
         }
       }
     },
+    "Arrow keys change month and year; ⌘T jumps to today." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Les flèches changent le mois et l’année ; ⌘T revient à aujourd’hui."
+          }
+        }
+      }
+    },
     "Calendar" : {
       "localizations" : {
         "fr" : {
@@ -73,12 +83,43 @@
         }
       }
     },
+    "Chol Hamoed: the intermediate days of Pesach and Sukkot, between the opening and closing holy days. Some work is permitted while the festive character continues." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hol Hamoed : les jours intermédiaires de Pessah et de Souccot, entre les jours saints d’ouverture et de clôture. Certains travaux sont permis tandis que le caractère festif se poursuit."
+          }
+        }
+      }
+    },
     "Chol Hamoed: the intermediate festival days of Pesach or Sukkot." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Hol Hamoed : les jours intermédiaires de la fête de Pessah ou de Souccot."
+          }
+        }
+      }
+    },
+    "Click a day to read its holidays and events." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Cliquez sur un jour pour voir ses fêtes et événements."
+          }
+        }
+      }
+    },
+    "Color legend" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Légende des couleurs"
           }
         }
       }
@@ -94,11 +135,32 @@
       }
     },
     "Counting of the Omer: the 49 days counted from the second night of Pesach until Shavuot." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Décompte du Omer : les 49 jours comptés depuis la deuxième nuit de Pessah jusqu’à Chavouot."
+          }
+        }
+      }
+    },
+    "Counting of the Omer: the daily count of the 49 days from the second night of Pesach to Shavuot. Each evening the new day is recited, linking the Exodus to the giving of the Torah." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Décompte du Omer : le décompte quotidien des 49 jours depuis la deuxième nuit de Pessah jusqu’à Chavouot. Chaque soir, on récite le jour nouveau, reliant la sortie d’Égypte au don de la Torah."
+          }
+        }
+      }
+    },
+    "Credits" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Crédits"
           }
         }
       }
@@ -113,7 +175,18 @@
         }
       }
     },
+    "Erev Hanukah: the eve of Hanukah; the first light is kindled at nightfall on 25 Kislev." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Hanoucca : la veille de Hanoucca ; la première lumière est allumée à la tombée de la nuit, le 25 Kislev."
+          }
+        }
+      }
+    },
     "Erev Hanukah: the eve of Hanukah." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -123,7 +196,18 @@
         }
       }
     },
+    "Erev Pesach: the eve of Passover (14 Nissan). The morning is devoted to removing and burning chametz, firstborn traditionally fast, and the Seder begins that night." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Pessah : la veille de Pâque (14 Nissan). La matinée est consacrée à retirer et à brûler le hametz, les premiers-nés jeûnent traditionnellement, et le Séder commence ce soir-là."
+          }
+        }
+      }
+    },
     "Erev Pesach: the eve of Passover, when leaven is removed and the Seder is prepared." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -133,7 +217,18 @@
         }
       }
     },
+    "Erev Purim: the eve of Purim, when the festival begins at nightfall with the first reading of the Megillah." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Pourim : la veille de Pourim, lorsque la fête commence à la tombée de la nuit avec la première lecture de la Méguila."
+          }
+        }
+      }
+    },
     "Erev Purim: the eve of Purim." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -143,7 +238,18 @@
         }
       }
     },
+    "Erev Rosh Hashanah (29 Elul): the eve of the Jewish New Year, with candle-lighting and festive meals featuring symbolic foods." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Roch Hachana (29 Elloul) : la veille du Nouvel An juif, avec l’allumage des bougies et des repas festifs comportant des aliments symboliques."
+          }
+        }
+      }
+    },
     "Erev Rosh Hashanah: the eve of the Jewish New Year." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -153,7 +259,18 @@
         }
       }
     },
+    "Erev Shavuot: the eve of Shavuot, at the end of the seven-week Omer count. Many stay up studying Torah through the night (Tikkun Leil Shavuot)." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Chavouot : la veille de Chavouot, à la fin des sept semaines du décompte du Omer. Beaucoup veillent toute la nuit pour étudier la Torah (Tikkoun Leil Chavouot)."
+          }
+        }
+      }
+    },
     "Erev Shavuot: the eve of Shavuot." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -163,7 +280,18 @@
         }
       }
     },
+    "Erev Sukkot (14 Tishrei): the eve of Sukkot, when the sukkah is completed and the Four Species are prepared." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Souccot (14 Tichri) : la veille de Souccot, lorsque l’on achève la souccah et que l’on prépare les Quatre Espèces."
+          }
+        }
+      }
+    },
     "Erev Sukkot: the eve of Sukkot." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -173,7 +301,18 @@
         }
       }
     },
+    "Erev Yom Kippur (9 Tishrei): the eve of the Day of Atonement, marked by a festive meal before the fast, charity, and seeking forgiveness from others." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Erev Yom Kippour (9 Tichri) : la veille du Jour du Grand Pardon, marquée par un repas festif avant le jeûne, des dons de charité et la demande de pardon à autrui."
+          }
+        }
+      }
+    },
     "Erev Yom Kippur: the eve of the Day of Atonement." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -203,6 +342,16 @@
         }
       }
     },
+    "Getting around" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Navigation"
+          }
+        }
+      }
+    },
     "Gregorian" : {
       "localizations" : {
         "fr" : {
@@ -213,12 +362,33 @@
         }
       }
     },
+    "Hanukah (from 25 Kislev): the eight-day Festival of Lights, commemorating the Maccabees’ rededication of the Temple and the miracle of the oil. A light is added to the menorah each night." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hanoucca (à partir du 25 Kislev) : la fête des Lumières de huit jours, qui commémore la réinauguration du Temple par les Maccabées et le miracle de l’huile. Une lumière est ajoutée à la menorah chaque soir."
+          }
+        }
+      }
+    },
     "Hanukah: the eight-day Festival of Lights, commemorating the rededication of the Temple." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Hanoucca : la fête des Lumières de huit jours, qui commémore la réinauguration du Temple."
+          }
+        }
+      }
+    },
+    "Help" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Aide"
           }
         }
       }
@@ -234,11 +404,22 @@
       }
     },
     "Hoshanah Rabah: the seventh day of Sukkot, marked by special processions and prayers." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Hochana Rabba : le septième jour de Souccot, marqué par des processions et des prières particulières."
+          }
+        }
+      }
+    },
+    "Hoshanah Rabah: the seventh day of Sukkot, seen as a final sealing of judgment. It features seven processions with the Four Species and the beating of willow branches." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hochana Rabba : le septième jour de Souccot, considéré comme le scellement définitif du jugement. Il comporte sept processions avec les Quatre Espèces et le battage de branches de saule."
           }
         }
       }
@@ -283,6 +464,26 @@
         }
       }
     },
+    "JCal Help" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Aide JCal"
+          }
+        }
+      }
+    },
+    "JCal is a fork of the original open-source project by Avraham Drissman and Frank Yellin (BSD 3-Clause License, 2018). App icon by Jomy Muttathil. Hebrew-calendar algorithms adapted from the GNU Emacs calendar code." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "JCal est un fork du projet open-source original d’Avraham Drissman et Frank Yellin (licence BSD 3-Clause, 2018). Icône par Jomy Muttathil. Algorithmes du calendrier hébraïque adaptés du code GNU Emacs calendar."
+          }
+        }
+      }
+    },
     "Julian" : {
       "localizations" : {
         "fr" : {
@@ -293,12 +494,33 @@
         }
       }
     },
+    "Lag BaOmer (18 Iyar): the 33rd day of the Omer and a joyful pause in its semi-mourning, associated with Rabbi Shimon bar Yochai. Customs include bonfires, weddings, and outings." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Lag BaOmer (18 Iyar) : le 33e jour du Omer et une pause joyeuse dans son demi-deuil, associé à Rabbi Chimon bar Yohaï. Les coutumes comprennent les feux de joie, les mariages et les sorties."
+          }
+        }
+      }
+    },
     "Lag BaOmer: the 33rd day of the Omer, a festive break in the period of mourning." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Lag BaOmer : le 33e jour du Omer, une pause festive dans la période de deuil."
+          }
+        }
+      }
+    },
+    "Learn more" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "En savoir plus"
           }
         }
       }
@@ -374,11 +596,22 @@
       }
     },
     "Parashat %@: the weekly Torah portion read on this Shabbat." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Paracha %@ : la section hebdomadaire de la Torah lue ce Chabbat."
+          }
+        }
+      }
+    },
+    "Parashat %@: the weekly Torah portion read on this Shabbat. The Torah is divided into 54 portions read across the year, completed on Simchat Torah." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Paracha %@ : la section hebdomadaire de la Torah lue ce Chabbat. La Torah est divisée en 54 sections lues au fil de l’année, achevées à Sim’hat Torah."
           }
         }
       }
@@ -393,7 +626,18 @@
         }
       }
     },
+    "Pesach (Passover): begins 15 Nissan, lasting seven days in Israel and eight in the Diaspora. It commemorates the Exodus from Egypt; Jews eat matzah, avoid leaven, and retell the story at the Seder." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Pessah (Pâque) : commence le 15 Nissan et dure sept jours en Israël et huit en Diaspora. Elle commémore la sortie d’Égypte ; les Juifs mangent de la matsa, évitent le levain et racontent l’histoire lors du Séder."
+          }
+        }
+      }
+    },
     "Pesach (Passover): commemorates the Exodus from Egypt; matzah is eaten and leaven avoided." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -423,7 +667,28 @@
         }
       }
     },
+    "Purim (14 Adar): celebrates the rescue of the Jews of Persia from Haman’s plot, told in the Book of Esther. Customs include reading the Megillah, gifts of food, charity, and a festive meal." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Pourim (14 Adar) : célèbre le sauvetage des Juifs de Perse du complot de Haman, relaté dans le Livre d’Esther. Les coutumes comprennent la lecture de la Méguila, des envois de mets, des dons aux pauvres et un repas festif."
+          }
+        }
+      }
+    },
+    "Purim Katan: “Minor Purim,” on 14 Adar I in a leap year (when Purim itself falls in Adar II). It is a lightly festive day without the Megillah reading." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Pourim Katan : le « petit Pourim », le 14 Adar I lors d’une année embolismique (lorsque Pourim lui-même tombe en Adar II). C’est un jour légèrement festif, sans lecture de la Méguila."
+          }
+        }
+      }
+    },
     "Purim Katan: the “Minor Purim” in Adar I of a leap year." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -434,6 +699,7 @@
       }
     },
     "Purim: celebrates the deliverance of the Jews of Persia, recounted in the Book of Esther." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -453,7 +719,18 @@
         }
       }
     },
+    "Rosh Hashanah (1-2 Tishrei): the Jewish New Year and Day of Judgment. The shofar is sounded, opening the Ten Days of Repentance toward Yom Kippur." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Roch Hachana (1-2 Tichri) : le Nouvel An juif et Jour du Jugement. On sonne du chofar, ouvrant les Dix Jours de pénitence qui mènent à Yom Kippour."
+          }
+        }
+      }
+    },
     "Rosh Hashanah: the Jewish New Year and Day of Judgment, when the shofar is sounded." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -464,6 +741,7 @@
       }
     },
     "Selichot: penitential prayers recited in the run-up to the High Holy Days." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -473,7 +751,18 @@
         }
       }
     },
+    "Selichot: penitential prayers said before and during the High Holy Days. In the Ashkenazi rite they begin late on the Saturday night before Rosh Hashanah." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sélihot : prières pénitentielles récitées avant et pendant les Grandes Fêtes. Dans le rite ashkénaze, elles commencent tard dans la nuit du samedi qui précède Roch Hachana."
+          }
+        }
+      }
+    },
     "Shabbat HaGadol: the “Great Shabbat” immediately before Pesach." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -483,7 +772,28 @@
         }
       }
     },
+    "Shabbat HaGadol: the “Great Shabbat” right before Pesach, traditionally marked by a rabbinic discourse on the laws of the festival." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat HaGadol : le « grand Chabbat » juste avant Pessah, traditionnellement marqué par un discours rabbinique sur les lois de la fête."
+          }
+        }
+      }
+    },
+    "Shabbat HaHodesh: the last of the four special Shabbatot, on or before Rosh Chodesh Nissan. An added Torah reading (Exodus 12) gives the laws of the Passover offering and announces the month of redemption." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat HaHodech : le dernier des quatre Chabbatot particuliers, le jour de Roch Hodech Nissan ou avant. Une lecture supplémentaire de la Torah (Exode 12) donne les lois de l’offrande pascale et annonce le mois de la délivrance."
+          }
+        }
+      }
+    },
     "Shabbat HaHodesh: the special Shabbat before the month of Nissan, announcing the new month and the laws of Pesach." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -493,7 +803,18 @@
         }
       }
     },
+    "Shabbat Hazon: the Shabbat before Tisha B’Av, named for the opening “vision” (chazon) of Isaiah read as the haftarah. It falls within the mournful Nine Days." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Hazon : le Chabbat qui précède Tisha BeAv (9 Av), nommé d’après la « vision » (hazon) d’Isaïe lue comme haftara. Il tombe pendant les neuf jours de deuil."
+          }
+        }
+      }
+    },
     "Shabbat Hazon: the Shabbat before Tisha B’Av, named for the vision of Isaiah." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -503,7 +824,18 @@
         }
       }
     },
+    "Shabbat Nahamu: the Shabbat after Tisha B’Av, named for the haftarah’s words of comfort, “Nachamu, nachamu ami.” It begins seven weeks of consolation toward the High Holy Days." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Nahamou : le Chabbat qui suit Tisha BeAv (9 Av), nommé d’après les paroles de consolation de la haftara, « Nahamou, nahamou ami ». Il ouvre sept semaines de consolation menant aux Grandes Fêtes."
+          }
+        }
+      }
+    },
     "Shabbat Nahamu: the Shabbat of comfort following Tisha B’Av." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -514,6 +846,7 @@
       }
     },
     "Shabbat Parah: a special Shabbat after Purim concerning ritual purification." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -523,7 +856,18 @@
         }
       }
     },
+    "Shabbat Parah: one of the four special Shabbatot before Pesach, with an added reading on the Red Heifer (Numbers 19) and ritual purification." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Para : l’un des quatre Chabbatot particuliers qui précèdent Pessah, avec une lecture supplémentaire sur la vache rousse (Nombres 19) et la purification rituelle."
+          }
+        }
+      }
+    },
     "Shabbat Shekalim: the first of four special Shabbatot before Pesach." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -533,7 +877,28 @@
         }
       }
     },
+    "Shabbat Shekalim: the first of the four special Shabbatot before Pesach, with an added reading recalling the half-shekel given to the Temple." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Chekalim : le premier des quatre Chabbatot particuliers qui précèdent Pessah, avec une lecture supplémentaire rappelant le demi-sicle versé au Temple."
+          }
+        }
+      }
+    },
+    "Shabbat Shirah: the “Sabbath of Song,” when the Torah reading includes the Song of the Sea (Exodus 15) sung after the crossing of the Red Sea." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Chira : le « Chabbat du Chant », lorsque la lecture de la Torah comprend le Cantique de la mer (Exode 15) chanté après la traversée de la mer Rouge."
+          }
+        }
+      }
+    },
     "Shabbat Shirah: the Shabbat of the Song of the Sea (Exodus 15)." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -543,7 +908,18 @@
         }
       }
     },
+    "Shabbat Shuvah: the “Sabbath of Return” between Rosh Hashanah and Yom Kippur, named for the haftarah’s call to repentance (“Shuvah Yisrael”)." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Chouva : le « Chabbat du Retour » entre Roch Hachana et Yom Kippour, nommé d’après l’appel à la pénitence de la haftara (« Chouva Yisraël »)."
+          }
+        }
+      }
+    },
     "Shabbat Shuvah: the Shabbat of Return, between Rosh Hashanah and Yom Kippur." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -554,6 +930,7 @@
       }
     },
     "Shabbat Zachor: the Shabbat before Purim, recalling the command to remember Amalek." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -563,7 +940,28 @@
         }
       }
     },
+    "Shabbat Zachor: the Shabbat before Purim, with an added reading commanding remembrance of Amalek, ancestor of Haman." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chabbat Zakhor : le Chabbat qui précède Pourim, avec une lecture supplémentaire ordonnant de se souvenir d’Amalek, ancêtre de Haman."
+          }
+        }
+      }
+    },
+    "Shavuot (6 Sivan): the Feast of Weeks, fifty days after Passover, marking the giving of the Torah at Sinai. An ancient harvest festival, it is observed with all-night study and dairy foods." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chavouot (6 Sivan) : la fête des Semaines, cinquante jours après Pâque, qui marque le don de la Torah au Sinaï. Ancienne fête des récoltes, elle est observée par l’étude toute la nuit et des mets lactés."
+          }
+        }
+      }
+    },
     "Shavuot: the Feast of Weeks, commemorating the giving of the Torah at Sinai." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -573,7 +971,18 @@
         }
       }
     },
+    "Shmini Atzeret (22 Tishrei): a distinct festival just after Sukkot, including the prayer for rain (Geshem) and, in the Diaspora, Yizkor." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chemini Atséret (22 Tichri) : une fête distincte qui suit immédiatement Souccot, comprenant la prière pour la pluie (Guéchem) et, en Diaspora, le Yizkor."
+          }
+        }
+      }
+    },
     "Shmini Atzeret: the festival concluding Sukkot, including the prayer for rain." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -583,7 +992,18 @@
         }
       }
     },
+    "Shushan Purim (15 Adar): observed a day after Purim in cities walled since Joshua’s time, such as Jerusalem, recalling the extra day of fighting in Shushan." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Chouchan Pourim (15 Adar) : célébré un jour après Pourim dans les villes fortifiées depuis l’époque de Josué, comme Jérusalem, en souvenir du jour de combat supplémentaire à Chouchan."
+          }
+        }
+      }
+    },
     "Shushan Purim: Purim as observed a day later in walled cities such as Jerusalem." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -594,11 +1014,22 @@
       }
     },
     "Simchat Torah: rejoicing of the Torah, celebrating the completion of the annual reading cycle." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Sim’hat Torah : la réjouissance de la Torah, qui célèbre l’achèvement du cycle annuel de lecture."
+          }
+        }
+      }
+    },
+    "Simchat Torah: the joyous celebration completing and restarting the annual Torah-reading cycle, marked by dancing with the scrolls (hakafot). In Israel it coincides with Shmini Atzeret." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Sim’hat Torah : la joyeuse célébration qui achève et recommence le cycle annuel de lecture de la Torah, marquée par des danses avec les rouleaux (hakafot). En Israël, elle coïncide avec Chemini Atséret."
           }
         }
       }
@@ -613,7 +1044,18 @@
         }
       }
     },
+    "Sukkot (15 Tishrei): the seven-day Feast of Tabernacles. Jews dwell in booths and take up the Four Species, recalling the wilderness journey and the autumn harvest." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Souccot (15 Tichri) : la fête des Cabanes, qui dure sept jours. Les Juifs demeurent dans des souccot et prennent les Quatre Espèces, en souvenir de la traversée du désert et des récoltes d’automne."
+          }
+        }
+      }
+    },
     "Sukkot: the Feast of Tabernacles, dwelling in booths to recall the wilderness journey." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -623,7 +1065,28 @@
         }
       }
     },
+    "Switch calendar and area from the toolbar." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Changez de calendrier et de zone depuis la barre d’outils."
+          }
+        }
+      }
+    },
+    "Ta’anit Esther (usually 13 Adar): a dawn-to-dusk fast on the eve of Purim, recalling the fast Esther proclaimed before approaching the king." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Ta’anit Esther (en général le 13 Adar) : un jeûne de l’aube au crépuscule, la veille de Pourim, rappelant le jeûne qu’Esther proclama avant de se présenter devant le roi."
+          }
+        }
+      }
+    },
     "Ta’anit Esther: the Fast of Esther, observed the day before Purim." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -633,7 +1096,18 @@
         }
       }
     },
+    "Tisha B’Av (9 Av): the major fast mourning the destruction of both Temples in Jerusalem and later tragedies. A 25-hour fast with restrictions like Yom Kippur, it includes the reading of Lamentations." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tisha BeAv (9 Av) : le grand jeûne de deuil pour la destruction des deux Temples de Jérusalem et les tragédies ultérieures. Jeûne de 25 heures soumis à des restrictions comme Yom Kippour, il comprend la lecture des Lamentations."
+          }
+        }
+      }
+    },
     "Tisha B’Av: the fast mourning the destruction of both Temples in Jerusalem." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -653,7 +1127,28 @@
         }
       }
     },
+    "Toggle the Parsha, Omer and Chol Hamoed icons to show them." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Activez les icônes Paracha, Omer et Hol Hamoed pour les afficher."
+          }
+        }
+      }
+    },
+    "Tu BiShvat (15 Shevat): the New Year for Trees, used to reckon the age of fruit trees for tithes. It is marked today by eating fruit and ecological awareness." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tou Bichvat (15 Chevat) : le Nouvel An des arbres, qui sert à calculer l’âge des arbres fruitiers pour les dîmes. On le marque aujourd’hui en mangeant des fruits et par une conscience écologique."
+          }
+        }
+      }
+    },
     "Tu BiShvat: the New Year for Trees." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -663,7 +1158,18 @@
         }
       }
     },
+    "Tzom Gedaliah (3 Tishrei): a dawn-to-dusk fast marking the assassination of Gedaliah, governor of Judah, which ended Jewish self-rule after the First Temple’s destruction." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tsom Guedalia (3 Tichri) : un jeûne de l’aube au crépuscule qui marque l’assassinat de Guedalia, gouverneur de Juda, mettant fin à l’autonomie juive après la destruction du premier Temple."
+          }
+        }
+      }
+    },
     "Tzom Gedaliah: the fast marking the assassination of Gedaliah, governor of Judah." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -673,7 +1179,18 @@
         }
       }
     },
+    "Tzom Tammuz (17 Tammuz): a dawn-to-dusk fast recalling the breaching of Jerusalem’s walls. It opens the Three Weeks of mourning leading to Tisha B’Av." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tsom Tamouz (17 Tamouz) : un jeûne de l’aube au crépuscule rappelant la brèche ouverte dans les murailles de Jérusalem. Il ouvre les Trois Semaines de deuil qui mènent à Tisha BeAv (9 Av)."
+          }
+        }
+      }
+    },
     "Tzom Tammuz: the fast of the 17th of Tammuz, marking the breach of Jerusalem’s walls." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -683,7 +1200,18 @@
         }
       }
     },
+    "Tzom Tevet (10 Tevet): a dawn-to-dusk fast marking the start of the Babylonian siege of Jerusalem that led to the First Temple’s destruction." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tsom Tevet (10 Tevet) : un jeûne de l’aube au crépuscule qui marque le début du siège babylonien de Jérusalem ayant conduit à la destruction du premier Temple."
+          }
+        }
+      }
+    },
     "Tzom Tevet: the fast of the 10th of Tevet, marking the siege of Jerusalem." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -703,7 +1231,18 @@
         }
       }
     },
+    "Yom HaAtzmaut (5 Iyar): Israeli Independence Day, marking the 1948 declaration of the State of Israel, celebrated right after Yom HaZikaron." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Yom HaAtsmaout (5 Iyar) : jour de l’Indépendance d’Israël, qui marque la déclaration de l’État d’Israël en 1948, célébré juste après Yom HaZikaron."
+          }
+        }
+      }
+    },
     "Yom HaAtzmaut: Israeli Independence Day, marking the 1948 declaration of the State of Israel." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -713,7 +1252,18 @@
         }
       }
     },
+    "Yom HaShoah (27 Nissan): Israel’s Holocaust Remembrance Day, honoring the six million Jews murdered in the Shoah. A national siren brings the country to a standstill." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Yom HaShoah (27 Nissan) : jour du souvenir de l’Holocauste en Israël, en hommage aux six millions de Juifs assassinés dans la Shoah. Une sirène nationale fige le pays."
+          }
+        }
+      }
+    },
     "Yom HaShoah: Holocaust Remembrance Day, honoring the victims of the Shoah." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -723,7 +1273,18 @@
         }
       }
     },
+    "Yom HaZikaron (4 Iyar): Israel’s Memorial Day for fallen soldiers and victims of terrorism, observed with sirens and ceremonies the day before Independence Day." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Yom HaZikaron (4 Iyar) : jour du souvenir d’Israël pour les soldats tombés et les victimes du terrorisme, observé par des sirènes et des cérémonies la veille du jour de l’Indépendance."
+          }
+        }
+      }
+    },
     "Yom HaZikaron: Israel’s Memorial Day for fallen soldiers and victims of terror." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -733,7 +1294,18 @@
         }
       }
     },
+    "Yom Kippur (10 Tishrei): the Day of Atonement and holiest day of the year, observed with a 25-hour fast and prayer for atonement, concluding the Ten Days of Repentance." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Yom Kippour (10 Tichri) : le Jour du Grand Pardon et le jour le plus saint de l’année, observé par un jeûne de 25 heures et la prière pour l’expiation, qui clôt les Dix Jours de pénitence."
+          }
+        }
+      }
+    },
     "Yom Kippur: the Day of Atonement, the holiest day of the year, observed with fasting and prayer." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -743,7 +1315,18 @@
         }
       }
     },
+    "Yom Yerushalayim (28 Iyar): Jerusalem Day, commemorating the reunification of Jerusalem during the 1967 Six-Day War." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Yom Yérouchalayim (28 Iyar) : jour de Jérusalem, qui commémore la réunification de Jérusalem lors de la guerre des Six Jours en 1967."
+          }
+        }
+      }
+    },
     "Yom Yerushalayim: Jerusalem Day, commemorating the reunification of Jerusalem in 1967." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
