@@ -1,14 +1,8 @@
 {
-  "sourceLanguage" : "en",
+  "sourceLanguage" : "fr",
   "strings" : {
     "%@ %@" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",
@@ -29,12 +23,6 @@
     },
     "%lld %@ %@" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld %2$@ %3$@"
-          }
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "machine_translated",

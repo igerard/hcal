@@ -1,11 +1,11 @@
 {
-  "sourceLanguage" : "en",
+  "sourceLanguage" : "fr",
   "strings" : {
     "CFBundleName" : {
       "comment" : "Bundle name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
+        "fr" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "JCal"
@@ -17,7 +17,7 @@
       "comment" : "Copyright (human-readable)",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
+        "fr" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Copyright © 2019 Gerard Iglesias. All rights reserved."
